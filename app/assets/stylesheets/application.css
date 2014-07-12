@@ -14,3 +14,58 @@
  *= require bootstrap.min
  *= require_self
  */
+
+ @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400);
+
+ body {
+ 	padding-top: 51px;
+
+ 	font-family: 'Open Sans', sans-serif;
+ }
+ 
+/*@media (max-width: 768px) {
+	body { padding-top: 51px; }
+}*/
+
+.divider {
+	height: 50px;
+	display: block;
+}
+
+.parallax {
+	/*background-image: attr(data-bg-image url);*/
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+
+	/*min-height: 300px;*/
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: auto;
+
+	color:#fff;
+}
+
+@media (max-width: 992px) {
+	.parallax {
+		background-attachment: initial;
+		background-size: cover;
+	}
+}
+
+.jumbotron {
+	background: transparent;
+}
+
+#footer {
+	height: 60px;
+	background-color:#585858;
+	margin-top:50px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#footer a {
+	color:#efefef;
+}
