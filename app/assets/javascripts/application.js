@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require grids
 //= require bootstrap.min
 //= require_tree .
