@@ -49,12 +49,12 @@
 			</p>
 		</div>
 		<div class="col-sm-5">
-			<h4>Upcoming Events</h4>
+			<h4><i class="fa fa-fw fa-calendar"></i> Upcoming Events</h4>
 
 			<ul class="media-list">
 				<% @events.each do |event| -%>
 				<li class="media">
-					<%= link_to image_tag( '', class: 'media-object', size: '32' ), event, class: 'pull-left' -%>
+					<%= content_tag :i, nil, class: 'fa fa-fw fa-ship fa-2x media-object pull-left' -%>
 					<div class="media-body">
 						<h5 class="media-heading">
 							<%= link_to event.title, event -%><br>
@@ -67,7 +67,7 @@
 			</ul>
 
 			<div class="pull-right">
-				<%= link_to 'More Events', events_url, class: 'btn btn-primary' -%>
+				<%= link_to raw('More Events <i class="fa fa-fw fa-calendar"></i>'), events_url, class: 'btn btn-primary' -%>
 			</div>
 
 		</div>
@@ -82,7 +82,7 @@
 		<div class="jumbotron" style="padding: 20px 60px 0">
 			<h2 class="text-center">
 				Travel Made Easy<br>
-				<small>Complimentary Airfare</small>
+				<small><i class="fa fa-fw fa-plane"></i> Complimentary Airfare</small>
 			</h2>
 			<hr style="width: 200px;">
 		</div>
@@ -94,33 +94,19 @@
 				<p>
 					<select class="form-control">
 						<option default>Date</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
 					</select>
 				</p>
 				<p>
 					<select class="form-control">
 						<option default>Destination</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
 					</select>
 				</p>
 				<p>
 					<select class="form-control">
 						<option default>Departing City</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
 					</select>
 				</p>
+				<button class="btn btn-primary btn-lg btn-block">Find Flight <i class="fa fa-fw fa-plane"></i></button>
 			</div>
 			<div class="col-sm-6">
 				<h4>&nbsp;</h4>
@@ -155,8 +141,9 @@
 			<p>
 				The policies personally established by President and C.E.O. Rick Diaz are simple; among them...
 			</p>
-			<blockquote class="lead">
-				<em>Offer to every customer as many complimentary privileges as possible, in advance, even if not requested by the customer.</em>
+			<blockquote class="blockquote">
+				<em class="lead">Offer to every customer as many complimentary privileges as possible, in advance, even if not requested by the customer.</em>
+				<footer>Rick Diaz <cite title="Casinos The Grand Colelction President and C.E.O.">Casinos The Grand Colelction President and C.E.O.</cite></footer>
 			</blockquote>
 			<p>
 				A world filled with luxuries, fun, and excitement await you. We provide “truly superior personalized services” to those wishing to enjoy gaming holidays at some of the world’s finest gaming resorts.
@@ -164,17 +151,35 @@
 		</div>
 		<div class="col-md-4">
 			<div class="alert alert-info">
-				<h4>Signup for Special Offers</h4>
+				<h4>Sign  up for Special Offers</h4>
 				<p>
 					Sign up for our Newsletter to receive complimentary privileges and offers.
 				</p>
-				<form role="form">
-					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-					</div>
-					<button type="submit" class="btn btn-info btn-block">Submit</button>
-				</form>
+				<p>
+					<form role="form">
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="form-group">
+									<input type="text" class="form-control" id="firstname" placeholder="First Name">
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<input type="text" class="form-control" id="lastname" placeholder="Last Name">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control" id="email" placeholder="Your Email">
+						</div>
+						<div class="checkbox small">
+							<label>
+							<input type="checkbox" checked> I'd like more information on becoming a <a href="#preffered">Preffered Customer</a>.
+							</label>
+						</div>
+						<button type="submit" class="btn btn-info btn-block">Submit</button>
+					</form>
+				</p>
 			</div>
 		</div>
 	</div>

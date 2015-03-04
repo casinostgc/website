@@ -11,17 +11,22 @@
  * file per style scope.
  *
  *= require_tree .
- *= require bootstrap.min
  *= require_self
  */
 
- @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400);
+@import "font-awesome";
 
- body {
- 	padding-top: 51px;
+@import "bootstrap/variables";
+@import "bootstrap";
+/*@import "bootswatch";*/
 
- 	font-family: 'Open Sans', sans-serif;
- }
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400);
+
+body {
+	padding-top: 51px;
+
+	// font-family: 'Open Sans';
+}
  
 /*@media (max-width: 768px) {
 	body { padding-top: 51px; }
