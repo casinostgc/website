@@ -1,5 +1,5 @@
 
-<section class="parallax" style="background-image: url('http://upload.wikimedia.org/wikipedia/commons/1/1b/1_Las_vegas_strip.jpg');">
+<section class="parallax" style="background-image: url('<%= image_url('bg-vegas.jpg') -%>');">
 	<div class="jumbotron">
 		<div class="container text-center">
 			<%= image_tag( 'new-logo-white.png', alt: 'CASINOS The Grand Collection', class: 'img-responsive', style: 'margin: 0 auto;' ) -%>
@@ -11,7 +11,7 @@
 <span class="divider"></span>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12 lead">
+		<div class="col-md-12 lead">
 			<p>
 				<strong>CASINOS the Grand Collection</strong> may very well be the most prominent independent supplier of exclusive casino offers and customized gambling travel itineraries to the world's most experienced gamblers. We connect our clients to the <strong>best casino offers, complementary privileges, benefits &amp; services</strong> at gaming destinations across the United States and internationally.
 			</p>
@@ -41,7 +41,7 @@
 		<div class="col-sm-7">
 			<h4>The Grand Collection of "On Land" Casinos</h4>
 			<p>
-				The Grand Collection offers “Very V.I.P” Group Departures to <%= link_to 'great gaming locations', destinations_url, class: 'lead' -%> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
+				The Grand Collection offers “Very V.I.P” Group Departures to great <%= link_to 'Gaming Locations', destinations_url, class: 'btn btn-success btn-xs' -%> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
 			</p>
 			<h4>The Grand Collection of Cruise Expereience & Gaming "At Sea"</h4>
 			<p>
@@ -49,8 +49,9 @@
 			</p>
 		</div>
 		<div class="col-sm-5">
-			<h4><i class="fa fa-fw fa-calendar"></i> Upcoming Events</h4>
+			<h4><%= fa_icon('calendar') -%> Upcoming Events</h4>
 
+			<% if @events.any? -%>
 			<ul class="media-list">
 				<% @events.each do |event| -%>
 				<li class="media">
@@ -65,10 +66,14 @@
 				</li>
 				<% end -%>
 			</ul>
-
 			<div class="pull-right">
-				<%= link_to raw('More Events <i class="fa fa-fw fa-calendar"></i>'), events_url, class: 'btn btn-primary' -%>
+				<%= link_to raw('More Events'+fa_icon('calendar')), events_url, class: 'btn btn-primary' -%>
 			</div>
+			<% else -%>
+			<p class="lead text-muted text-center">
+				There are no upcoming events.
+			</p>
+			<% end -%>
 
 		</div>
 	</div>
@@ -82,7 +87,7 @@
 		<div class="jumbotron" style="padding: 20px 60px 0">
 			<h2 class="text-center">
 				Travel Made Easy<br>
-				<small><i class="fa fa-fw fa-plane"></i> Complimentary Airfare</small>
+				<small>Complimentary Airfare <%= fa_icon('plane') -%></small>
 			</h2>
 			<hr style="width: 200px;">
 		</div>
@@ -106,7 +111,7 @@
 						<option default>Departing City</option>
 					</select>
 				</p>
-				<button class="btn btn-primary btn-lg btn-block">Find Flight <i class="fa fa-fw fa-plane"></i></button>
+				<button class="btn btn-primary btn-lg btn-block">Find Flight <%= fa_icon('plane') -%></button>
 			</div>
 			<div class="col-sm-6">
 				<h4>&nbsp;</h4>
@@ -174,7 +179,7 @@
 						</div>
 						<div class="checkbox small">
 							<label>
-							<input type="checkbox" checked> I'd like more information on becoming a <a href="#preffered">Preffered Customer</a>.
+								<input type="checkbox" checked> I'd like more information on becoming a <a href="#preffered">Preffered Customer</a>.
 							</label>
 						</div>
 						<button type="submit" class="btn btn-info btn-block">Submit</button>
@@ -186,10 +191,3 @@
 
 </div>
 
-<div id="footer">
-	<div class="container">
-		<p class="text-muted">
-			This Bootstrap Example courtesy <a href="http://www.bootply.com">Bootply.com</a>
-		</p>
-	</div>
-</div>
