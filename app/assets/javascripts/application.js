@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require grids
 //= require bootstrap.min
+//= require froala_editor.min.js
+//= require plugins/lists.min.js
 //= require_tree .

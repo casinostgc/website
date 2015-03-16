@@ -11,24 +11,32 @@
 </div>
 <% end %>
 
-<div class="field">
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-</div>
-<div class="field">
-  <%= f.label :content %><br>
-  <%= f.text_area :content %>
-</div>
-<div class="field">
-  <%= f.label :location %><br>
-  <%= f.text_field :location %>
-</div>
-<div class="field">
-  <%= f.label :international %><br>
-  <%= f.check_box :international %>
+<div class="row">
+
+  <div class="col-sm-8 col-md-9">
+
+    <div class="form-group">
+      <%#= f.label :name %>
+      <%= f.text_field :name, class: 'form-control input-lg', placeholder: 'Destination Name' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :content, 'Destination Content' %>
+      <%= f.text_area :content %>
+    </div>
+
+  </div>
+
+  <div class="col-sm-4 col-md-3">
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :international %> Internation Destination
+      </label>
+    </div>
+    <%= f.submit nil, class: 'btn btn-primary btn-lg btn-block' %>
+
+  </div>
+
 </div>
 
-<div class="actions">
-  <%= f.submit %>
-</div>
 <% end %>

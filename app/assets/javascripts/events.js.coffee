@@ -5,3 +5,8 @@
 $ ->
 	$(".auto-height").responsiveEqualHeightGrid()
 	$(".auto-height > .panel").responsiveEqualHeightGrid()
+
+	$('#event_content').editable
+		inlineMode: false
+		height: 300
+		imageUpload: false

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  
+
+  resources :menu_items, except: :show
+
+  resources :pages
+
   resources :events
 
   resources :destinations
@@ -9,7 +13,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'pages#index'
+  root 'site_pages#index'
+
+
+  get '/menus', to: "menu_items#index"
+  get '/:id', to: "pages#show", as: 'short_page'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

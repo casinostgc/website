@@ -42,3 +42,5 @@ gem 'devise'
 gem 'friendly_id'
 gem 'geocoder'
 gem 'gmapsjs'
+
+gem 'wysiwyg-rails'

@@ -6,10 +6,7 @@ class Event < ActiveRecord::Base
 	has_one :image
 	# has_many :categories, through: :categorizations
 
-
-	def excerpt(limit=200)
-		self.content.first(limit) + '...'
-	end
+	include Content
 
 	def date_span
 		self.start_at.strftime("%b %d, %Y") + ' - ' + self.end_at.strftime("%b %d, %Y")

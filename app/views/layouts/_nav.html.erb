@@ -11,12 +11,18 @@
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<%= content_tag :li, link_to(fa_icon('globe')+'Destinations', destinations_url) -%>
-				<%= content_tag :li, link_to(fa_icon('calendar')+'Events', events_url) -%>
-				<%= content_tag :li, link_to(fa_icon('plane')+'Flights', '#flights') -%>
-				<%= content_tag :li, link_to(fa_icon('star')+'V.I.P.', '#preferred') -%>
-				<%#= content_tag :li, link_to(fa_icon('info-circle')+'About', '#about') -%>
-				<%= content_tag :li, link_to(fa_icon('phone')+'Contact', '#contact') -%>
+
+
+				<% MenuItem.all.each do |item| -%>
+				<%= content_tag :li, link_to(fa_icon(item.icon)+item.value, item.href) -%>
+				<% end -%>
+
+				<%#= content_tag :li, link_to(fa_icon('globe')+'Destinations', destinations_url) -%>
+				<%#= content_tag :li, link_to(fa_icon('calendar')+'Events', events_url) -%>
+				<%#= content_tag :li, link_to(fa_icon('plane')+'Flights', '#flights') -%>
+				<%#= content_tag :li, link_to(fa_icon('star')+'V.I.P.', '#vip') -%>
+				<%#= content_tag :li, link_to(fa_icon('info-circle')+'About', '/about') -%>
+				<%#= content_tag :li, link_to(fa_icon('phone')+'Contact', '/contact') -%>
 			</ul>
 
 			<ul class="navbar-right">
