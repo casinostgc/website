@@ -1,12 +1,23 @@
 Rails.application.routes.draw do
 
-  resources :menu_items, except: :show
+  resources :pages, only: [:show]
+  resources :events, only: [:index, :show]
+  resources :destinations, only: [:index, :show]
+  # resources :flights, only: [:index, :show]
 
-  resources :pages
+  namespace :admin do
+    get '/' => 'admin#index', as: :admin
+    resources :admin, only: [:index]
+    resources :pages, except: [:show]
+    resources :menu_items, except: [:show] do
+      collection { post :sort }
+    end
+    resources :events, except: [:show]
+    resources :destinations, except: [:show]
+    # resources :flights, except: [:show]
 
-  resources :events
-
-  resources :destinations
+    get '/menus', to: "menu_items#index"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -15,8 +26,6 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'site_pages#index'
 
-
-  get '/menus', to: "menu_items#index"
   get '/:id', to: "pages#show", as: 'short_page'
 
   # Example of regular route:

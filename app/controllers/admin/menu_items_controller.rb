@@ -1,4 +1,4 @@
-class MenuItemsController < ApplicationController
+class Admin::MenuItemsController < Admin::AdminController
 	before_action :set_menu_item, only: [:edit, :update, :destroy]
 	before_action :set_pages, only: [:edit, :new]
 
@@ -7,6 +7,13 @@ class MenuItemsController < ApplicationController
 	def index
 		@menu_items = MenuItem.all
 		respond_with(@menu_items)
+	end
+
+	def sort
+		params[:menu_item].each_with_index do |id, index|
+			MenuItem.where(id: id).update_all(position: index+1)
+		end
+		render nothing: true
 	end
 
 	def new
@@ -22,7 +29,7 @@ class MenuItemsController < ApplicationController
 		respond_to do |format|
 			if @menu_item.save
 				flash[:notice] = 'Menu item was successfully created.'
-				format.html { redirect_to menu_items_path }
+				format.html { redirect_to admin_menu_items_path }
 				format.xml { render xml: @menu_item }
 			else
 				format.html { render action: "new" }
@@ -34,7 +41,7 @@ class MenuItemsController < ApplicationController
 	def update
 		respond_to do |format|
 			if @menu_item.update(menu_item_params)
-				format.html { redirect_to menu_items_path, notice: 'Menu item was successfully updated.' }
+				format.html { redirect_to admin_menu_items_path, notice: 'Menu item was successfully updated.' }
 				# format.json { render :show, status: :ok, location: @tire_type }
 			else
 				format.html { render :edit }
@@ -45,7 +52,7 @@ class MenuItemsController < ApplicationController
 
 	def destroy
 		@menu_item.destroy
-		respond_with(@menu_item)
+		redirect_to admin_menu_items_path
 	end
 
 	private

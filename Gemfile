@@ -38,9 +38,12 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'jquery-ui-rails'
+
 gem 'devise'
 gem 'friendly_id'
 gem 'geocoder'
 gem 'gmapsjs'
+gem 'acts_as_list'
 
 gem 'wysiwyg-rails'
