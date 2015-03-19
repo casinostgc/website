@@ -43,7 +43,18 @@
 		</div>
 
 		<div class="actions">
-		<%= f.submit nil, class: 'btn btn-primary btn-lg btn-block' %>
+			<%= f.submit nil, class: 'btn btn-primary btn-lg btn-block' %>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-xs-6">
+				<%= link_to 'View Page', short_page_path(@page), class: 'btn btn-info btn-sm btn-block' if @page.persisted? %>
+			</div>
+			<div class="col-xs-6">
+				<%= link_to 'Cancel', admin_pages_path, class: 'btn btn-warning btn-sm btn-block' %>
+			</div>
 		</div>
 
 	</div>

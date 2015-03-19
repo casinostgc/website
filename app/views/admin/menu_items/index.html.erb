@@ -11,8 +11,8 @@
 			<%= link_to fa_icon('arrows-v'), '#', class: 'draggable btn btn-xs btn-default disabled' -%>
 
 			<span class="pull-right">
-				<%= link_to fa_icon('remove'), [:admin, menu_item], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' -%>
 				<%= link_to fa_icon('pencil'), edit_admin_menu_item_path(menu_item), class: 'btn btn-xs btn-warning' -%>
+				<%= link_to fa_icon('remove'), [:admin, menu_item], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' -%>
 			</span>
 
 			<%= fa_icon(menu_item.icon) if menu_item.icon -%>

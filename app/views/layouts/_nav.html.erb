@@ -14,7 +14,7 @@
 
 
 				<% MenuItem.all.each do |item| -%>
-				<%= content_tag :li, link_to(fa_icon(item.icon)+item.value, item.href) -%>
+				<%= content_tag :li, link_to(fa_icon(item.icon)+item.value, item.link, target: (item.blank_target ? '_blank' : '_self')) -%>
 				<% end -%>
 
 				<%#= content_tag :li, link_to(fa_icon('globe')+'Destinations', destinations_url) -%>

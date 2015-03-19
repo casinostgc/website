@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314183923) do
+ActiveRecord::Schema.define(version: 20150319155238) do
 
   create_table "casein_admin_users", force: true do |t|
     t.string   "login",                           null: false
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20150314183923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "value"
+    t.integer  "page_id"
+    t.boolean  "blank_target"
   end
 
   create_table "pages", force: true do |t|

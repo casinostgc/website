@@ -9,6 +9,6 @@ class Page < ActiveRecord::Base
 
 	include Content
 
-	has_many :menu_items, dependent: :destroy
+	has_many :menu_items
 
 end

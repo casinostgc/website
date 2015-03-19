@@ -1,3 +1,5 @@
+<%= link_to 'New Page', new_admin_page_path, class: 'btn btn-primary' %>
+
 <div class="table-responsive">
 <table class="table table-striped">
   <thead>
@@ -12,18 +14,13 @@
   <tbody>
     <% @pages.each do |page| %>
       <tr>
-        <td><%= page.title %></td>
+        <td><%= link_to fa_icon('pencil')+page.title, edit_admin_page_path(page) %></td>
         <td><%= page.slug %></td>
         <td><%= page.status %></td>
-        <td><%= link_to 'Show', short_page_path(page) %></td>
-        <td><%= link_to 'Edit', edit_admin_page_path(page) %></td>
-        <td><%= link_to 'Destroy', [:admin, page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View Page', short_page_path(page) %></td>
+        <td><%= link_to fa_icon('remove'), [:admin, page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
-
-<br>
-
-<%= link_to 'New Page', new_admin_page_path %>

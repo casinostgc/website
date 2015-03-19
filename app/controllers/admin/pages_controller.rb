@@ -1,6 +1,6 @@
 class Admin::PagesController < Admin::AdminController
 
-	before_action :set_page, only: [:edit, :update, :destroy]
+	before_action :set_page, except: [:index, :new, :create]
 
 	respond_to :html
 
@@ -29,8 +29,17 @@ class Admin::PagesController < Admin::AdminController
 	end
 
 	def destroy
+		MenuItem.destroy_all(page: @page)
 		@page.destroy
-		respond_with(@page)
+		redirect_to admin_pages_path
+		# respond_to do |format|
+		# 	if @page.destroy
+		# 		format.html { redirect_to admin_pages_path, notice: 'Page was successfully destroyed.' }
+		# 		format.json { head :no_content }
+		# 	else
+		# 		format.html { redirect_to admin_pages_path, notice: 'Page was not destroyed.' }
+		# 	end
+		# end
 	end
 
 	private

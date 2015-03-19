@@ -1,32 +1,44 @@
 <%= form_for [:admin, @menu_item] do |f| %>
-  <% if @menu_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
+<% if @menu_item.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
 
-      <ul>
-      <% @menu_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @menu_item.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :value, 'Label' %><br>
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :href, 'Link' %><br>
-    <%= f.text_field :href %>
+<div class="form-group">
+  <%= f.label :value, 'Label' %><br>
+  <%= f.text_field :value, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <%= f.label :page_id, 'Link To' %>
+  <%= f.collection_select :page_id, @pages, :id, :title, {include_blank: '- Custom URL'}, class: 'form-control' -%>
+
+</div>
+
+<div class="form-group">
+  <%= f.label :href, 'Custom URL' %>
+  <%= f.text_field :href, class: 'form-control', disabled: true %>
+</div>
+
+<div class="checkbox">
+    <label>
+      <%= f.check_box :blank_target -%> Open link in new window?
+    </label>
   </div>
 
-<%= select_tag 'name', options_from_collection_for_select(@pages, "slug", "title") -%>
+<div class="form-group">
+  <%= f.label :icon %>
+  <%= f.select :icon, @icons, {}, {class: 'form-control'} -%>
+</div>
 
-  <div class="field">
-    <%= f.label :icon %><br>
-    <%= f.text_field :icon %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

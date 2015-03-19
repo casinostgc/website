@@ -1,27 +1,27 @@
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Destination</th>
-			<th></th>
-		</tr>
-	</thead>
+<%= link_to 'New Destination', new_admin_destination_path, class: 'btn btn-primary' %>
 
-	<tbody>
-		<% @destinations.each do |destination| %>
-		<tr>
-			<td>
-				<%= link_to destination.name, destination -%>
-			</td>
-			<td class="text-right">
-				<%= link_to fa_icon('pencil'), edit_admin_destination_path(destination), class: 'btn btn-default btn-xs' -%>
-				<%= link_to fa_icon('remove'), [:admin, destination], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' -%>
-			</td>
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Destination</th>
+				<th></th>
+			</tr>
+		</thead>
 
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+		<tbody>
+			<% @destinations.each do |destination| %>
+			<tr>
+				<td>
+					<%= link_to destination.name, destination -%>
+				</td>
+				<td class="text-right">
+					<%= link_to fa_icon('pencil'), edit_admin_destination_path(destination), class: 'btn btn-default btn-xs' -%>
+					<%= link_to fa_icon('remove'), [:admin, destination], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' -%>
+				</td>
 
-<br>
-
-<%= link_to 'New Destination', new_admin_destination_path %>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

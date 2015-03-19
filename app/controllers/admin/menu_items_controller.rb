@@ -1,6 +1,7 @@
 class Admin::MenuItemsController < Admin::AdminController
 	before_action :set_menu_item, only: [:edit, :update, :destroy]
-	before_action :set_pages, only: [:edit, :new]
+	before_action :set_pages, except: [:sort]
+	before_action :set_icons, except: [:sort]
 
 	respond_to :html
 
@@ -30,10 +31,10 @@ class Admin::MenuItemsController < Admin::AdminController
 			if @menu_item.save
 				flash[:notice] = 'Menu item was successfully created.'
 				format.html { redirect_to admin_menu_items_path }
-				format.xml { render xml: @menu_item }
+				# format.xml { render xml: @menu_item }
 			else
 				format.html { render action: "new" }
-				format.xml { render xml: @menu_item }
+				# format.xml { render xml: @menu_item }
 			end
 		end
 	end
@@ -52,7 +53,7 @@ class Admin::MenuItemsController < Admin::AdminController
 
 	def destroy
 		@menu_item.destroy
-		redirect_to admin_menu_items_path
+		redirect_to admin_menu_items_path, notice: 'Menu item was successfully destroyed.'
 	end
 
 	private
@@ -64,7 +65,16 @@ class Admin::MenuItemsController < Admin::AdminController
 		@pages = Page.order(:title)
 	end
 
+	def set_icons
+		file = File.read("#{Rails.root}/vendor/assets/stylesheets/fa-4.3.0/_variables.scss")
+		icons = Array.new
+		file.scan(/fa-var-(.*?)\:/).each do |icon|
+			icons.push(icon.first.to_s)
+		end
+		@icons = icons
+	end
+
 	def menu_item_params
-		params.require(:menu_item).permit(:href, :value, :icon, :position)
+		params.require(:menu_item).permit(:href, :value, :icon, :position, :page_id, :blank_target)
 	end
 end
