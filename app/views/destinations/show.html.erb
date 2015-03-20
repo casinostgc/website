@@ -23,12 +23,10 @@
 
 	</div>
 
-	<% if true #admin -%>
+	<% if is_admin? -%>
 	<hr>
-	<p>
-		<%= link_to 'Edit', edit_admin_destination_path(@destination) %> |
-		<%= link_to 'Back', admin_destinations_path %>
-	</p>
+	<%= link_to 'Edit', edit_admin_destination_path(@destination) %> |
+	<%= link_to 'Back', admin_destinations_path %>
 	<% end -%>
 
 </div>

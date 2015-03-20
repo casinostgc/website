@@ -1,5 +1,9 @@
 module AdminHelper
 
+	def is_admin?
+		current_user ? current_user.admin : false
+	end
+
 	def admin_nav_item(text, url, &block)
 		content = block_given? ? (link_to(text, url) + capture(&block)).html_safe : text
 		url_info = Rails.application.routes.recognize_path url

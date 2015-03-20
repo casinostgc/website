@@ -28,11 +28,8 @@
 		</tbody>
 	</table>
 
-	<br>
-
-	<% if true #admin -%>
-
+	<% if is_admin? -%>
+	<hr>
 	<%= link_to 'New Destination', new_admin_destination_path %>
-
 	<% end -%>
 </div>

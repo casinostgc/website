@@ -32,7 +32,8 @@
 
 	</div>
 
-	<% if true #admin -%>
+	<% if is_admin? -%>
+	<hr>
 	<%= link_to 'New Event', new_admin_event_path -%>
 	<% end -%>
 

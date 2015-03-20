@@ -36,7 +36,8 @@
     <%= @event.image_id %>
   </p>
 
-  <% if true #admin -%>
+  <% if is_admin? -%>
+  <hr>
   <%= link_to 'Edit', edit_admin_event_path(@event) %> |
   <%= link_to 'Back', admin)events_path %>
   <% end -%>
