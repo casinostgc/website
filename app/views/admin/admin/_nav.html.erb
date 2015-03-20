@@ -1,28 +1,41 @@
-<div class="list-group">
+<div class="panel-group" id="adminMenuAccordiion" role="tablist" aria-multiselectable="true">
+
+
 	<%= admin_nav_item 'Pages', admin_pages_path do -%>
-	<ul>
-		<%= content_tag :li, link_to('New Page', new_admin_page_path) -%>
-	</ul>
+	<div class="list-group">
+		<%= link_to 'New Page', new_admin_page_path, class: 'list-group-item' -%>
+	</div>
 	<% end -%>
-	<%= admin_nav_item 'Navigation Menu', admin_menu_items_path -%>
+
+	<%= admin_nav_item 'Navigation Menu', admin_menu_items_path do -%>
+	<div class="list-group">
+		<%= link_to 'New Menu Item', new_admin_menu_item_path, class: 'list-group-item' -%>
+	</div>
+	<% end -%>
+
 	<%= admin_nav_item 'Destinations', admin_destinations_path do -%>
-	<ul>
-		<%= content_tag :li, link_to('New Destination', new_admin_destination_path) -%>
-	</ul>
+	<div class="list-group">
+		<%= link_to 'New Destination', new_admin_destination_path, class: 'list-group-item' -%>
+	</div>
 	<% end -%>
+
 	<%= admin_nav_item 'Casinos', '#admin_casinos_path' do -%>
-	<ul>
-		<%#= content_tag :li, link_to('New Destination', new_admin_destination_path) -%>
-	</ul>
+	<div class="list-group">
+		<%#= link_to 'New Destination', new_admin_destination_path, class: 'list-group-item' -%>
+	</div>
 	<% end -%>
+
 	<%= admin_nav_item 'Events', admin_events_path do -%>
-	<ul>
-		<%= content_tag :li, link_to('New Event', new_admin_event_path) -%>
-	</ul>
+	<div class="list-group">
+		<%= link_to 'New Event', new_admin_event_path, class: 'list-group-item' -%>
+	</div>
 	<% end -%>
+
 	<%= admin_nav_item 'Flights', '#admin_flights_path' do -%>
-	<ul>
-		<%#= content_tag :li, link_to('New Destination', new_admin_destination_path) -%>
-	</ul>
+	<div class="list-group">
+		<%#= link_to 'New Destination', new_admin_destination_path, class: 'list-group-item' -%>
+	</div>
 	<% end -%>
+
+
 </div>
