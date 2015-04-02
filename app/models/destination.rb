@@ -12,7 +12,7 @@ class Destination < ActiveRecord::Base
 	geocoded_by :location
 	after_validation :geocode, :if => :location_changed?
 	
-	has_many :casinos
+	has_many :casinos, dependent: :destroy
 	has_many :flights
 
 end

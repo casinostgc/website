@@ -4,7 +4,15 @@
 			COPYRIGHT &copy; 2004-<%= Time.now.year -%> CASINOS THE GRAND COLLECTION LLC |
 			Toll Free: 866.818.COIN (2646) |
 			info@casinostgc.com |
-			<%= link_to 'Webmaster', 'http://kaymic.com', target: '_blank' -%> 
+
+			<% if user_signed_in? -%>
+			<%= link_to fa_icon('sign-out'), destroy_user_session_path, method: :delete, title: 'Sign Out' -%>
+			<% else -%>
+			<%= link_to fa_icon('sign-in'), new_user_session_path, title: 'Sign In' -%>
+			<% end -%>
+			|
+			<%= link_to 'Webmaster', 'http://kaymic.com', target: '_blank' -%>
+
 		</p>
 	</div>
 </div>
