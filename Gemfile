@@ -48,3 +48,5 @@ gem 'gmapsjs'
 gem 'acts_as_list'
 
 gem 'wysiwyg-rails'
+
+gem 'smarter_csv'
