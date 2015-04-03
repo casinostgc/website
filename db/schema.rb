@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402224852) do
+ActiveRecord::Schema.define(version: 20150403124253) do
+
+  create_table "casein_admin_users", force: true do |t|
+    t.string   "login",                           null: false
+    t.string   "name"
+    t.string   "email"
+    t.integer  "access_level",        default: 0, null: false
+    t.string   "crypted_password",                null: false
+    t.string   "password_salt",                   null: false
+    t.string   "persistence_token"
+    t.string   "single_access_token"
+    t.string   "perishable_token"
+    t.integer  "login_count",         default: 0, null: false
+    t.integer  "failed_login_count",  default: 0, null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.string   "time_zone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "destinations", force: true do |t|
     t.string   "name"
@@ -39,13 +61,15 @@ ActiveRecord::Schema.define(version: 20150402224852) do
 
   create_table "flights", force: true do |t|
     t.integer  "destination_id"
-    t.string   "departing_location"
+    t.text     "departing_location", limit: 255
     t.datetime "departing_at"
-    t.string   "arriving_location"
+    t.text     "arriving_location",  limit: 255
     t.datetime "arriving_at"
     t.string   "flight_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "arriving_airport"
+    t.string   "departing_airport"
   end
 
   create_table "friendly_id_slugs", force: true do |t|

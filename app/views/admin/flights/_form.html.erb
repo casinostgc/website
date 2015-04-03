@@ -1,4 +1,4 @@
-<%= form_for(@flight) do |f| %>
+<%= form_for [:admin, @flight] do |f| %>
   <% if @flight.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@flight.errors.count, "error") %> prohibited this flight from being saved:</h2>
@@ -16,16 +16,16 @@
     <%= f.number_field :destination_id %>
   </div>
   <div class="field">
-    <%= f.label :departing_location %><br>
-    <%= f.text_field :departing_location %>
+    <%= f.label :departing_airport %><br>
+    <%= f.text_field :departing_airport %>
   </div>
   <div class="field">
     <%= f.label :departing_at %><br>
     <%= f.datetime_select :departing_at %>
   </div>
   <div class="field">
-    <%= f.label :arriving_location %><br>
-    <%= f.text_field :arriving_location %>
+    <%= f.label :arriving_airport %><br>
+    <%= f.text_field :arriving_airport %>
   </div>
   <div class="field">
     <%= f.label :arriving_at %><br>

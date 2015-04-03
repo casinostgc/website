@@ -4,28 +4,13 @@ class Admin::FlightsController < Admin::AdminController
 	respond_to :html
 
 	def index
-		@flights = Flight.all
+		@flights = @flights_q.result(distinct: true).page(params[:page])
 	end
 
 	def import
-		options = {}
-		results = SmarterCSV.process( params[:file].path, options )
-		params[:erase] ? Flight.destroy_all : nil
-		results.each do |row|
-			row = row.to_hash
-			if row[:destination_id].is_a? Integer
-				finder = Destination.find(row[:destination_id]).id
-			else
-				finder = Destination.friendly.find(row[:destination_id].parameterize).id
-			end
-			row[:destination_id] = finder
-			if Flight.find_by_id(row[:id])
-				Flight.update(row[:id], row)
-			else
-				Flight.create!(row)
-			end
-		end
-		redirect_to flights_url, notice: "Flights Imported."
+		options = {erase: params[:erase]}
+		Flight.import(params[:file], options)
+		redirect_to admin_flights_url, notice: "Flights Imported."
 	end
 
 	def new
@@ -58,6 +43,6 @@ class Admin::FlightsController < Admin::AdminController
 	end
 
 	def flight_params
-		params.require(:flight).permit(:destination_id, :departing_location, :departing_at, :arriving_location, :arriving_at, :flight_number)
+		params.require(:flight).permit(:destination_id, :departing_airport, :departing_at, :arriving_airport, :arriving_at, :flight_number)
 	end
 end

@@ -1,5 +1,7 @@
 class Page < ActiveRecord::Base
 
+	default_scope { order(title: :asc) }
+
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 

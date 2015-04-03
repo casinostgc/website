@@ -4,7 +4,7 @@ class FlightsController < ApplicationController
 	respond_to :html
 
 	def index
-		@flights = Flight.all
+		@flights = @flights_q.result(distinct: true).page(params[:page])
 	end
 
 	def show

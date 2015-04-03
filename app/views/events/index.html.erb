@@ -32,6 +32,10 @@
 
 	</div>
 
+	<div class="pagination-container text-center">
+		<%= paginate @events %>
+	</div>
+
 	<% if is_admin? -%>
 	<hr>
 	<%= link_to 'New Event', new_admin_event_path -%>

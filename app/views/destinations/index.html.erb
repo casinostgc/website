@@ -28,6 +28,10 @@
 		</tbody>
 	</table>
 
+	<div class="pagination-container text-center">
+		<%= paginate @destinations %>
+	</div>
+
 	<% if is_admin? -%>
 	<hr>
 	<%= link_to 'New Destination', new_admin_destination_path %>

@@ -1,5 +1,10 @@
+
+
 <div id="footer">
 	<div class="container">
+
+		<hr>
+
 		<p class="text-muted text-center">
 			COPYRIGHT &copy; 2004-<%= Time.now.year -%> CASINOS THE GRAND COLLECTION LLC |
 			Toll Free: 866.818.COIN (2646) |
@@ -11,7 +16,7 @@
 			<%= link_to fa_icon('sign-in'), new_user_session_path, title: 'Sign In' -%>
 			<% end -%>
 			|
-			<%= link_to 'Webmaster', 'http://kaymic.com', target: '_blank' -%>
+			<%= link_to 'Webmaster', (user_signed_in? ? admin_admin_path : 'http://kaymic.com'), target: (user_signed_in? ? '_self' : '_blank') -%>
 
 		</p>
 	</div>

@@ -41,6 +41,9 @@ gem 'spring',        group: :development
 
 gem 'jquery-ui-rails'
 
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 gem 'devise'
 gem 'friendly_id'
 gem 'geocoder'
@@ -50,3 +53,5 @@ gem 'acts_as_list'
 gem 'wysiwyg-rails'
 
 gem 'smarter_csv'
+gem 'world_airports'
+gem 'ransack'

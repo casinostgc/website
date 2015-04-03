@@ -2,7 +2,7 @@ class Admin::EventsController < Admin::AdminController
 	before_action :set_event, only: [:edit, :update, :destroy]
 
 	def index
-		@events = Event.all
+		@events = Event.all.page(params[:page])
 	end
 
 	def new

@@ -9,10 +9,10 @@ class Destination < ActiveRecord::Base
 
 	include Content	
 
-	geocoded_by :location
-	after_validation :geocode, :if => :location_changed?
+	# after_validation :geocode, if: :location_changed?
+	# geocoded_by :location
 	
-	has_many :casinos, dependent: :destroy
+	# has_many :casinos, dependent: :destroy
 	has_many :flights
 
 end

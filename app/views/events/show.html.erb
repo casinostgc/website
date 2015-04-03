@@ -13,7 +13,7 @@
 
   <p>
     <strong>Content:</strong>
-    <%= @event.content %>
+    <%= @event.rendered_content %>
   </p>
 
   <p>
@@ -39,6 +39,6 @@
   <% if is_admin? -%>
   <hr>
   <%= link_to 'Edit', edit_admin_event_path(@event) %> |
-  <%= link_to 'Back', admin)events_path %>
+  <%= link_to 'Back', admin_events_path %>
   <% end -%>
 </div>

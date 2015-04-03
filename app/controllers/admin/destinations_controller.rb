@@ -2,7 +2,7 @@ class Admin::DestinationsController < Admin::AdminController
 	before_action :set_destination, only: [:edit, :update, :destroy]
 
 	def index
-		@destinations = Destination.all
+		@destinations = Destination.all.page(params[:page])
 	end
 
 	def new

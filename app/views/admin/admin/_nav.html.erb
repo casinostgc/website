@@ -31,9 +31,9 @@
 	</div>
 	<% end -%>
 
-	<%= admin_nav_item 'Flights', '#admin_flights_path' do -%>
+	<%= admin_nav_item 'Flights', admin_flights_path do -%>
 	<div class="list-group">
-		<%#= link_to 'New Destination', new_admin_destination_path, class: 'list-group-item' -%>
+		<%= link_to 'New Flight', new_admin_flight_path, class: 'list-group-item' -%>
 	</div>
 	<% end -%>
 
