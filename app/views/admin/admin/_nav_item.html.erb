@@ -1,10 +1,10 @@
-<div class="panel panel-<%= active ? 'info' : 'default' -%> adminMenuPanel">
-	<a class="panel-heading" data-parent="#adminMenuAccordiion" href="<%= url -%>">
-		<h4 class="panel-title">
-			<%= text -%>
-		</h4>
-	</a>
-	<div id="adminMenu<%= text -%>" class="<%= active ? 'panel' : 'panel-collapse collapse' -%>" role="tabpanel">
+<li class="<%= block ? 'dropdown-submenu' : 'nav-menu' -%> <%= 'active' if active -%>">
+	<% unless block -%>
+	<a href="<%= url -%>"><%= text -%></a>
+	<% else -%>
+	<a tabindex="-1" href="<%= url -%>"><%= text -%></a>
+	<ul class="dropdown-menu">
 		<%= block -%>
-	</div>
-</div>
+	</ul>
+	<% end -%>
+</li>

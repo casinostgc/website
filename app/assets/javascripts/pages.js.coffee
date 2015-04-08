@@ -3,8 +3,3 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-
-	$('#page_content').editable
-		inlineMode: false
-		height: 300
-		imageUpload: false

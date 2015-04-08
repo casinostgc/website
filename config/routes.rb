@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
 
   resources :pages, only: [:show]
-  resources :events, only: [:index, :show]
   resources :destinations, only: [:index, :show]
   resources :flights, only: [:index, :show]
+  resources :cruises, only: [:index, :show]
+  resources :ports 
+  resources :events, only: [:index, :show]
 
   namespace :admin do
     get '/' => 'admin#index', as: :admin
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
     resources :flights, except: [:show] do
       collection { post :import }
     end
+    resources :cruises, except: [:show]
+    resources :ports, except: [:show]
 
     get '/menus', to: "menu_items#index"
   end

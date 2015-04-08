@@ -17,4 +17,7 @@
 //= require bootstrap.min
 //= require froala_editor.min.js
 //= require plugins/lists.min.js
+//= require cocoon
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .

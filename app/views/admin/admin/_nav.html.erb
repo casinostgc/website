@@ -1,41 +1,39 @@
-<div class="panel-group" id="adminMenuAccordiion" role="tablist" aria-multiselectable="true">
+<div id="sidebar" class="sidebar-nav">
+	<ul class="nav nav-tabs nav-stacked">
+		<ul class="dropdown-menu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
 
+			<%= admin_nav_item 'Pages', admin_pages_path do -%>
+				<%= admin_nav_item 'New Page', new_admin_page_path -%>
+			<% end -%>
 
-	<%= admin_nav_item 'Pages', admin_pages_path do -%>
-	<div class="list-group">
-		<%= link_to 'New Page', new_admin_page_path, class: 'list-group-item' -%>
-	</div>
-	<% end -%>
+			<%= admin_nav_item 'Navigation Menu', admin_menu_items_path do -%>
+				<%= admin_nav_item 'New Menu Item', new_admin_menu_item_path -%>
+			<% end -%>
 
-	<%= admin_nav_item 'Navigation Menu', admin_menu_items_path do -%>
-	<div class="list-group">
-		<%= link_to 'New Menu Item', new_admin_menu_item_path, class: 'list-group-item' -%>
-	</div>
-	<% end -%>
+			<%= admin_nav_item 'Destinations', admin_destinations_path do -%>
+				<%= admin_nav_item 'New Destination', new_admin_destination_path -%>
+				<%= admin_nav_item 'Casinos', '#casinos' do -%>
+					<%= admin_nav_item 'New Casino', '#new_casino' -%>
+				<% end -%>
+			<% end -%>
 
-	<%= admin_nav_item 'Destinations', admin_destinations_path do -%>
-	<div class="list-group">
-		<%= link_to 'New Destination', new_admin_destination_path, class: 'list-group-item' -%>
-	</div>
-	<% end -%>
+			<%= admin_nav_item 'Events', admin_events_path do -%>
+				<%= admin_nav_item 'New Event', new_admin_event_path -%>
+				<%= admin_nav_item 'Cruises', admin_cruises_path do -%>
+					<%= admin_nav_item 'New Cruise', new_admin_cruise_path -%>
+					<%= admin_nav_item 'Ports', admin_ports_path do -%>
+						<%= admin_nav_item 'New Port', new_admin_port_path -%>
+					<% end -%>
+				<% end -%>
+				<%= admin_nav_item 'Venue', '#venues' do -%>
+					<%= admin_nav_item 'New Venue', '#new_venue' -%>
+				<% end -%>
+			<% end -%>
 
-	<%= admin_nav_item 'Casinos', '#admin_casinos_path' do -%>
-	<div class="list-group">
-		<%#= link_to 'New Destination', new_admin_destination_path, class: 'list-group-item' -%>
-	</div>
-	<% end -%>
+			<%= admin_nav_item 'Flights', admin_flights_path do -%>
+				<%= admin_nav_item 'New Flight', new_admin_flight_path -%>
+			<% end -%>
 
-	<%= admin_nav_item 'Events', admin_events_path do -%>
-	<div class="list-group">
-		<%= link_to 'New Event', new_admin_event_path, class: 'list-group-item' -%>
-	</div>
-	<% end -%>
-
-	<%= admin_nav_item 'Flights', admin_flights_path do -%>
-	<div class="list-group">
-		<%= link_to 'New Flight', new_admin_flight_path, class: 'list-group-item' -%>
-	</div>
-	<% end -%>
-
-
+		</ul>
+	</ul>
 </div>

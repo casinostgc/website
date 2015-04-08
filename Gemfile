@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
@@ -55,3 +55,8 @@ gem 'wysiwyg-rails'
 gem 'smarter_csv'
 gem 'world_airports'
 gem 'ransack'
+gem 'cocoon'
+
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+
