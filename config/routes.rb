@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :cruises, except: [:show]
     resources :ports, except: [:show]
 
+    resources :pictures, except: [:show]
+
     get '/menus', to: "menu_items#index"
   end
 

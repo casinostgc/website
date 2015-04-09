@@ -1,35 +1,44 @@
-<h1>Listing cruises</h1>
+<section class="parallax" style="background-image: url('<%= image_url('bg-water.jpg') -%>');">
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Cruises</h1>
+		</div>
+	</div>
+</section>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Slug</th>
-      <th>Content</th>
-      <th>Start at</th>
-      <th>End at</th>
-      <th>Venue</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+	<span class="divider"></span>
 
-  <tbody>
-    <% @cruises.each do |cruise| %>
-      <tr>
-        <td><%= link_to cruise.title, cruise %></td>
-        <td><%= cruise.slug %></td>
-        <td><%= cruise.content %></td>
-        <td><%= cruise.start_at %></td>
-        <td><%= cruise.end_at %></td>
-        <td><%#= cruise.venue %></td>
-        <td><%#= link_to 'Show', cruise %></td>
-        <td><%#= link_to 'Edit', edit_cruise_path(cruise) %></td>
-        <td><%#= link_to 'Destroy', cruise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<div class="row">
 
-<br>
+		<% @cruises.each do |cruise| %>
+		<div class="auto-height col-sm-6 col-md-4 col-lg-3">
 
-<%#= link_to 'New Cruise', new_cruise_path %>
+			<div class="panel panel-primary">
+				<div class="panel-body">
+
+					<%= link_to image_tag( 'http://upload.wikimedia.org/wikipedia/commons/9/95/MSMajestyOfTheSeasEdit1.JPG', class: 'img-responsive' ), cruise -%>
+					<h3>
+						<%= cruise.title -%><br>
+						<small><%#= cruise.date_span -%></small>
+					</h3>
+					<p><%= cruise.excerpt -%></p>
+					<p class="text-right"><%= link_to 'Cruise Details', cruise, class: 'btn btn-info' -%></p>
+				</div>
+			</div>
+
+		</div>
+		<% end -%>
+
+	</div>
+
+	<div class="pagination-container text-center">
+		<%= paginate @cruises %>
+	</div>
+
+	<% if is_admin? -%>
+	<hr>
+	<%= link_to 'New Cruise', new_admin_cruise_path -%>
+	<% end -%>
+
+</div>

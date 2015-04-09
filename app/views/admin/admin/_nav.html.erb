@@ -1,6 +1,6 @@
-<div id="sidebar" class="sidebar-nav">
+<div id="adminSidebar" class="sidebar-nav">
 	<ul class="nav nav-tabs nav-stacked">
-		<ul class="dropdown-menu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+		<ul id="adminDropDown" class="dropdown-menu">
 
 			<%= admin_nav_item 'Pages', admin_pages_path do -%>
 				<%= admin_nav_item 'New Page', new_admin_page_path -%>
@@ -32,6 +32,10 @@
 
 			<%= admin_nav_item 'Flights', admin_flights_path do -%>
 				<%= admin_nav_item 'New Flight', new_admin_flight_path -%>
+			<% end -%>
+
+			<%= admin_nav_item 'Pictures', admin_pictures_path do -%>
+				<%= admin_nav_item 'New Pictures', new_admin_picture_path -%>
 			<% end -%>
 
 		</ul>

@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
 	belongs_to :venue
 	has_one :image
 	# has_many :categories, through: :categorizations
+	has_many :pictures, as: :imageable
 
 	include Content
 

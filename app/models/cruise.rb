@@ -10,6 +10,7 @@ class Cruise < ActiveRecord::Base
 
 	has_many :port_of_calls
 	has_many :ports, through: :port_of_calls
+	has_many :pictures, as: :imageable
 
 	accepts_nested_attributes_for :port_of_calls, reject_if: proc { |attributes| attributes['port_id'].blank? }, allow_destroy: true
 

@@ -4,7 +4,7 @@ class CruisesController < ApplicationController
 	respond_to :html
 
 	def index
-		@cruises = Cruise.all
+		@cruises = Cruise.all.page(params[:page])
 		respond_with(@cruises)
 	end
 

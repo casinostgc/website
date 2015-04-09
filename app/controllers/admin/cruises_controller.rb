@@ -10,6 +10,9 @@ class Admin::CruisesController < Admin::AdminController
 
 	def new
 		@cruise = Cruise.new
+		2.times do
+			@cruise.port_of_calls.build
+		end
 		respond_with(@cruise)
 	end
 
@@ -38,6 +41,6 @@ class Admin::CruisesController < Admin::AdminController
 	end
 
 	def cruise_params
-		params.require(:cruise).permit(:title, :slug, :content, :start_at, :end_at, :venue_id, port_of_calls_attributes: [:id, :port_id, :arrives_at, :departs_at, :_destroy])
+		params.require(:cruise).permit(:title, :content, :start_at, :end_at, :venue_id, port_of_calls_attributes: [:id, :port_id, :arrives_at, :departs_at, :_destroy])
 	end
 end

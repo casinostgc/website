@@ -6,6 +6,16 @@ a.panel-heading { display: block; }
 	list-style: none;
 }
 
+#adminSidebar {
+  #adminDropDown {
+    display: block;
+    position: static;
+    margin-bottom: 5px;
+    width: 100%;
+    *width: 100%;
+  }
+}
+
 .dropdown-submenu {
   position: relative;
   > .dropdown-menu {
@@ -46,9 +56,4 @@ a.panel-heading { display: block; }
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
   }
-}
-
-.sidebar {
-  float: right;
-  margin-right: 20px;
 }

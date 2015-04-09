@@ -41,22 +41,32 @@ gem 'spring',        group: :development
 
 gem 'jquery-ui-rails'
 
+# site functionality
+gem 'devise'
+gem 'friendly_id'
+gem 'ransack'
+gem 'acts_as_list'
+gem 'wysiwyg-rails'
+gem 'cocoon'
+gem 'nokogiri'
+
+# images
+gem 'carrierwave'
+gem 'rmagick'
+gem 'fog'
+
+# pagination
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
-gem 'devise'
-gem 'friendly_id'
-gem 'geocoder'
-gem 'gmapsjs'
-gem 'acts_as_list'
-
-gem 'wysiwyg-rails'
-
-gem 'smarter_csv'
-gem 'world_airports'
-gem 'ransack'
-gem 'cocoon'
-
+# datepicker
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+
+# utilities
+gem 'geocoder'
+gem 'gmapsjs'
+gem 'world_airports'
+gem 'smarter_csv'
+
 

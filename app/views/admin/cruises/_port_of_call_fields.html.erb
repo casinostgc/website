@@ -1,12 +1,12 @@
 <tr class="nested-fields">
 	<td>
-		<%= f.collection_select :port_id, Port.all, :id, :name %>
+		<%= f.collection_select :port_id, Port.all, :id, :name, {prompt: 'Select Port'}, {class: 'form-control'} %>
 	</td>
 	<td>
-		<%= f.datetime_select :arrives_at, class: 'form-control datetimepicker' %>
+		<%= f.text_field :arrives_at, class: 'form-control datetimepicker', placeholder: 'Date & Time' %>
 	</td>
 	<td>
-		<%= f.datetime_select :departs_at, class: 'form-control datetimepicker' %>
+		<%= f.text_field :departs_at, class: 'form-control datetimepicker', placeholder: 'Date & Time' %>
 	</td>
 	<td>
 		<%= link_to_remove_association fa_icon('remove'), f, class: 'btn btn-danger btn-xs' %>
