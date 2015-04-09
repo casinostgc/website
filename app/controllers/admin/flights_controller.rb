@@ -43,6 +43,6 @@ class Admin::FlightsController < Admin::AdminController
 	end
 
 	def flight_params
-		params.require(:flight).permit(:destination_id, :departing_airport, :departing_at, :arriving_airport, :arriving_at, :flight_number)
+		params.require(:flight).permit(:departing_airport, :departing_at, :arriving_airport, :arriving_at, :flight_number)
 	end
 end

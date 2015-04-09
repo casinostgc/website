@@ -13,6 +13,7 @@ class Flight < ActiveRecord::Base
 	# default_scope { order(departing_at: :asc) }
 	default_scope { where( "departing_at > ?", Time.now ).order(departing_at: :asc) }
 
+	scope :unique_dates, -> { all.map(&:departing_at_day_only).sort.uniq }
 	scope :available_destinations, -> { all.map(&:arriving_location).map(&:city).sort.uniq }
 
 	def self.to_csv(options = {})
@@ -46,6 +47,10 @@ class Flight < ActiveRecord::Base
 			# dest.location = "#{self.arriving_location.iata}, #{self.arriving_location.city}, #{self.arriving_location.country}"
 		end
 		self.update_column(:destination_id, destination.id)
+	end
+
+	def departing_at_day_only
+		self.departing_at.to_date
 	end
 
 	ransacker :departing_at do

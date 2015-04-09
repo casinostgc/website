@@ -27,7 +27,7 @@
 			<tr>
 				<td><%= flight.departing_airport %></td>
 				<td><%= flight.departing_at %></td>
-				<td><%= flight.destination.name %></td>
+				<td><%= link_to flight.destination.name, flight.destination %></td>
 				<td><%= flight.arriving_airport %></td>
 				<td><%= flight.arriving_at %></td>
 				<td><%= flight.flight_number %></td>
