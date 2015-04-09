@@ -1,5 +1,7 @@
 class Admin::PortsController < Admin::AdminController
 
+	include PictureConcerns
+
 	before_action :set_port, only: [:edit, :update, :destroy]
 
 	respond_to :html
@@ -11,10 +13,12 @@ class Admin::PortsController < Admin::AdminController
 
 	def new
 		@port = Port.new
+		build_pictures @port
 		respond_with(@port)
 	end
 
 	def edit
+		build_pictures @port
 	end
 
 	def create
@@ -40,7 +44,7 @@ class Admin::PortsController < Admin::AdminController
 	end
 
 	def port_params
-		params.require(:port).permit(:name, :content, :location, :latitude, :longitude)
+		params.require(:port).permit(:name, :content, :location, :latitude, :longitude, pictures_attributes: picture_params)
 	end
 
 end

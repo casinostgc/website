@@ -1,0 +1,18 @@
+<h3>Pictures</h3>
+
+<%= f.fields_for :pictures do |pic| %>
+
+	<% if pic.object.created_at -%>
+		
+		<%= image_tag pic.object.image_url(:thumb), class: 'img-thumbnail' -%>
+		<%= 'remove' -%>
+
+	<% else -%>
+		<%= pic.hidden_field :id -%>
+		<%= pic.hidden_field :imageable_id -%>
+		<%= pic.hidden_field :imageable_type -%>
+		<%= pic.file_field :image -%>
+	<% end -%>
+
+
+<% end -%>

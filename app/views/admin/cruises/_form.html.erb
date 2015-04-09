@@ -1,4 +1,4 @@
-<%= form_for [:admin, @cruise] do |f| %>
+<%= form_for [:admin, @cruise], html: {multipart: true} do |f| %>
 <% if @cruise.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@cruise.errors.count, "error") %> prohibited this cruise from being saved:</h2>
@@ -10,6 +10,9 @@
 	</ul>
 </div>
 <% end %>
+
+<%= render 'admin/admin/image_upload', f: f -%>
+<%= 'add' -%>
 
 <div class="field">
 	<%= f.label :title %><br>

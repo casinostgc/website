@@ -6,6 +6,13 @@
 		</h1>
 	</div>
 
+	<p>
+		<strong>Pics:</strong>
+		<% @cruise.pictures.each do |pic| %>
+		<%= image_tag pic.image_url(:thumb) -%>
+		<% end -%>
+	</p>
+
 	<div class="row">
 
 		<div class="col-sm-12">

@@ -1,4 +1,7 @@
 class Admin::CruisesController < Admin::AdminController
+
+	include PictureConcerns
+
 	before_action :set_cruise, only: [:edit, :update, :destroy]
 
 	respond_to :html
@@ -10,6 +13,7 @@ class Admin::CruisesController < Admin::AdminController
 
 	def new
 		@cruise = Cruise.new
+		build_pictures @cruise
 		2.times do
 			@cruise.port_of_calls.build
 		end
@@ -17,6 +21,10 @@ class Admin::CruisesController < Admin::AdminController
 	end
 
 	def edit
+		build_pictures @cruise
+		2.times do
+			@cruise.port_of_calls.build if @cruise.port_of_calls.empty?
+		end
 	end
 
 	def create
@@ -41,6 +49,6 @@ class Admin::CruisesController < Admin::AdminController
 	end
 
 	def cruise_params
-		params.require(:cruise).permit(:title, :content, :start_at, :end_at, :venue_id, port_of_calls_attributes: [:id, :port_id, :arrives_at, :departs_at, :_destroy])
+		params.require(:cruise).permit(:title, :content, :start_at, :end_at, :venue_id, port_of_calls_attributes: [:id, :port_id, :arrives_at, :departs_at, :_destroy], pictures_attributes: picture_params )
 	end
 end

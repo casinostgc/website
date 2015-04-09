@@ -21,14 +21,14 @@
 </p>
 
 <p>
-  <strong>Latitude:</strong>
-  <%= @port.latitude %>
+  <strong>Pics:</strong>
+  <% @port.pictures.each do |pic| %>
+
+  <%= image_tag pic.image_url(:thumb) -%>
+
+  <% end -%>
 </p>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @port.longitude %>
-</p>
 
 <%= link_to 'Edit', edit_admin_port_path(@port) %>
 <%#= link_to 'Back', ports_path %>
