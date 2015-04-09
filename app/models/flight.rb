@@ -48,5 +48,9 @@ class Flight < ActiveRecord::Base
 		self.update_column(:destination_id, destination.id)
 	end
 
+	ransacker :departing_at do
+		Arel.sql('date(departing_at)')
+	end
+
 	
 end

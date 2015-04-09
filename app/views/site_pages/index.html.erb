@@ -100,7 +100,7 @@
 				<%= search_form_for @flights_q, url: flights_path do |f| %>
 
 				<p>
-					<%= f.collection_select :departing_at_gt, Flight.select(:departing_at).uniq, :departing_at, :departing_at, {prompt: 'Departing Date'}, {class: 'form-control'} %>
+					<%= f.collection_select :departing_at_date_equals, Flight.select(:departing_at).uniq, :departing_at, :departing_at, {prompt: 'Departing Date'}, {class: 'form-control'} %>
 				</p>
 				<p>
 					<%= f.select :destination_name_cont, options_for_select(Flight.available_destinations), {prompt: 'Destination'}, {class: 'form-control'} -%>
