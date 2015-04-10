@@ -1,5 +1,10 @@
 class Admin::DestinationsController < Admin::AdminController
+
+	include PictureBuilder
+
 	before_action :set_destination, only: [:edit, :update, :destroy]
+
+	respond_to :html
 
 	def index
 		@destinations = Destination.all.page(params[:page])
@@ -7,43 +12,27 @@ class Admin::DestinationsController < Admin::AdminController
 
 	def new
 		@destination = Destination.new
+		build_pictures @destination
 	end
 
 	def edit
+		build_pictures @destination
 	end
 
 	def create
 		@destination = Destination.new(destination_params)
-
-		respond_to do |format|
-			if @destination.save
-				format.html { redirect_to admin_destinations_path, notice: 'Destination was successfully created.' }
-				format.json { render :show, status: :created, location: @destination }
-			else
-				format.html { render :new }
-				format.json { render json: @destination.errors, status: :unprocessable_entity }
-			end
-		end
+		@destination.save
+		respond_with(@destination)
 	end
 
 	def update
-		respond_to do |format|
-			if @destination.update(destination_params)
-				format.html { redirect_to admin_destinations_path, notice: 'Destination was successfully updated.' }
-				format.json { render :show, status: :ok, location: @destination }
-			else
-				format.html { render :edit }
-				format.json { render json: @destination.errors, status: :unprocessable_entity }
-			end
-		end
+		@destination.update(cruise_params)
+		respond_with(@destination)
 	end
 
 	def destroy
 		@destination.destroy
-		respond_to do |format|
-			format.html { redirect_to admin_destinations_url, notice: 'Destination was successfully destroyed.' }
-			format.json { head :no_content }
-		end
+		redirect_to admin_destinations_url, notice: 'Destination was successfully destroyed.'
 	end
 
 	private
@@ -52,6 +41,6 @@ class Admin::DestinationsController < Admin::AdminController
 	end
 
 	def destination_params
-		params.require(:destination).permit(:name, :content, :location, :international, :latitude, :longitude)
+		params.require(:destination).permit(:name, :content, :location, :international, :latitude, :longitude, pictures_attributes: picture_params)
 	end
 end

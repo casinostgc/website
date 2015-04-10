@@ -1,6 +1,11 @@
 class Destination < ActiveRecord::Base
 
+	include Content
+	include NestedPictures
+
 	default_scope { order(name: :asc) }
+	scope :featured, -> { joins(:pictures).uniq.shuffle.sample(4) }
+
 
 	extend FriendlyId
 	friendly_id :name, use: :slugged
@@ -9,15 +14,10 @@ class Destination < ActiveRecord::Base
 		name_changed? || slug.blank?
 	end
 
-	include Content	
-
 	# after_validation :geocode, if: :location_changed?
 	# geocoded_by :location
 	
 	# has_many :casinos, dependent: :destroy
 	has_many :flights
-	
-	has_many :pictures, as: :imageable
-	accepts_nested_attributes_for :pictures
 
 end

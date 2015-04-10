@@ -13,7 +13,6 @@ class MenuItem < ActiveRecord::Base
 
 	def link
 		page_id.present? ? short_page_path(Page.find(page_id)) : href
-		# '#'
 	end
 
 end

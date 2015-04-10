@@ -1,4 +1,4 @@
-<section class="parallax" style="background-image: url('<%= image_url('bg-roulette.jpg') -%>');">
+<section class="parallax" style="background-image: url('<%= image_url('bg-flights.png') -%>');">
 	<div class="jumbotron">
 		<div class="container text-center">
 			<h1>Flights</h1>
@@ -10,34 +10,48 @@
 
 <div class="container">
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<%= content_tag :th, sort_link(@flights_q, :departing_airport) %>
-				<%= content_tag :th, sort_link(@flights_q, :departing_at) %>
-				<%= content_tag :th, sort_link(@flights_q, :arriving_airport, 'Destination') %>
-				<%= content_tag :th, sort_link(@flights_q, :arriving_airport, 'Destination (Arriving) Airport') %>
-				<%= content_tag :th, sort_link(@flights_q, :arriving_at) %>
-				<%= content_tag :th, sort_link(@flights_q, :flight_number) %>
-			</tr>
-		</thead>
+	<div class="row">
 
-		<tbody>
-			<% @flights.each do |flight| %>
-			<tr>
-				<td><%= flight.departing_airport %></td>
-				<td><%= flight.departing_at %></td>
-				<td><%= link_to flight.destination.name, flight.destination %></td>
-				<td><%= flight.arriving_airport %></td>
-				<td><%= flight.arriving_at %></td>
-				<td><%= flight.flight_number %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+		<div class="col-sm-3 well">
+			<%= render 'flights/search' -%>
+			<%#= link_to 'Reset', flights_path, class: 'btn btn-default btn-sm btn-block' -%>
+		</div>
+		<div class="col-sm-9">
 
-	<div class="pagination-container text-center">
-		<%= paginate @flights %>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<%= content_tag :th, sort_link(@flights_q, :departing_airport, 'Departing') %>
+							<%= content_tag :th, sort_link(@flights_q, :departing_at) %>
+							<%= content_tag :th, sort_link(@flights_q, :arriving_airport, 'Destination') %>
+							<%= content_tag :th, sort_link(@flights_q, :arriving_airport, 'Arriving') %>
+							<%= content_tag :th, sort_link(@flights_q, :arriving_at) %>
+							<%#= content_tag :th, sort_link(@flights_q, :flight_number) %>
+						</tr>
+					</thead>
+
+					<tbody>
+						<% @flights.each do |flight| %>
+						<tr>
+							<td><%= airport_popover flight.departing_location %></td>
+							<td><%= flight.departing_at.to_s(:long) %></td>
+							<td><%= link_to flight.destination.name, flight.destination %></td>
+							<td><%= airport_popover flight.arriving_location %></td>
+							<td><%= flight.arriving_at.to_s(:long) %></td>
+							<%#= content_tag td:, flight.flight_number %>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="pagination-container text-center">
+				<%= paginate @flights %>
+			</div>
+
+		</div>
+
 	</div>
 
 	<% if is_admin? -%>

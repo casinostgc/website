@@ -1,0 +1,24 @@
+<tr class="nested-fields">
+	<% if f.object.created_at -%>
+
+		<td>
+			<%= image_tag f.object.image_url(:thumb) -%>
+		</td>
+		<td>
+			<%= link_to_remove_association fa_icon('remove'), f, class: 'btn btn-danger btn-xs' %>
+		</td>
+
+	<% else -%>
+
+		<td>
+			<%= f.hidden_field :id -%>
+			<%= f.hidden_field :imageable_id -%>
+			<%= f.hidden_field :imageable_type -%>
+			<%= f.file_field :image -%>
+		</td>
+		<td>
+			<%= link_to_remove_association fa_icon('remove'), f, class: 'btn btn-danger btn-xs' %>
+		</td>
+
+	<% end -%>
+</tr>

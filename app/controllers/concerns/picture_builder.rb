@@ -1,13 +1,13 @@
-module PictureConcerns
+module PictureBuilder
 	extend ActiveSupport::Concern
 
 	included do
-		# before_action :build_pictures, only: [:edit, :new]
+		
 	end
 
-	def build_pictures(variable)
+	def build_pictures(instance)
 		1.times do
-			variable.pictures.build
+			instance.pictures.build
 		end
 	end
 

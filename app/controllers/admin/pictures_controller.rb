@@ -31,14 +31,6 @@ class Admin::PicturesController < Admin::AdminController
 	def destroy
 		@picture.destroy
 		redirect_to admin_pictures_path
-		# respond_to do |format|
-		# 	if @picture.destroy
-		# 		format.html { redirect_to admin_pictures_path, notice: 'picture was successfully destroyed.' }
-		# 		format.json { head :no_content }
-		# 	else
-		# 		format.html { redirect_to admin_pictures_path, notice: 'picture was not destroyed.' }
-		# 	end
-		# end
 	end
 
 	private

@@ -12,10 +12,29 @@
 
 <div class="container">
 
+	<div class="row">
+		<% Destination.featured.each do |destination| -%>
+
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail auto-height" style="">
+				<a class="destination-thumb" href="<%= destination_path(destination) -%>" style="display: block; height: 150px; background: url('<%= destination.pictures.first.image_url -%>') center center; background-size: cover;"></a>
+				<div class="caption">
+					<h4>
+					<%= destination.name -%>
+						<!-- <br><small>Theme Park</small> -->
+					</h4>
+				</div>
+			</div>
+		</div>
+
+		<% end -%>
+	</div>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>Destination</th>
+				<th>Casinos</th>
 			</tr>
 		</thead>
 
@@ -23,6 +42,7 @@
 			<% @destinations.each do |destination| %>
 			<tr>
 				<td><%= link_to destination.name, destination -%></td>
+				<td><%= '0' -%></td>
 			</tr>
 			<% end %>
 		</tbody>

@@ -29,20 +29,12 @@ class Admin::PagesController < Admin::AdminController
 	end
 
 	def destroy
-		MenuItem.destroy_all(page: @page)
 		@page.destroy
 		redirect_to admin_pages_path
-		# respond_to do |format|
-		# 	if @page.destroy
-		# 		format.html { redirect_to admin_pages_path, notice: 'Page was successfully destroyed.' }
-		# 		format.json { head :no_content }
-		# 	else
-		# 		format.html { redirect_to admin_pages_path, notice: 'Page was not destroyed.' }
-		# 	end
-		# end
 	end
 
 	private
+	
 	def set_page
 		@page = Page.friendly.find(params[:id])
 	end

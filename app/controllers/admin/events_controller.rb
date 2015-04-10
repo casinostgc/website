@@ -1,5 +1,10 @@
 class Admin::EventsController < Admin::AdminController
+
+	include PictureBuilder
+
 	before_action :set_event, only: [:edit, :update, :destroy]
+
+	respond_to :html
 
 	def index
 		@events = Event.all.page(params[:page])
@@ -7,43 +12,27 @@ class Admin::EventsController < Admin::AdminController
 
 	def new
 		@event = Event.new
+		build_pictures @event
 	end
 
 	def edit
+		build_pictures @event
 	end
 
 	def create
 		@event = Event.new(event_params)
-
-		respond_to do |format|
-			if @event.save
-				format.html { redirect_to @event, notice: 'Event was successfully created.' }
-				format.json { render :show, status: :created, location: @event }
-			else
-				format.html { render :new }
-				format.json { render json: @event.errors, status: :unprocessable_entity }
-			end
-		end
+		@event.save
+		respond_with(@event)
 	end
 
 	def update
-		respond_to do |format|
-			if @event.update(event_params)
-				format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-				format.json { render :show, status: :ok, location: @event }
-			else
-				format.html { render :edit }
-				format.json { render json: @event.errors, status: :unprocessable_entity }
-			end
-		end
+		@event.update(event_params)
+		respond_with(@event)
 	end
 
 	def destroy
 		@event.destroy
-		respond_to do |format|
-			format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-			format.json { head :no_content }
-		end
+		redirect_to events_url, notice: 'Event was successfully destroyed.'
 	end
 
 	private

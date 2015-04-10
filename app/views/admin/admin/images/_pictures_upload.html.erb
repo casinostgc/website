@@ -1,0 +1,24 @@
+<h3>Pictures</h3>
+
+<table class="table table-striped" id="pictures_list">
+	<thead>
+		<tr>
+			<th>Picture</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td></td>
+			<td>
+				<%= link_to_add_association 'Add Picture', f, :pictures, 'data-association-insertion-node' => '#pictures_list tbody', 'data-association-insertion-method' => 'append', partial: 'admin/admin/images/picture_fields', class: 'btn btn-info btn-xs' %>
+			</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<%= f.fields_for :pictures do |pic| %>
+		<%= render 'admin/admin/images/picture_fields', f: pic -%>
+		<% end -%>
+	</tbody>
+</table>
+

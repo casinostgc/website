@@ -1,6 +1,6 @@
 class Admin::CruisesController < Admin::AdminController
 
-	include PictureConcerns
+	include PictureBuilder
 
 	before_action :set_cruise, only: [:edit, :update, :destroy]
 
