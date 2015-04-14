@@ -16,7 +16,7 @@ class PortsController < ApplicationController
 	private
 
 	def set_port
-		@port = Port.find(params[:id])
+		@port = Port.friendly.find(params[:id])
 	end
 
 end

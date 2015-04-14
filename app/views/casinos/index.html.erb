@@ -1,0 +1,36 @@
+
+<h1>Listing Casinos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Address</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @casinos.each do |casino| %>
+      <tr>
+        <td><%= casino.name %></td>
+        <td><%= casino.slug %></td>
+        <td><%= casino.address %></td>
+        <td><%= casino.latitude %></td>
+        <td><%= casino.longitude %></td>
+        <td><%= casino.content %></td>
+        <td><%= link_to 'Show', casino %></td>
+        <td><%#= link_to 'Edit', edit_casino_path(casino) %></td>
+        <td><%#= link_to 'Destroy', casino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Casino', new_casino_path %>

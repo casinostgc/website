@@ -2,10 +2,14 @@ class Destination < ActiveRecord::Base
 
 	include Content
 	include NestedPictures
+	include Geolocation
 
 	default_scope { order(name: :asc) }
 	scope :featured, -> { joins(:pictures).uniq.shuffle.sample(4) }
-
+	
+	has_many :casino_destinations, dependent: :destroy
+	has_many :casinos, -> { uniq }, through: :casino_destinations
+	has_many :flights, dependent: :destroy
 
 	extend FriendlyId
 	friendly_id :name, use: :slugged
@@ -14,10 +18,7 @@ class Destination < ActiveRecord::Base
 		name_changed? || slug.blank?
 	end
 
-	# after_validation :geocode, if: :location_changed?
-	# geocoded_by :location
+	geocoded_by :location
+	after_validation { geocode_conditionals(:location) }
 	
-	# has_many :casinos, dependent: :destroy
-	has_many :flights
-
 end

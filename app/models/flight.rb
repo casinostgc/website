@@ -29,6 +29,15 @@ class Flight < ActiveRecord::Base
 		options[:erase] ? Flight.destroy_all : nil
 		SmarterCSV.process( file.path, {chunk_size: 1000} ) do |chunk|
 			chunk.each do |data_hash|
+
+				# flight = Flight.new
+				# flight.arriving_at = data_hash[:arriving_at]
+				# flight.departing_at = data_hash[:departing_at]
+				# flight.departing_airport = data_hash[:departing_airport]
+				# flight.arriving_airport = data_hash[:arriving_airport]
+				# flight.flight_num = data_hash[:flight_num]
+				# flight.save
+
 				data_hash.delete(:destination)
 				data_hash[:arriving_at] = Time.strptime(data_hash[:arriving_at], "%m/%d/%Y")
 				data_hash[:departing_at] = Time.strptime(data_hash[:departing_at], "%m/%d/%Y")

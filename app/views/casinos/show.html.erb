@@ -1,0 +1,42 @@
+
+<p>
+  <% @casino.destinations.each do |dest| -%>
+  <%= dest.name -%>
+  <% end -%>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @casino.name %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @casino.slug %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @casino.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @casino.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @casino.longitude %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @casino.content %>
+</p>
+
+<% if is_admin? -%>
+<hr>
+<%= link_to 'Edit', edit_admin_casino_path(@casino) %> |
+<%= link_to 'Back', admin_casinos_path %>
+<% end -%>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :pages, only: [:show]
   resources :destinations, only: [:index, :show]
+  resources :casinos, only: [:index, :show]
   resources :flights, only: [:index, :show]
   resources :cruises, only: [:index, :show]
   resources :ports 
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     end
     resources :events, except: [:show]
     resources :destinations, except: [:show]
+    resources :casinos, except: [:show]
     resources :flights, except: [:show] do
       collection { post :import }
     end

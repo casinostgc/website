@@ -1,24 +1,49 @@
-<h3>Pictures</h3>
+<!-- Button trigger modal -->
+<p>
+	<button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal">
+		Manage Pictures
+	</button>
+</p>
+<div class="progress" id="picturesModified" style="display: none;">
+	<div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+	Pictures Have Changed - Please Save
+	</div>
+</div>
 
-<table class="table table-striped" id="pictures_list">
-	<thead>
-		<tr>
-			<th>Picture</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tfoot>
-		<tr>
-			<td></td>
-			<td>
-				<%= link_to_add_association 'Add Picture', f, :pictures, 'data-association-insertion-node' => '#pictures_list tbody', 'data-association-insertion-method' => 'append', partial: 'admin/admin/images/picture_fields', class: 'btn btn-info btn-xs' %>
-			</td>
-		</tr>
-	</tfoot>
-	<tbody>
-		<%= f.fields_for :pictures do |pic| %>
-		<%= render 'admin/admin/images/picture_fields', f: pic -%>
-		<% end -%>
-	</tbody>
-</table>
+<!-- Modal -->
+<%= f.fields_for :pictures do |pic| %>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Pictures</h4>
+			</div>
+			<div class="modal-body">
+				<div class="table-responsive">
+					<table class="table table-striped" id="pictures_list">
+						<thead>
+							<tr>
+								<th>Picture</th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<%= render 'admin/admin/images/picture_fields', f: pic -%>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+				<%= link_to_add_association 'Add Picture', f, :pictures, 'data-association-insertion-node' => '#pictures_list tbody', 'data-association-insertion-method' => 'append', partial: 'admin/admin/images/picture_fields', class: 'btn btn-info' %>
+			</div>
+		</div>
+	</div>
+</div>
+<% end -%>
+
+
 

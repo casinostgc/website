@@ -10,12 +10,18 @@
 
 		<div class="col-sm-12">
 
-			<div class="col-sm-4 lead">
+			<div class="col-sm-4">
 				<%= @destination.rendered_content %>
 			</div>
 			<div class="col-sm-8">
 				<div class="well">
 					<%= @destination.attributes -%>
+				</div>
+				<div class="well">
+					<h3>Casinos</h3>
+					<% @destination.casinos.each do |casino| -%>
+					<%= casino.attributes -%>
+					<% end -%>
 				</div>
 			</div>
 

@@ -12,8 +12,8 @@
 
 			<%= admin_nav_item 'Destinations', admin_destinations_path do -%>
 				<%= admin_nav_item 'New Destination', new_admin_destination_path -%>
-				<%= admin_nav_item 'Casinos', '#casinos' do -%>
-					<%= admin_nav_item 'New Casino', '#new_casino' -%>
+				<%= admin_nav_item 'Casinos', admin_casinos_path do -%>
+					<%= admin_nav_item 'New Casino', new_admin_casino_path -%>
 				<% end -%>
 			<% end -%>
 
@@ -32,10 +32,6 @@
 
 			<%= admin_nav_item 'Flights', admin_flights_path do -%>
 				<%= admin_nav_item 'New Flight', new_admin_flight_path -%>
-			<% end -%>
-
-			<%= admin_nav_item 'Pictures', admin_pictures_path do -%>
-				<%= admin_nav_item 'New Pictures', new_admin_picture_path -%>
 			<% end -%>
 
 		</ul>

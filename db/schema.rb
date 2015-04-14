@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409131408) do
+ActiveRecord::Schema.define(version: 20150414123907) do
 
   create_table "casein_admin_users", force: :cascade do |t|
     t.string   "login",               limit: 255,             null: false
@@ -33,6 +33,27 @@ ActiveRecord::Schema.define(version: 20150409131408) do
     t.string   "time_zone",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "casino_destinations", force: :cascade do |t|
+    t.integer  "casino_id"
+    t.integer  "destination_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "casino_destinations", ["casino_id"], name: "index_casino_destinations_on_casino_id"
+  add_index "casino_destinations", ["destination_id"], name: "index_casino_destinations_on_destination_id"
+
+  create_table "casinos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cruises", force: :cascade do |t|

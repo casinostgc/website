@@ -40,7 +40,7 @@ class Admin::PortsController < Admin::AdminController
 	private
 
 	def set_port
-		@port = Port.find(params[:id])
+		@port = Port.friendly.find(params[:id])
 	end
 
 	def port_params
