@@ -1,9 +1,11 @@
 
-<p>
   <% @casino.destinations.each do |dest| -%>
-  <%= dest.name -%>
+  <p>
+  <%= link_to dest.name, dest -%>
+  <%= dest.distance.round(2) -%>
+  </p>
   <% end -%>
-</p>
+
 
 <p>
   <strong>Name:</strong>

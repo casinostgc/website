@@ -26,7 +26,7 @@ class Admin::DestinationsController < Admin::AdminController
 	end
 
 	def update
-		@destination.update(cruise_params)
+		@destination.update(destination_params)
 		respond_with(@destination)
 	end
 

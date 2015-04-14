@@ -20,7 +20,10 @@
 				<div class="well">
 					<h3>Casinos</h3>
 					<% @destination.casinos.each do |casino| -%>
-					<%= casino.attributes -%>
+					<%= content_tag :p do -%>
+					<%= link_to(casino.name, casino) -%>
+					<%= casino.distance.round(2) -%>
+					<% end -%>
 					<% end -%>
 				</div>
 			</div>

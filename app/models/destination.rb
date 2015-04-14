@@ -4,11 +4,11 @@ class Destination < ActiveRecord::Base
 	include NestedPictures
 	include Geolocation
 
-	default_scope { order(name: :asc) }
-	scope :featured, -> { joins(:pictures).uniq.shuffle.sample(4) }
+	default_scope { includes(:casino_destinations).order(name: :asc) }
+	scope :featured, -> { joins(:pictures, :casinos).uniq.shuffle.sample(4) }
 	
 	has_many :casino_destinations, dependent: :destroy
-	has_many :casinos, -> { uniq }, through: :casino_destinations
+	has_many :casinos, -> { uniq.select("casinos.*, casino_destinations.distance AS distance") }, through: :casino_destinations
 	has_many :flights, dependent: :destroy
 
 	extend FriendlyId

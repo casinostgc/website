@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414123907) do
+ActiveRecord::Schema.define(version: 20150414135936) do
 
   create_table "casein_admin_users", force: :cascade do |t|
     t.string   "login",               limit: 255,             null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150414123907) do
     t.integer  "destination_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.decimal  "distance"
   end
 
   add_index "casino_destinations", ["casino_id"], name: "index_casino_destinations_on_casino_id"
