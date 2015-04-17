@@ -1,0 +1,50 @@
+<!-- Modal -->
+<div class="modal fade" id="pictureGallery" tabindex="-1" role="dialog" aria-labelledby="pictureGalleryLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="pictureGalleryLabel">Picture Gallery</h4>
+			</div>
+			<div class="modal-body">
+
+				<div id="picture-gallery-carousel" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<% instance.pictures.each_with_index do |pic, index| %>
+						
+						<%= content_tag :li, nil, class: ('active' if index < 1), data: {slide_to: index, target: '#picture-gallery-carousel'} -%>
+						
+						<% end -%>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<% instance.pictures.each_with_index do |pic, index| %>
+
+						<%= content_tag :div, class: ['item', 'text-center', ('active' if index < 1)] do -%>
+						<%= image_tag pic.image_url -%>
+						<% end -%>
+
+						<% end -%>
+					</div>
+
+					<!-- Controls -->
+					<a class="left carousel-control" href="#picture-gallery-carousel" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#picture-gallery-carousel" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+

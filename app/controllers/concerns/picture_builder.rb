@@ -1,9 +1,9 @@
 module PictureBuilder
 	extend ActiveSupport::Concern
 
-	included do
+	# included do
 		
-	end
+	# end
 
 	def build_pictures(instance)
 		1.times do

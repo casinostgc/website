@@ -1,5 +1,7 @@
 class Admin::CasinosController < Admin::AdminController
 
+	include PictureBuilder
+
 	before_action :set_casino, only: [:edit, :update, :destroy]
 
 	def index
@@ -8,9 +10,11 @@ class Admin::CasinosController < Admin::AdminController
 
 	def new
 		@casino = Casino.new
+		build_pictures @casino
 	end
 
 	def edit
+		build_pictures @casino
 	end
 
 	def create
@@ -54,6 +58,6 @@ class Admin::CasinosController < Admin::AdminController
 	end
 
 	def casino_params
-		params.require(:casino).permit(:name, :slug, :address, :content)
+		params.require(:casino).permit(:name, :slug, :address, :content, pictures_attributes: picture_params)
 	end
 end

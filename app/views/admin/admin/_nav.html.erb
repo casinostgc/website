@@ -1,39 +1,32 @@
-<div id="adminSidebar" class="sidebar-nav">
-	<ul class="nav nav-tabs nav-stacked">
-		<ul id="adminDropDown" class="dropdown-menu">
+<nav class="navbar navbar-vertical navbar-default" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">Admin Menu</a>
+	</div>
 
-			<%= admin_nav_item 'Pages', admin_pages_path do -%>
-				<%= admin_nav_item 'New Page', new_admin_page_path -%>
-			<% end -%>
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
 
-			<%= admin_nav_item 'Navigation Menu', admin_menu_items_path do -%>
-				<%= admin_nav_item 'New Menu Item', new_admin_menu_item_path -%>
-			<% end -%>
-
-			<%= admin_nav_item 'Destinations', admin_destinations_path do -%>
-				<%= admin_nav_item 'New Destination', new_admin_destination_path -%>
-				<%= admin_nav_item 'Casinos', admin_casinos_path do -%>
-					<%= admin_nav_item 'New Casino', new_admin_casino_path -%>
-				<% end -%>
-			<% end -%>
-
-			<%= admin_nav_item 'Events', admin_events_path do -%>
-				<%= admin_nav_item 'New Event', new_admin_event_path -%>
-				<%= admin_nav_item 'Cruises', admin_cruises_path do -%>
-					<%= admin_nav_item 'New Cruise', new_admin_cruise_path -%>
-					<%= admin_nav_item 'Ports', admin_ports_path do -%>
-						<%= admin_nav_item 'New Port', new_admin_port_path -%>
-					<% end -%>
-				<% end -%>
-				<%= admin_nav_item 'Venue', '#venues' do -%>
-					<%= admin_nav_item 'New Venue', '#new_venue' -%>
-				<% end -%>
-			<% end -%>
-
-			<%= admin_nav_item 'Flights', admin_flights_path do -%>
-				<%= admin_nav_item 'New Flight', new_admin_flight_path -%>
-			<% end -%>
+			<%= content_tag :li, link_to('Pages', admin_pages_path) -%>
+			<%= content_tag :li, link_to('Navigation Menu', admin_menu_items_path) -%>
+			<hr>
+			<%= content_tag :li, link_to('Destinations', admin_destinations_path) -%>
+			<%= content_tag :li, link_to('Casinos', admin_casinos_path) -%>
+			<hr>
+			<%= content_tag :li, link_to('Events', admin_events_path) -%>
+			<%= content_tag :li, link_to('Cruises', admin_cruises_path) -%>
+			<%= content_tag :li, link_to('Ports', admin_ports_path) -%>
+			<%= content_tag :li, link_to('Venues', '#venues') -%>
+			<hr>
+			<%= content_tag :li, link_to('Flights', admin_flights_path) -%>
 
 		</ul>
-	</ul>
-</div>
+	</div><!-- /.navbar-collapse -->
+</nav>

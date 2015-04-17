@@ -42,7 +42,14 @@
 			<% @destinations.each do |destination| %>
 			<tr>
 				<td><%= link_to destination.name, destination -%></td>
-				<td><%= destination.casinos.count -%></td>
+				<td class="small">
+				<ul class="list-inline">
+				<% destination.casinos.each do |casino| -%>
+				<%= content_tag :li, link_to(casino.name, casino) -%>
+				<% end -%>
+				</ul>
+				</td>
+
 			</tr>
 			<% end %>
 		</tbody>

@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require grids
+//= require gmapsjs
 //= require bootstrap.min
 //= require froala_editor.min.js
 //= require plugins/lists.min.js

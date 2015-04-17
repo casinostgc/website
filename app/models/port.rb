@@ -16,4 +16,6 @@ class Port < ActiveRecord::Base
 	geocoded_by :location
 	after_validation { geocode_conditionals(:location) }
 
+	validates :name, :location, presence: true
+
 end

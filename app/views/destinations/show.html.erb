@@ -8,25 +8,48 @@
 
 	<div class="row">
 
-		<div class="col-sm-12">
+		<div class="col-md-8 col-md-push-4 col-sm-6 col-sm-push-6">
+			<%= @destination.rendered_content %>
+		</div>
 
-			<div class="col-sm-4">
-				<%= @destination.rendered_content %>
+		<div class="col-md-4 col-md-pull-8 col-sm-6 col-sm-pull-6">
+
+			<% if @destination.first_image -%>
+			<div class="thumbnail">
+				<%= image_tag @destination.first_image -%>
 			</div>
-			<div class="col-sm-8">
-				<div class="well">
-					<%= @destination.attributes -%>
+			<% end -%>
+
+			<% if @destination.casinos.any? -%>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Casinos</h3>
 				</div>
-				<div class="well">
-					<h3>Casinos</h3>
+				<div class="panel-body">
+
+					<div id="casinosMap" class="gmap"></div>
+				</div>
+				<div class="list-group">
 					<% @destination.casinos.each do |casino| -%>
-					<%= content_tag :p do -%>
-					<%= link_to(casino.name, casino) -%>
-					<%= casino.distance.round(2) -%>
-					<% end -%>
+					<%= link_to casino.name, casino, class: 'casino list-group-item', data: {lat: casino.latitude, lng: casino.longitude} -%>
 					<% end -%>
 				</div>
 			</div>
+			<% end -%>
+
+			<% if @destination.flights.any? -%>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Flights</h3>
+				</div>
+				<!-- <div class="panel-body"></div> -->
+				<div class="list-group">
+					<% @destination.flights.each do |flight| -%>
+					<%= link_to flight, flight, class: 'list-group-item' -%>
+					<% end -%>
+				</div>
+			</div>
+			<% end -%>
 
 		</div>
 

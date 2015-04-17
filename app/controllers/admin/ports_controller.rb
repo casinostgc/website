@@ -44,7 +44,7 @@ class Admin::PortsController < Admin::AdminController
 	end
 
 	def port_params
-		params.require(:port).permit(:name, :content, :location, :latitude, :longitude, pictures_attributes: picture_params)
+		params.require(:port).permit(:name, :slug, :content, :location, :latitude, :longitude, pictures_attributes: picture_params)
 	end
 
 end

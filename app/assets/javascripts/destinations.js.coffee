@@ -4,3 +4,14 @@
 
 $ ->
 
+	if $('#casinosMap').length
+		map = new GMaps(div: '#casinosMap')
+		markerCoords = []
+		$('.casino').each ->
+			markerCoords.push
+				lat: $(this).data 'lat'
+				lng: $(this).data 'lng'
+			return
+		markers = map.addMarkers markerCoords
+		map.fitZoom()
+
