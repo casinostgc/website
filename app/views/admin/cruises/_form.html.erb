@@ -21,17 +21,9 @@
 	<%= f.label :content %>
 	<%= f.text_area :content, class: 'froala_content' %>
 </div>
-<!-- <div class="field">
-	<%#= f.label :start_at %><br>
-	<%#= f.text_field :start_at, class: 'form-control datetimepicker' %>
-</div>
-<div class="field">
-	<%#= f.label :end_at %><br>
-	<%#= f.text_field :end_at, class: 'form-control datetimepicker' %>
-</div> -->
 <div class="field">
 	<%= f.label :venue_id %><br>
-	<%= f.text_field :venue_id %>
+	<%= f.collection_select :venue_id, Venue.only_cruises, :id, :name, {prompt: 'Select Venue'}, {class: 'form-control'} %>
 </div>
 
 <h3>Ports of Call</h3>

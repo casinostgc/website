@@ -10,4 +10,16 @@ module Datetimeformat
 		end
 	end
 
+	# def start_at=(date)
+	# 	date_time_picker_format(date)
+	# end
+
+	# def end_at=(date)
+	# 	date_time_picker_format(date)
+	# end
+
+	def date_span
+		self.start_at.strftime("%b %d, %Y") + ' - ' + self.end_at.strftime("%b %d, %Y")
+	end
+
 end

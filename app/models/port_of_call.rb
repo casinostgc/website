@@ -7,12 +7,4 @@ class PortOfCall < ActiveRecord::Base
 	belongs_to :cruise
 	belongs_to :port
 
-	def arrives_at=(date)
-		date_time_picker_format(date)
-	end
-
-	def departs_at=(date)
-		date_time_picker_format(date)
-	end
-
 end

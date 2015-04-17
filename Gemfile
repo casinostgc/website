@@ -39,6 +39,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'quiet_assets', group: :development
+
 gem 'jquery-ui-rails'
 
 # site functionality

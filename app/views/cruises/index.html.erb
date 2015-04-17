@@ -23,8 +23,9 @@
 
 					<h3>
 						<%= cruise.title -%><br>
-						<small><%#= cruise.date_span -%></small>
+						<small><%= cruise.night_length -%> Night <%= cruise.venue.name -%> Cruise</small>
 					</h3>
+						<small><%= cruise.date_span -%></small>
 					<p><%= cruise.excerpt -%></p>
 					<p class="text-right"><%= link_to 'Cruise Details', cruise, class: 'btn btn-info' -%></p>
 				</div>

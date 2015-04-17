@@ -49,6 +49,6 @@ class Admin::CruisesController < Admin::AdminController
 	end
 
 	def cruise_params
-		params.require(:cruise).permit(:title, :content, :start_at, :end_at, :venue_id, port_of_calls_attributes: [:id, :port_id, :arrives_at, :departs_at, :_destroy], pictures_attributes: picture_params )
+		params.require(:cruise).permit(:title, :content, :venue_id, port_of_calls_attributes: [:id, :port_id, :arrives_at, :departs_at, :_destroy], pictures_attributes: picture_params )
 	end
 end

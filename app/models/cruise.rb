@@ -4,21 +4,26 @@ class Cruise < ActiveRecord::Base
 	include Datetimeformat
 	include NestedPictures
 
-	default_scope { order(start_at: :asc) }
-	# default_scope { where("DATE(start_at) > ?", DateTime.now).order(start_at: :asc) }
+	after_save :update_times
 
-	# belongs_to :venue
+	# default_scope { order(start_at: :asc) }
+	default_scope { where("DATE(start_at) > ?", DateTime.now).order(start_at: :asc) }
+
+	belongs_to :venue
 
 	has_many :port_of_calls
 	has_many :ports, through: :port_of_calls
 	accepts_nested_attributes_for :port_of_calls, reject_if: proc { |attributes| attributes['port_id'].blank? }, allow_destroy: true
 
-	def start_at=(date)
-		date_time_picker_format(date)
+	validates :venue_id, presence: true
+
+	def update_times
+		self.update_column(:start_at, self.port_of_calls.first.departs_at)
+		self.update_column(:end_at, self.port_of_calls.last.arrives_at)
 	end
 
-	def end_at=(date)
-		date_time_picker_format(date)
+	def night_length
+		(end_at.to_date - start_at.to_date).to_i
 	end
 
 end

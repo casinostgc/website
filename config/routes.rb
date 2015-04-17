@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  
+
   devise_for :users
 
   resources :pages, only: [:show]
@@ -7,8 +9,11 @@ Rails.application.routes.draw do
   resources :casinos, only: [:index, :show]
   resources :flights, only: [:index, :show]
   resources :cruises, only: [:index, :show]
-  resources :ports 
+  resources :ports, only: [:index, :show]
   resources :events, only: [:index, :show]
+  resources :venues, only: [:index, :show] do
+    # resources :ships
+  end
 
   namespace :admin do
     get '/' => 'admin#index', as: :admin
@@ -25,6 +30,9 @@ Rails.application.routes.draw do
     end
     resources :cruises, except: [:show]
     resources :ports, except: [:show]
+    resources :venues, except: [:show] do
+      # resources :ships
+    end
 
     resources :pictures, except: [:show]
 

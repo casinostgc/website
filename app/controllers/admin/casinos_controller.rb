@@ -4,6 +4,8 @@ class Admin::CasinosController < Admin::AdminController
 
 	before_action :set_casino, only: [:edit, :update, :destroy]
 
+	# respond_to :html
+
 	def index
 		@casinos = Casino.all
 	end
