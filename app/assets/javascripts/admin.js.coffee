@@ -10,11 +10,13 @@ $ ->
 		trigger: 'hover'
 
 	$('body').on 'cocoon:after-insert', (e, insertedItem) ->
-		unsavedChanges()
+		# specify on pictures
+		# unsavedChanges()
 		return
 
 	$('body').on 'cocoon:after-remove', (e, insertedItem) ->
-		unsavedChanges()
+		# specify on pictures
+		# unsavedChanges()
 		return
 
 	unsavedChanges = ->
