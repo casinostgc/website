@@ -34,7 +34,7 @@ class Admin::PortsController < Admin::AdminController
 
 	def destroy
 		@port.destroy
-		respond_with(@port)
+		respond_with(@port, location: admin_ports_path)
 	end
 
 	private

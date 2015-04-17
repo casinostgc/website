@@ -22,7 +22,7 @@ class Admin::CruisesController < Admin::AdminController
 
 	def edit
 		build_pictures @cruise
-		2.times do
+		3.times do
 			@cruise.port_of_calls.build if @cruise.port_of_calls.empty?
 		end
 	end

@@ -24,3 +24,7 @@ $ ->
 		checkPageSelector()
 		if $('#menu_item_value').val() == ''
 			$('#menu_item_value').val $(this).find(":selected").text()
+	
+
+	$('#menu_item_icon').change ->
+		$('#iconPreview').attr 'class', 'fa fa-fw fa-'+$(this).find(":selected").text()
