@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'admin#index', as: :admin
+    get '/logs' => 'admin#logs'
     resources :admin, only: [:index]
     resources :pages, except: [:show]
     resources :menu_items, except: [:show] do
