@@ -6,6 +6,6 @@ class CreatePictures < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :pictures, :imageables
+    add_foreign_key :pictures, :imageable
   end
 end

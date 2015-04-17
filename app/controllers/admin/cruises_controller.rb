@@ -28,7 +28,7 @@ class Admin::CruisesController < Admin::AdminController
 	end
 
 	def create
-		@cruise = Cruise.new(date_params)
+		@cruise = Cruise.new(cruise_params)
 		@cruise.save
 		respond_with(@cruise)
 	end
