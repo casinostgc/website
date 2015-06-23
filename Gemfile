@@ -53,9 +53,9 @@ gem 'cocoon'
 gem 'nokogiri'
 
 # images
-gem 'carrierwave'
-gem 'rmagick'
-gem 'fog'
+# gem 'carrierwave'
+# gem 'rmagick'
+# gem 'fog'
 
 # pagination
 gem 'kaminari'
