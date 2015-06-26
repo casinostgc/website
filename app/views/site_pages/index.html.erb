@@ -24,7 +24,6 @@
 		</div>
 
 	</div>
-	<hr>
 </div>
 
 <section class="parallax" style="background-image: url('<%= image_url('bg-roulette.jpg') -%>');">
@@ -41,15 +40,16 @@
 		<div class="col-sm-7">
 			<h4>The Grand Collection of "On Land" Casinos</h4>
 			<p>
-				The Grand Collection offers “Very V.I.P” Group Departures to great <%= link_to 'Gaming Locations', destinations_url, class: 'btn btn-success btn-xs' -%> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
+				The Grand Collection offers “Very V.I.P” Group Departures to great <%= link_to 'Gaming Locations', destinations_url, class: 'btn btn-default btn-xs' -%> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
 			</p>
 			<h4>The Grand Collection of Cruise Expereience & Gaming "At Sea"</h4>
 			<p>
 				“Very V.I.P.” Group Departures to exotic destinations such as: Hawaii, Alaska, Canada, New England, Mexico, Panama Canal, Bahamas, the Caribbean, South America, Europe, Asia and more! Additionally we arrange “Very V.I.P.” Sailings for your personally selected travel dates.
 			</p>
+			<hr class="visible-xs-block">
 		</div>
 		<div class="col-sm-5">
-			<h4><%= fa_icon('calendar') -%> Upcoming Events</h4>
+			<h3 class="text-center"><%= fa_icon('calendar') -%> Upcoming Events</h3>
 
 			<% if @events.any? -%>
 			<ul class="media-list">
@@ -81,7 +81,7 @@
 
 <span class="divider"></span>
 
-<section style="background-color: #FFC423; color: #fff;">
+<section style="background-color: #F39C12; color: #fff;">
 	<div class="container">
 
 		<div class="jumbotron" style="padding: 20px 60px 0">
@@ -94,20 +94,21 @@
 
 		<div class="row">
 			<!-- <img src="http://i.huffpost.com/gen/1893910/thumbs/o-AIR-TRAVEL-facebook.jpg" class="img-responsive img-thumbnail"> -->
-			<div class="col-sm-6">
-				<h4>Browse by Date, Destination or Departing City</h4>
-
-				<%= render 'flights/search' -%>
-
-			</div>
-			<div class="col-sm-6">
-				<h4>&nbsp;</h4>
+			<div class="col-sm-6 col-sm-push-6">
+				<h4 class="hidden-xs">&nbsp;</h4>
 				<p>
 					Ask us about Complimentary Airfare, Hotel, and Transfers to the fabulous CAESARS Entertainment & Tropicana Las Vegas gaming resorts!
 				</p>
 				<p>
 					We have reserved seats on hundreds of flights from dozens of cities across the United States and Canada, including one near you. Reservations being accepted for qualified players.
 				</p>
+				<hr>
+			</div>
+			<div class="col-sm-6 col-sm-pull-6">
+				<h4>Browse by Date, Destination or Departing City</h4>
+
+				<%= render 'flights/search' -%>
+
 			</div>
 		</div>
 	</div>
@@ -142,7 +143,7 @@
 			</p>
 		</div>
 		<div class="col-md-4">
-			<div class="alert alert-info">
+			<div class="well">
 				<h4>Sign  up for Special Offers</h4>
 				<p>
 					Sign up for our Newsletter to receive complimentary privileges and offers.
@@ -169,7 +170,7 @@
 								<input type="checkbox" checked> I'd like more information on becoming a <a href="#preffered">Preffered Customer</a>.
 							</label>
 						</div>
-						<button type="submit" class="btn btn-info btn-block">Submit</button>
+						<button type="submit" class="btn btn-warning btn-block">Submit</button>
 					</form>
 				</p>
 			</div>

@@ -18,13 +18,15 @@
 
 @import "font-awesome";
 
-@import "bootstrap/variables";
-@import "bootstrap-sprockets";
+// @import "bootstrap/variables";
+// @import "bootstrap-sprockets";
+@import "bootswatch/custom_darkly/variables";
 @import "bootstrap";
-@import "bootstrap-datetimepicker";
+@import "bootswatch/custom_darkly/bootswatch";
+// @import "bootstrap-datetimepicker";
 /*@import "bootswatch";*/
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400);
+// @import url('http://fonts.googleapis.com/css?family=Roboto');
 
 body {
 	padding-top: 51px;
