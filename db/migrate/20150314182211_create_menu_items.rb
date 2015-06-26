@@ -4,6 +4,9 @@ class CreateMenuItems < ActiveRecord::Migration
       t.string :href
       t.string :icon
       t.integer :position
+      t.string :value
+      t.integer :page_id
+      t.boolean :blank_target
 
       t.timestamps
     end

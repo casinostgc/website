@@ -7,6 +7,8 @@ class CreateFlights < ActiveRecord::Migration
       t.string :arriving_location
       t.datetime :arriving_at
       t.string :flight_number
+      t.string :arriving_airport
+      t.string :departing_airport
 
       t.timestamps
     end

@@ -3,7 +3,7 @@ class CreatePorts < ActiveRecord::Migration
     create_table :ports do |t|
       t.string :name
       t.string :slug
-      t.text :description
+      t.text :content
       t.string :location
       t.float :latitude
       t.float :longitude
