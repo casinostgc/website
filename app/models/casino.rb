@@ -1,11 +1,11 @@
 class Casino < ActiveRecord::Base
 
 	include Content
-	include NestedPictures
+	# include NestedPictures
 	include Geolocation
 
 	default_scope { includes(:casino_destinations).order(name: :asc) }
-	scope :featured, -> { joins(:pictures).uniq.shuffle.sample(4) }
+	scope :featured, -> { uniq.shuffle.sample(4) }
 	
 	has_many :casino_destinations, dependent: :destroy
 	has_many :destinations, -> { uniq.select("destinations.*, casino_destinations.distance AS distance") }, through: :casino_destinations

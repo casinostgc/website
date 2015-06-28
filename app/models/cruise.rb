@@ -2,7 +2,7 @@ class Cruise < ActiveRecord::Base
 
 	include Content
 	include Datetimeformat
-	include NestedPictures
+	# include NestedPictures
 
 	after_save :update_times
 

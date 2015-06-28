@@ -1,6 +1,6 @@
 class Port < ActiveRecord::Base
 
-	include NestedPictures
+	# include NestedPictures
 	include Geolocation
 
 	has_many :port_of_calls
