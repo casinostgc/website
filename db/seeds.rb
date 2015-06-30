@@ -8,6 +8,6 @@
 
 MenuItem.create(href: "/destinations", icon: "globe", value: "Destinations")
 MenuItem.create(href: "/casinos", icon: "building", value: "Casinos")
-MenuItem.create(href: "/events", icon: "calendar", value: "On Lnad")
+MenuItem.create(href: "/events", icon: "calendar", value: "On Land")
 MenuItem.create(href: "/cruises", icon: "ship", value: "At Sea")
 MenuItem.create(href: "/flights", icon: "plane", value: "Flights")
