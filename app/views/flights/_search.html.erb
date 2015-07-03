@@ -1,0 +1,37 @@
+<%= search_form_for @flights_q, url: flights_path do |f| %>
+
+<p>
+	<%#= f.select :departing_at_date_equals, options_for_select(Flight.unique_dates), {prompt: 'Departing Date'}, {class: 'form-control'} %>
+	<select class="form-control">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+	</select>
+</p>
+<p>
+	<%#= f.select :destination_name_cont, options_for_select(Flight.available_destinations), {prompt: 'Destination'}, {class: 'form-control'} -%>
+	<select class="form-control">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+	</select>
+</p>
+
+<p>
+	<%#= f.collection_select :departing_airport_eq, Flight.select(:departing_airport).uniq.sort, :departing_airport, :departing_airport, {prompt: 'Departing Airport'}, {class: 'form-control'} -%>
+	<select class="form-control">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+	</select>
+</p>
+
+<button type="submit" class="btn btn-info btn-lg btn-block">Find Flights <%= fa_icon('plane') -%></button>
+
+<% end %>

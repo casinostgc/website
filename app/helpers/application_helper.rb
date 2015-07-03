@@ -5,4 +5,8 @@ module ApplicationHelper
 		" <i class=\"fa #{fw} fa-#{icon} fa-#{size}\"></i> ".html_safe
 	end
 
+	def is_admin?
+		false
+	end
+
 end
