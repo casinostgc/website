@@ -197,6 +197,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.1.0)
   devise
+  font-awesome-rails
   friendly_id
   geocoder
   gmail
