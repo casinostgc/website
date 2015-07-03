@@ -8,7 +8,7 @@ class Flight < ActiveRecord::Base
 	serialize :departing_location
 
 	# assocations
-	# belongs_to :destination
+	belongs_to :destination
 
 	# scopes
 	# default_scope { order(departing_at: :asc) }

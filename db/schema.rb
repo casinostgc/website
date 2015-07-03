@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20150703162322) do
 
+  create_table "destinations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "content"
+    t.string   "location"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "international"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "flights", force: :cascade do |t|
     t.integer  "destination_id"
     t.text     "departing_location"

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @destination.name %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @destination.slug %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @destination.content %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @destination.location %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @destination.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @destination.longitude %>
+</p>
+
+<p>
+  <strong>International:</strong>
+  <%= @destination.international %>
+</p>
+
+<%= link_to 'Edit', edit_destination_path(@destination) %> |
+<%= link_to 'Back', destinations_path %>
