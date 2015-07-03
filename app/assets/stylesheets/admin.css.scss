@@ -1,0 +1,41 @@
+.navbar-vertical {
+	@media (min-width: 768px) {
+		.navbar-collapse {
+			height: auto;
+			border-top: 0;
+			box-shadow: none;
+			max-height: none;
+			padding-left: 0;
+			padding-right: 0;
+			&.collapse {
+				display: block !important;
+				width: auto !important;
+				padding-bottom: 0;
+				overflow: visible !important;
+			}
+			&.in {
+				overflow-x: visible;
+			}
+		}
+		.navbar-nav {
+			float: none !important;
+			> li {
+				float: none !important;
+			}
+		}
+		.navbar-left, .navbar-right, .navbar-header {
+			float: none !important;
+		}
+		.navbar-right .dropdown-menu {
+			left: 0;
+			right: auto;
+		}
+		.navbar-collapse .navbar-nav.navbar-right:last-child {
+			margin-right: 0;
+		}
+	}
+
+	hr {
+		margin: 0;
+	}
+}
