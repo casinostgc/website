@@ -1,2 +1,181 @@
-<h1>StaticPages#index</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+
+<section class="parallax" style="background-image: url('<%= image_url('bg-vegas.jpg') -%>');">
+	<div class="jumbotron">
+		<div class="container text-center">
+			<%= image_tag( 'new-logo-white.png', alt: 'CASINOS The Grand Collection', class: 'img-responsive', style: 'margin: 0 auto;' ) -%>
+		</div>
+	</div>
+</section>
+
+
+<span class="divider"></span>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 lead">
+			<p>
+				<strong>CASINOS the Grand Collection</strong> may very well be the most prominent independent supplier of exclusive casino offers and customized gambling travel itineraries to the world's most experienced gamblers. We connect our clients to the <strong>best casino offers, complementary privileges, benefits &amp; services</strong> at gaming destinations across the United States and internationally.
+			</p>
+			<p>
+				Our long-term experience in this industry has created a worldwide network of gaming resorts and cruise lines. Working with our partners, we offer our clients an incredible selection of complimentary trips, amenities, and invitations to top-tier special events.
+			</p>
+			<p>
+				Take advantage of the wonderful opportunities that we can provide to create a memorable gaming holiday, celebrate an extended weekend, or just relax on a getaway to one of our exciting destinations or onboard some of the world's most luxurious cruise liners.
+			</p>
+		</div>
+
+	</div>
+</div>
+
+<section class="parallax" style="background-image: url('<%= image_url('bg-roulette.jpg') -%>');">
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Gaming Tourism Offers</h1>
+		</div>
+	</div>
+</section>
+
+<span class="divider"></span>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-7">
+			<h4>The Grand Collection of "On Land" Casinos</h4>
+			<p>
+				The Grand Collection offers “Very V.I.P” Group Departures to great <%= link_to 'Gaming Locations', '#destinations_url', class: 'btn btn-default btn-xs' -%> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
+			</p>
+			<h4>The Grand Collection of Cruise Expereience & Gaming "At Sea"</h4>
+			<p>
+				“Very V.I.P.” Group Departures to exotic destinations such as: Hawaii, Alaska, Canada, New England, Mexico, Panama Canal, Bahamas, the Caribbean, South America, Europe, Asia and more! Additionally we arrange “Very V.I.P.” Sailings for your personally selected travel dates.
+			</p>
+			<hr class="visible-xs-block">
+		</div>
+		<div class="col-sm-5">
+			<h3 class="text-center"><%= fa_icon('calendar') -%> Upcoming Events</h3>
+
+			<%# if @events.any? -%>
+			<ul class="media-list">
+				<%# @events.each do |event| -%>
+				<li class="media">
+					<%#= content_tag :i, nil, class: 'fa fa-fw fa-ship fa-2x media-object pull-left' -%>
+					<div class="media-body">
+						<h5 class="media-heading">
+							<%#= link_to event.title, event -%><br>
+							<small><%#= event.date_span -%></small>
+						</h5>
+						<%#= event.excerpt(80) -%>
+					</div>
+				</li>
+				<%# end -%>
+			</ul>
+			<div class="pull-right">
+				<%= link_to raw('More Events'+fa_icon('calendar')), '#events_url', class: 'btn btn-primary' -%>
+			</div>
+			<%# else -%>
+			<p class="lead text-muted text-center">
+				There are no upcoming events.
+			</p>
+			<%# end -%>
+
+		</div>
+	</div>
+</div>
+
+<span class="divider"></span>
+
+<section style="background-color: #F39C12; color: #fff;">
+	<div class="container">
+
+		<div class="jumbotron" style="padding: 20px 60px 0">
+			<h2 class="text-center">
+				Travel Made Easy<br>
+				<small>Complimentary Airfare <%= fa_icon('plane') -%></small>
+			</h2>
+			<hr style="width: 200px;">
+		</div>
+
+		<div class="row">
+			<!-- <img src="http://i.huffpost.com/gen/1893910/thumbs/o-AIR-TRAVEL-facebook.jpg" class="img-responsive img-thumbnail"> -->
+			<div class="col-sm-6 col-sm-push-6">
+				<h4 class="hidden-xs">&nbsp;</h4>
+				<p>
+					Ask us about Complimentary Airfare, Hotel, and Transfers to the fabulous CAESARS Entertainment & Tropicana Las Vegas gaming resorts!
+				</p>
+				<p>
+					We have reserved seats on hundreds of flights from dozens of cities across the United States and Canada, including one near you. Reservations being accepted for qualified players.
+				</p>
+				<hr>
+			</div>
+			<div class="col-sm-6 col-sm-pull-6">
+				<h4>Browse by Date, Destination or Departing City</h4>
+
+				<%#= render 'flights/search' -%>
+
+			</div>
+		</div>
+	</div>
+	<span class="divider"></span>
+</section>
+
+<section class="parallax" style="background-image: url('<%= image_url('bg-hotel-room.jpg') -%>');">
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Casino Comps</h1>
+		</div>
+	</div>
+</section>
+<span class="divider"></span>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h4>Exceptional Service</h4>
+			<p>
+				It is our job, as your casino experts, to offer the most comps and best gaming experience possible to all levels of players. Even those who are first time players will be granted no less than discounted room accommodations.
+			</p>
+			<p>
+				The policies personally established by President and C.E.O. Rick Diaz are simple; among them...
+			</p>
+			<blockquote class="blockquote">
+				<em class="lead">Offer to every customer as many complimentary privileges as possible, in advance, even if not requested by the customer.</em>
+				<footer>Rick Diaz <cite title="Casinos The Grand Colelction President and C.E.O.">Casinos The Grand Colelction President and C.E.O.</cite></footer>
+			</blockquote>
+			<p>
+				A world filled with luxuries, fun, and excitement await you. We provide “truly superior personalized services” to those wishing to enjoy gaming holidays at some of the world’s finest gaming resorts.
+			</p>
+		</div>
+		<div class="col-md-4">
+			<div class="well">
+				<h4>Sign  up for Special Offers</h4>
+				<p>
+					Sign up for our Newsletter to receive complimentary privileges and offers.
+				</p>
+				<p>
+					<form role="form">
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="form-group">
+									<input type="text" class="form-control" id="firstname" placeholder="First Name">
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<input type="text" class="form-control" id="lastname" placeholder="Last Name">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control" id="email" placeholder="Your Email">
+						</div>
+						<div class="checkbox small">
+							<label>
+								<input type="checkbox" checked> I'd like more information on becoming a <a href="#preffered">Preffered Customer</a>.
+							</label>
+						</div>
+						<button type="submit" class="btn btn-warning btn-block">Submit</button>
+					</form>
+				</p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
