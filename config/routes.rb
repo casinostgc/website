@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :menu_items
+  end
+  resources :pages
   resources :destinations
   resources :flights
   # The priority is based upon order of creation: first created -> highest priority.

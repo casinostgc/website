@@ -1,0 +1,41 @@
+<%= form_for(@admin_menu_item) do |f| %>
+  <% if @admin_menu_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_menu_item.errors.count, "error") %> prohibited this admin_menu_item from being saved:</h2>
+
+      <ul>
+      <% @admin_menu_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :href %><br>
+    <%= f.text_field :href %>
+  </div>
+  <div class="field">
+    <%= f.label :icon %><br>
+    <%= f.text_field :icon %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.number_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br>
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :page_id %><br>
+    <%= f.text_field :page_id %>
+  </div>
+  <div class="field">
+    <%= f.label :blank_target %><br>
+    <%= f.check_box :blank_target %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
