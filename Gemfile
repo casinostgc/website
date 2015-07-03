@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :development
+gem 'pg', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -42,4 +43,35 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+
+
+# site functionality
+gem 'jquery-ui-rails'
+gem 'devise'
+gem 'friendly_id'
+gem 'ransack'
+gem 'acts_as_list'
+gem 'wysiwyg-rails'
+gem 'cocoon'
+gem 'nokogiri'
+gem 'gmail'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem 'world_airports'
+gem 'smarter_csv'
+
+# images
+# gem 'carrierwave'
+# gem 'rmagick'
+# gem 'fog'
+
+# pagination
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
+# datepicker
+# gem 'momentjs-rails'
+# gem 'bootstrap3-datetimepicker-rails'
 
