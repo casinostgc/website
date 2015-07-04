@@ -1,39 +1,64 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Name:</strong>
-  <%= @destination.name %>
-</p>
+	<div class="page-header">
+		<h1>
+			<%= @destination.name %>
+		</h1>
+	</div>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @destination.slug %>
-</p>
+	<div class="row">
 
-<p>
-  <strong>Content:</strong>
-  <%= @destination.content %>
-</p>
+		<div class="col-md-8 col-md-push-4 col-sm-6 col-sm-push-6">
+			<%= @destination.rendered_content %>
+		</div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @destination.location %>
-</p>
+		<div class="col-md-4 col-md-pull-8 col-sm-6 col-sm-pull-6">
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @destination.latitude %>
-</p>
+			<%# if @destination.first_image -%>
+			<div class="thumbnail">
+				<%#= image_tag @destination.first_image -%>
+			</div>
+			<%# end -%>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @destination.longitude %>
-</p>
+			<% if @destination.try(:casinos).try(:any?) -%>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Casinos</h3>
+				</div>
+				<div class="panel-body">
 
-<p>
-  <strong>International:</strong>
-  <%= @destination.international %>
-</p>
+					<div id="casinosMap" class="gmap"></div>
+				</div>
+				<div class="list-group">
+					<% @destination.casinos.each do |casino| -%>
+					<%= link_to casino.name, casino, class: 'casino list-group-item', data: {lat: casino.latitude, lng: casino.longitude} -%>
+					<% end -%>
+				</div>
+			</div>
+			<% end -%>
 
-<%= link_to 'Edit', edit_destination_path(@destination) %> |
-<%= link_to 'Back', destinations_path %>
+			<% if @destination.flights.any? -%>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Flights</h3>
+				</div>
+				<!-- <div class="panel-body"></div> -->
+				<div class="list-group">
+					<% @destination.flights.each do |flight| -%>
+					<%= link_to flight, flight, class: 'list-group-item' -%>
+					<% end -%>
+				</div>
+			</div>
+			<% end -%>
+
+		</div>
+
+	</div>
+
+	<% if is_admin? -%>
+	<hr>
+	<%= link_to 'Edit', edit_admin_destination_path(@destination) %> |
+	<%= link_to 'Back', admin_destinations_path %>
+	<% end -%>
+
+</div>

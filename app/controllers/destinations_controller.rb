@@ -4,7 +4,7 @@ class DestinationsController < ApplicationController
   # GET /destinations
   # GET /destinations.json
   def index
-    @destinations = Destination.all
+    @destinations = Destination.page(params[:Page])
   end
 
   # GET /destinations/1
@@ -64,7 +64,7 @@ class DestinationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_destination
-      @destination = Destination.find(params[:id])
+      @destination = Destination.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
