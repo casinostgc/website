@@ -16,6 +16,7 @@ class Flight < ActiveRecord::Base
 
 	# scopes
 	default_scope { where( "departing_at > ?", Time.now ) }
+	
 	scope :unique_dates, -> {
 		select("date(departing_at) AS departing_at_date").distinct
 		.map(&:departing_at_date).sort
@@ -27,7 +28,7 @@ class Flight < ActiveRecord::Base
 	}
 	scope :departing_airports, -> {
 		select(:departing_airport).distinct
-		.map(&:departing_airport_str).sort
+		.map(&:select_departing_airport).sort
 	}
 
 	# callbacks
@@ -65,8 +66,8 @@ class Flight < ActiveRecord::Base
 	end
 
 	# instance methods
-	def departing_airport_str
-		"#{self.departing_airport.upcase} - #{WorldAirports.iata(self.departing_airport).name}"
+	def select_departing_airport
+		["#{self.departing_airport.upcase} - #{WorldAirports.iata(self.departing_airport).name}", self.departing_airport]
 	end
 
 	# filters

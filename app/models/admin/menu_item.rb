@@ -23,7 +23,7 @@ class Admin::MenuItem < ActiveRecord::Base
 	# filters
 
 	# validations
-	validates :value, presence: true
+	validates :text, presence: true
 	validates :page_id, presence: { unless: :href? }
 
 end

@@ -7,11 +7,7 @@ module Content
 
 	def rendered_content
 		if self.content
-			rendered = self.content.gsub(/\[(.*?)\]/) { |s|
-				shortcode = s[1..-2]
-				generateShortcodeContent(shortcode)
-			}
-			rendered.html_safe
+			self.content.gsub(/\[(.*?)\]/) { |s| generateShortcodeContent(s[1..-2]) }.html_safe
 		else
 			nil
 		end

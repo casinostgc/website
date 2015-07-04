@@ -40,7 +40,7 @@
 		<div class="col-sm-7">
 			<h4>The Grand Collection of "On Land" Casinos</h4>
 			<p>
-				The Grand Collection offers “Very V.I.P” Group Departures to great <%= link_to 'Gaming Locations', '#destinations_url', class: 'btn btn-default btn-xs' -%> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
+				The Grand Collection offers “Very V.I.P” Group Departures to great <%= link_to 'Gaming Locations', destinations_url, class: 'btn btn-default btn-xs' -%> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
 			</p>
 			<h4>The Grand Collection of Cruise Expereience & Gaming "At Sea"</h4>
 			<p>
@@ -49,7 +49,7 @@
 			<hr class="visible-xs-block">
 		</div>
 		<div class="col-sm-5">
-			<h3 class="text-center"><%= fa_icon('calendar') -%> Upcoming Events</h3>
+			<h3 class="text-center"><%#= fa_icon('calendar') -%> Upcoming Events</h3>
 
 			<%# if @events.any? -%>
 			<ul class="media-list">
@@ -67,7 +67,7 @@
 				<%# end -%>
 			</ul>
 			<div class="pull-right">
-				<%= link_to raw('More Events'+fa_icon('calendar')), '#events_url', class: 'btn btn-primary' -%>
+				<%= link_to raw('More Events '+fa_icon('calendar')), '#events_url', class: 'btn btn-primary' -%>
 			</div>
 			<%# else -%>
 			<p class="lead text-muted text-center">
