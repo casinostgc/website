@@ -16,6 +16,5 @@
 //= require froala_editor.min.js
 //= require plugins/lists.min.js
 //= require cocoon
-//= require turbolinks
 //= require bootstrap.min
 //= require_tree .

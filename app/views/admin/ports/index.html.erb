@@ -1,0 +1,28 @@
+<h1>Listing ports</h1>
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Location</th>
+				<th colspan="2"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @ports.each do |port| %>
+			<tr>
+				<td><%= link_to port.name, edit_admin_port_path(port) %></td>
+				<td><%= port.location %></td>
+				<td><%= link_to 'Show', port %></td>
+				<td><%= link_to 'Destroy', [:admin, port], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+<br>
+
+<%= link_to 'New Port', new_admin_port_path %>

@@ -1,37 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
 
-<h1>Listing Admin Menu Items</h1>
+	<div class="col-sm-10 col-sm-offset-1">
 
-<table>
-  <thead>
-    <tr>
-      <th>Href</th>
-      <th>Icon</th>
-      <th>Position</th>
-      <th>Text</th>
-      <th>Page</th>
-      <th>Blank target</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+		<ul class="list-group" id="sortableMenuItems" data-sort-url="<%= sort_admin_menu_items_url -%>">
+			<% @menu_items.each do |menu_item| %>
 
-  <tbody>
-    <% @admin_menu_items.each do |admin_menu_item| %>
-      <tr>
-        <td><%= admin_menu_item.href %></td>
-        <td><%= admin_menu_item.icon %></td>
-        <td><%= admin_menu_item.position %></td>
-        <td><%= admin_menu_item.text %></td>
-        <td><%= admin_menu_item.page %></td>
-        <td><%= admin_menu_item.blank_target %></td>
-        <td><%= link_to 'Show', admin_menu_item %></td>
-        <td><%= link_to 'Edit', edit_admin_menu_item_path(admin_menu_item) %></td>
-        <td><%= link_to 'Destroy', admin_menu_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+			<%= content_tag_for :li, menu_item, class: 'list-group-item' do -%>
 
-<br>
+			<%= link_to fa_icon('arrows-v'), '#', class: 'draggable btn btn-xs btn-default disabled' -%>
 
-<%= link_to 'New Menu item', new_admin_menu_item_path %>
+			<span class="pull-right">
+				<%= link_to fa_icon('pencil'), edit_admin_menu_item_path(menu_item), class: 'btn btn-xs btn-warning' -%>
+				<%= link_to fa_icon('remove'), menu_item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' -%>
+			</span>
+
+			<%= fa_icon(menu_item.icon) if menu_item.icon -%>
+			<%= menu_item.text %>
+
+			<% end -%>
+
+			<% end %>
+			<%= link_to fa_icon('plus'), new_admin_menu_item_path, class: 'list-group-item text-center' -%>
+		</ul>
+	</div>
+
+</div>

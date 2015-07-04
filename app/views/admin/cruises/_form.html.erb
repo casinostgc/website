@@ -1,0 +1,53 @@
+<%= form_for [:admin, @cruise], html: {multipart: true} do |f| %>
+<% if @cruise.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@cruise.errors.count, "error") %> prohibited this cruise from being saved:</h2>
+
+	<ul>
+		<% @cruise.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<%= render 'admin/admin/images/pictures_upload', f: f -%>
+
+<div class="field">
+	<%= f.label :title %><br>
+	<%= f.text_field :title %>
+</div>
+<div class="form-group">
+	<%= f.label :content %>
+	<%= f.text_area :content, class: 'froala_content' %>
+</div>
+<div class="field">
+	<%= f.label :venue_id %><br>
+	<%= f.collection_select :venue_id, Venue.only_cruises, :id, :name, {prompt: 'Select Venue'}, {class: 'form-control'} %>
+</div>
+
+<h3>Ports of Call</h3>
+
+<table class="table table-striped table-condensed" id="port_of_calls">
+	<thead>
+		<tr>
+			<th>Port</th>
+			<th>Arrives</th>
+			<th>Departs</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= f.fields_for :port_of_calls do |pocs| %>
+		<%= render 'port_of_call_fields', f: pocs -%>
+		<% end -%>
+	</tbody>
+</table>
+
+<%= link_to_add_association 'Add Port of Call', f, :port_of_calls, 'data-association-insertion-node' => '#port_of_calls tbody', 'data-association-insertion-method' => 'append', class: 'btn btn-info btn-xs' %>
+
+<hr>
+<div class="actions">
+	<%= f.submit nil, class: 'btn btn-primary' %>
+</div>
+<% end %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @port.name %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @port.slug %>
+</p>
+
+<p>
+  <strong>content:</strong>
+  <%= @port.content %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @port.location %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @port.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @port.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_admin_port_path(@port) %> |
+<%= link_to 'Back', admin_ports_path %>

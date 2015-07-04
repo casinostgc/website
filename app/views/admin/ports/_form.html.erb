@@ -1,0 +1,36 @@
+<%= form_for [:admin, @port], html: {multipart: true} do |f| %>
+<% if @port.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@port.errors.count, "error") %> prohibited this port from being saved:</h2>
+
+	<ul>
+		<% @port.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<%= render 'admin/admin/images/pictures_upload', f: f -%>
+
+<div class="field">
+	<%= f.label :name %><br>
+	<%= f.text_field :name %>
+</div>
+<div class="field">
+	<%= f.label :slug %><br>
+	<%= f.text_field :slug %>
+</div>
+<div class="field">
+	<%= f.label :content %><br>
+	<%= f.text_area :content, class: 'froala_content' %>
+</div>
+<div class="field">
+	<%= f.label :location %><br>
+	<%= f.text_field :location %>
+</div>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>

@@ -1,41 +1,52 @@
-<%= form_for(@admin_menu_item) do |f| %>
-  <% if @admin_menu_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@admin_menu_item.errors.count, "error") %> prohibited this admin_menu_item from being saved:</h2>
+<%= form_for [@menu_item] do |f| %>
+<% if @menu_item.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
 
-      <ul>
-      <% @admin_menu_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @menu_item.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :href %><br>
-    <%= f.text_field :href %>
-  </div>
-  <div class="field">
-    <%= f.label :icon %><br>
-    <%= f.text_field :icon %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.number_field :position %>
-  </div>
-  <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_field :text %>
-  </div>
-  <div class="field">
-    <%= f.label :page_id %><br>
-    <%= f.text_field :page_id %>
-  </div>
-  <div class="field">
-    <%= f.label :blank_target %><br>
-    <%= f.check_box :blank_target %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="form-group">
+	<%= f.label :text, 'Label' %><br>
+	<%= f.text_field :text, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+	<%= f.label :page_id, 'Link To' %>
+	<%= f.collection_select :page_id, @pages, :id, :title, {include_blank: '- Custom URL'}, class: 'form-control' -%>
+
+</div>
+
+<div class="form-group">
+	<%= f.label :href, 'Custom URL' %>
+	<%= f.text_field :href, class: 'form-control', disabled: true %>
+</div>
+
+<div class="checkbox">
+	<label>
+		<%= f.check_box :blank_target -%> Open link in new window?
+	</label>
+</div>
+
+<div class="form-group">
+	<%= f.label :icon %>
+	<div class="input-group">
+		<span class="input-group-addon" id="basic-addon1">
+			<i id="iconPreview" class="fa fa-fw fa-<%#= @menu_item.icon.present? ? @menu_item.icon : @icons.first -%>"></i>
+		</span>
+		<%#= f.select :icon, @icons, {}, {class: 'form-control'} -%>
+	</div>
+	<span class="help-block pull-right">
+		<%= link_to 'Icon List', 'http://fortawesome.github.io/Font-Awesome/icons/', target: '_blank' -%>
+	</span>
+</div>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
 <% end %>
