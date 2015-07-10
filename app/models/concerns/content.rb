@@ -13,10 +13,10 @@ module Content
 		end
 	end
 
-	def generateShortcodeContent(shortcodeName)
-		ActionView::Base.new(Rails.configuration.paths["app/views"].first).render(partial: "layouts/shortcodes/#{shortcodeName}")
+	def generateShortcodeContent(shortcodeStr)
+		ActionView::Base.new(Rails.configuration.paths["app/views"].first).render(partial: "layouts/shortcodes/#{shortcodeStr}")
 	rescue
-		return "[#{shortcodeName}]"
+		return "[#{shortcodeStr}]"
 	end
 
 end

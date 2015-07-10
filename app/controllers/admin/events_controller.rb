@@ -1,46 +1,68 @@
 class Admin::EventsController < Admin::AdminController
 
-	# include PictureBuilder
-
 	before_action :set_event, only: [:edit, :update, :destroy]
 
-	respond_to :html
-
 	def index
-		@events = Event.all.page(params[:page])
+		@events = type_class.all
 	end
 
 	def new
-		@event = Event.new
-		build_pictures @event
+		@event = type_class.new
 	end
 
 	def edit
-		build_pictures @event
 	end
 
 	def create
-		@event = Event.new(event_params)
-		@event.save
-		respond_with(@event)
+		@event = type_class.new(event_params)
+
+		respond_to do |format|
+			if @event.save
+				format.html { redirect_to @event, notice: 'Event was successfully created.' }
+				format.json { render :show, status: :created, location: @event }
+			else
+				format.html { render :new }
+				format.json { render json: @event.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def update
-		@event.update(event_params)
-		respond_with(@event)
+		respond_to do |format|
+			if @event.update(event_params)
+				format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+				format.json { render :show, status: :ok, location: @event }
+			else
+				format.html { render :edit }
+				format.json { render json: @event.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def destroy
 		@event.destroy
-		redirect_to events_url, notice: 'Event was successfully destroyed.'
+		respond_to do |format|
+			format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+			format.json { head :no_content }
+		end
 	end
 
 	private
+
+	def type_class
+		if set_event.present?
+			set_event.class.constantize
+		else
+			Event.types.include?(params[:type]) ? params[:type].constantize : Event.all
+		end
+	end
+
 	def set_event
 		@event = Event.find(params[:id])
 	end
 
 	def event_params
-		params.require(:event).permit(:title, :content, :start_at, :end_at, :venue_id, :image_id)
+		params.require(:event).permit(:title, :slug, :venue_id, :host, :start_at, :end_at, :type, :content)
 	end
+
 end

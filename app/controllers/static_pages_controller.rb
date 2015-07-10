@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
-  def index
-  end
+
+	def index
+		@events = Event.all
+	end
+	
 end

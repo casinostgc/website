@@ -14,13 +14,13 @@
 
 		<div class="col-md-4 col-md-pull-8 col-sm-6 col-sm-pull-6">
 
-			<% if @destination.first_image -%>
+			<%# if @destination.first_image -%>
 			<div class="thumbnail">
-				<%= image_tag @destination.first_image -%>
+				<%#= image_tag @destination.first_image -%>
 			</div>
-			<% end -%>
+			<%# end -%>
 
-			<% if @destination.casinos.any? -%>
+			<%# if @destination.casinos.any? -%>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Casinos</h3>
@@ -30,12 +30,12 @@
 					<div id="casinosMap" class="gmap"></div>
 				</div>
 				<div class="list-group">
-					<% @destination.casinos.each do |casino| -%>
-					<%= link_to casino.name, casino, class: 'casino list-group-item', data: {lat: casino.latitude, lng: casino.longitude} -%>
-					<% end -%>
+					<%# @destination.casinos.each do |casino| -%>
+					<%#= link_to casino.name, casino, class: 'casino list-group-item', data: {lat: casino.latitude, lng: casino.longitude} -%>
+					<%# end -%>
 				</div>
 			</div>
-			<% end -%>
+			<%# end -%>
 
 			<% if @destination.flights.any? -%>
 			<div class="panel panel-default">

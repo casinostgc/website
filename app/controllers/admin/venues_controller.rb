@@ -12,11 +12,11 @@ class Admin::VenuesController < Admin::AdminController
 
 	def new
 		@venue = Venue.new
-		build_pictures @venue
+		# build_pictures @venue
 	end
 
 	def edit
-		build_pictures @venue
+		# build_pictures @venue
 	end
 
 	def create
@@ -60,6 +60,6 @@ class Admin::VenuesController < Admin::AdminController
 	end
 
 	def venue_params
-		params.require(:venue).permit(:name, :slug, :address, :cruise_line, :content)
+		params.require(:venue).permit(:name, :slug, :address, :type, :content)
 	end
 end

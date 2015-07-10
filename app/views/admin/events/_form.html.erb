@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= render 'admin/admin/images/pictures_upload', f: f -%>
+  <%#= render 'admin/admin/images/pictures_upload', f: f -%>
 
   <div class="field">
     <%= f.label :title %><br>
@@ -34,8 +34,12 @@
     <%= f.number_field :venue_id %>
   </div>
   <div class="field">
-    <%= f.label :image_id %><br>
-    <%= f.number_field :image_id %>
+    <%= f.label :host %><br>
+    <%= f.text_field :host %>
+  </div>
+    <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
   </div>
   <div class="actions">
     <%= f.submit %>

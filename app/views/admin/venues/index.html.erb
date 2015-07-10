@@ -7,7 +7,7 @@
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Cruise Line</th>
+				<th>Type</th>
 				<th colspan="2"></th>
 			</tr>
 		</thead>
@@ -16,9 +16,9 @@
 			<% @venues.each do |venue| %>
 			<tr>
 				<td><%= link_to venue.name, edit_admin_venue_path(venue) %></td>
-				<td><%= venue.cruise_line %></td>
-				<td><%= link_to 'Show', venue %></td>
-				<td><%= link_to 'Destroy', [:admin, venue], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<td><%= venue.type %></td>
+				<td><%= link_to 'Show', venue_path(venue) %></td>
+				<td><%#= link_to 'Destroy', [:admin, venue], method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			</tr>
 			<% end %>
 		</tbody>

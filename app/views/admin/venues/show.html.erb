@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
 	<strong>Name:</strong>
@@ -11,31 +10,31 @@
 </p>
 
 <p>
-	<strong>Cruise Line:</strong>
-	<%= @venue.cruise_line %>
+	<strong>Type:</strong>
+	<%= @venue.type %>
 </p>
 
 <%= @venue.rendered_content %>
 
 
 <p>
-	<% if @venue.cruise_line -%>
+	<%# if @venue.cruise_line -%>
 	<h4>Upcoming Cruises</h4>
 	<ul class="list-group">
-		<% @venue.cruises.each do |cruise| %>
-		<%= link_to cruise.title, cruise, class: 'list-group-item' -%>
-		<% end -%>
+		<%# @venue.cruises.each do |cruise| %>
+		<%#= link_to cruise.title, cruise, class: 'list-group-item' -%>
+		<%# end -%>
 	</ul>
-	<% else -%>
+	<%# else -%>
 	<h4>Upcoming Events</h4>
 	<ul class="list-group">
-		<% @venue.events.each do |event| %>
-		<%= link_to event.title, event, class: 'list-group-item' -%>
-		<% end -%>
+		<%# @venue.events.each do |event| %>
+		<%#= link_to event.title, event, class: 'list-group-item' -%>
+		<%# end -%>
 	</ul>
 	<% end -%>
 </p>
 
 
-<%= link_to 'Edit', edit_admin_venue_path(@venue) %> |
-<%= link_to 'Back', admin_venues_path %>
+<%#= link_to 'Edit', edit_admin_venue_path(@venue) %> |
+<%#= link_to 'Back', admin_venues_path %>

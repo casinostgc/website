@@ -13,12 +13,12 @@ class Admin::PortsController < Admin::AdminController
 
 	def new
 		@port = Port.new
-		build_pictures @port
+		# build_pictures @port
 		respond_with(@port)
 	end
 
 	def edit
-		build_pictures @port
+		# build_pictures @port
 	end
 
 	def create

@@ -13,21 +13,21 @@
 <div class="container">
 
 	<div class="row">
-		<% Destination.featured.each do |destination| -%>
+		<%# Destination.featured.each do |destination| -%>
 
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail auto-height" style="">
-				<a class="destination-thumb" href="<%= destination_path(destination) -%>" style="display: block; height: 150px; background: url('<%= destination.pictures.first.image_url -%>') center center; background-size: cover;"></a>
+				<a class="destination-thumb" href="<%#= destination_path(destination) -%>" style="display: block; height: 150px; background: url('<%#= destination.pictures.first.image_url -%>') center center; background-size: cover;"></a>
 				<div class="caption">
 					<h4>
-					<%= destination.name -%>
+					<%#= destination.name -%>
 						<!-- <br><small>Theme Park</small> -->
 					</h4>
 				</div>
 			</div>
 		</div>
 
-		<% end -%>
+		<%# end -%>
 	</div>
 
 	<table class="table table-striped">
@@ -44,9 +44,9 @@
 				<td><%= link_to destination.name, destination -%></td>
 				<td class="small">
 				<ul class="list-inline">
-				<% destination.casinos.each do |casino| -%>
-				<%= content_tag :li, link_to(casino.name, casino) -%>
-				<% end -%>
+				<%# destination.casinos.each do |casino| -%>
+				<%#= content_tag :li, link_to(casino.name, casino) -%>
+				<%# end -%>
 				</ul>
 				</td>
 

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<strong>Name:</strong>
+	<%= @venue.name %>
+</p>
+
+<p>
+	<strong>Address:</strong>
+	<%= @venue.address %>
+</p>
+
+<p>
+	<strong>Cruise Line:</strong>
+	<%#= @venue.cruise_line %>
+</p>
+
+<%#= @venue.rendered_content %>
+
+
+<p>
+	<%# if @venue.cruise_line -%>
+	<h4>Upcoming Cruises</h4>
+	<ul class="list-group">
+		<%# @venue.cruises.each do |cruise| %>
+		<%#= link_to cruise.title, cruise, class: 'list-group-item' -%>
+		<%# end -%>
+	</ul>
+	<%# else -%>
+	<h4>Upcoming Events</h4>
+	<ul class="list-group">
+		<% @venue.events.each do |event| %>
+		<%= link_to event.title, venue_event_path(@venue, event), class: 'list-group-item' -%>
+		<% end -%>
+	</ul>
+	<%# end -%>
+</p>
+
+
+<%#= link_to 'Edit', edit_admin_venue_path(@venue) %> |
+<%#= link_to 'Back', admin_venues_path %>

@@ -1,0 +1,3 @@
+class Cruise < Event
+	
+end
