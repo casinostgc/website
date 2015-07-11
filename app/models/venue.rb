@@ -11,8 +11,8 @@ class Venue < ActiveRecord::Base
 
 	default_scope { group(:type).order(name: :asc) }
 
-	scope :only_cruises, -> { where(cruise_line: true) }
-	scope :only_events, -> { where(cruise_line: false) }
+	# scope :only_cruises, -> { where(cruise_line: true) }
+	# scope :only_events, -> { where(cruise_line: false) }
 
 	extend FriendlyId
 	friendly_id :name, use: :slugged

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
 	before_action :set_event, only: [:show]
+	before_action :set_type
 
 	def index
 		@events = type_class.all
@@ -11,12 +12,20 @@ class EventsController < ApplicationController
 
 	private
 
+	def type
+		Event.types.include?(params[:type]) ? params[:type] : "Event"
+	end
+
 	def type_class
-		Event.types.include?(params[:type]) ? params[:type].constantize : Event.only_events
+		type.constantize
+	end
+
+	def set_type
+		@type = type
 	end
 
 	def set_event
-		@event = type_class.find(params[:id])
+		@event = Event.find(params[:id])
 	end
 
 	# def event_params

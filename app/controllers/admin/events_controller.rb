@@ -1,6 +1,7 @@
 class Admin::EventsController < Admin::AdminController
 
 	before_action :set_event, only: [:edit, :update, :destroy]
+	before_action :set_type
 
 	def index
 		@events = type_class.all
@@ -18,7 +19,7 @@ class Admin::EventsController < Admin::AdminController
 
 		respond_to do |format|
 			if @event.save
-				format.html { redirect_to @event, notice: 'Event was successfully created.' }
+				format.html { redirect_to edit_admin_event_path(@event), notice: 'Event was successfully created.' }
 				format.json { render :show, status: :created, location: @event }
 			else
 				format.html { render :new }
@@ -30,7 +31,7 @@ class Admin::EventsController < Admin::AdminController
 	def update
 		respond_to do |format|
 			if @event.update(event_params)
-				format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+				format.html { redirect_to edit_admin_event_path(@event), notice: 'Event was successfully updated.' }
 				format.json { render :show, status: :ok, location: @event }
 			else
 				format.html { render :edit }
@@ -42,19 +43,23 @@ class Admin::EventsController < Admin::AdminController
 	def destroy
 		@event.destroy
 		respond_to do |format|
-			format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+			format.html { redirect_to admin_events_url, notice: 'Event was successfully destroyed.' }
 			format.json { head :no_content }
 		end
 	end
 
 	private
 
+	def type
+		Event.types.include?(params[:type]) ? params[:type] : "Event"
+	end
+
 	def type_class
-		if set_event.present?
-			set_event.class.constantize
-		else
-			Event.types.include?(params[:type]) ? params[:type].constantize : Event.all
-		end
+		type.constantize
+	end
+
+	def set_type
+		@type = type
 	end
 
 	def set_event
@@ -62,7 +67,7 @@ class Admin::EventsController < Admin::AdminController
 	end
 
 	def event_params
-		params.require(:event).permit(:title, :slug, :venue_id, :host, :start_at, :end_at, :type, :content)
+		params.require(type.underscore.to_sym).permit(:title, :slug, :venue_id, :host, :start_at, :end_at, :type, :content)
 	end
 
 end

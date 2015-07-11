@@ -13,34 +13,37 @@
 
   <%#= render 'admin/admin/images/pictures_upload', f: f -%>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
+  <div class="form-group">
+    <%= f.label :content %>
     <%= f.text_area :content, class: 'froala_content' %>
   </div>
-  <div class="field">
-    <%= f.label :start_at %><br>
+  <div class="form-group">
+    <%= f.label :start_at %>
     <%= f.datetime_select :start_at %>
   </div>
-  <div class="field">
-    <%= f.label :end_at %><br>
+  <div class="form-group">
+    <%= f.label :end_at %>
     <%= f.datetime_select :end_at %>
   </div>
-  <div class="field">
-    <%= f.label :venue_id %><br>
-    <%= f.number_field :venue_id %>
+  <div class="form-group">
+    <%= f.label :venue_id %>
+    <%= f.number_field :venue_id, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :host %><br>
-    <%= f.text_field :host %>
+  <div class="form-group">
+    <%= f.label :host %>
+    <%= f.text_field :host, class: 'form-control' %>
   </div>
-    <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <div class="form-group">
+    <%= f.label :type %>
+    <%= f.text_field :type, class: 'form-control' %>
   </div>
+
+  <%= render 'admin/cruises/port_of_call_fields', f: f if @event.type == 'Cruise' -%>
+
   <div class="actions">
     <%= f.submit %>
   </div>

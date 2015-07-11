@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
 	
 	default_scope { where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
 
-	scope :only_events, -> { where.not(type: self.types) }
+	# scope :only_events, -> { where.not(type: self.types) }
 
 	belongs_to :venue
 
@@ -27,8 +27,10 @@ class Event < ActiveRecord::Base
 
 	class << self
 		def types
-			%w(Cruise)
+			%w(Cruise LandEvent)
 		end
 	end
 	
 end
+
+class LandEvent < Event; end;

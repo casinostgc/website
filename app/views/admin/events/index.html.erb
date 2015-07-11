@@ -13,7 +13,7 @@
 		<tbody>
 			<% @events.each do |event| %>
 			<tr>
-				<td><%= event.title -%></td>
+				<td><%= link_to event.title, sti_event_path(event.type, event, :edit) -%></td>
 				<td><%#= event.venue -%></td>
 				<td><%= event.date_span -%></td>
 			</tr>

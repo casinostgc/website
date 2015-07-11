@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707193528) do
+ActiveRecord::Schema.define(version: 20150711160751) do
 
   create_table "admin_menu_items", force: :cascade do |t|
     t.string   "href"
@@ -89,6 +89,19 @@ ActiveRecord::Schema.define(version: 20150707193528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "port_of_calls", force: :cascade do |t|
+    t.datetime "arrives_at"
+    t.datetime "departs_at"
+    t.integer  "position"
+    t.integer  "cruise_id"
+    t.integer  "port_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "port_of_calls", ["cruise_id"], name: "index_port_of_calls_on_cruise_id"
+  add_index "port_of_calls", ["port_id"], name: "index_port_of_calls_on_port_id"
 
   create_table "ports", force: :cascade do |t|
     t.string   "name"

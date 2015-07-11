@@ -9,9 +9,11 @@ Rails.application.routes.draw do
 	resources :ports, only: [:index, :show]
 	resources :events, only: [:index, :show]
 	resources :cruises, controller: 'events', type: 'Cruise', only: [:index, :show]
+	resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', only: [:index, :show]
 	resources :venues, only: [:index, :show] do
 		resources :events, only: [:index, :show]
 		resources :cruises, controller: 'events', type: 'Cruise', only: [:index, :show]
+		resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', only: [:index, :show]
 	end
 	
 	get '/:id', to: "pages#show", as: 'short_page'
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
 		end
 		resources :events, except: [:show]
 		resources :cruises, controller: 'events', type: 'Cruise', except: [:show]
+		resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', except: [:show]
 		resources :destinations, except: [:show]
 		resources :casinos, except: [:show]
 		resources :flights, except: [:show] do

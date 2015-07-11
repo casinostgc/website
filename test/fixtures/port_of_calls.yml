@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  arrives_at: 2015-07-11 12:07:51
+  departs_at: 2015-07-11 12:07:51
+  position: 1
+  cruise_id: 
+  port_id: 
+
+two:
+  arrives_at: 2015-07-11 12:07:51
+  departs_at: 2015-07-11 12:07:51
+  position: 1
+  cruise_id: 
+  port_id: 
