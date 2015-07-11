@@ -1,11 +1,12 @@
 class Cruise < Event
 
-	# accepts_nested_attributes_for :port_of_calls, reject_if: proc { |attributes| attributes['port_id'].blank? }, allow_destroy: true
 
 	# after_save :update_times
 
-	# has_many :port_of_calls
-	# has_many :ports, through: :port_of_calls
+	has_many :port_of_calls
+	has_many :ports, through: :port_of_calls
+	
+	accepts_nested_attributes_for :port_of_calls, reject_if: proc { |attributes| attributes['port_id'].blank? }, allow_destroy: true
 
 	def update_times
 		self.update_column(:start_at, self.port_of_calls.first.departs_at)

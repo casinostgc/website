@@ -3,8 +3,8 @@ class Port < ActiveRecord::Base
 	# include NestedPictures
 	include Geolocation
 
-	# has_many :port_of_calls
-	# has_many :cruises, through: :port_of_calls
+	has_many :port_of_calls
+	has_many :cruises, through: :port_of_calls
 
 	default_scope { order(name: :asc) }
 

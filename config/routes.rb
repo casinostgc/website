@@ -7,14 +7,9 @@ Rails.application.routes.draw do
 	# resources :casinos, only: [:index, :show]
 	resources :flights, only: [:index, :show]
 	resources :ports, only: [:index, :show]
-	resources :events, only: [:index, :show]
 	resources :cruises, controller: 'events', type: 'Cruise', only: [:index, :show]
 	resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', only: [:index, :show]
-	resources :venues, only: [:index, :show] do
-		resources :events, only: [:index, :show]
-		resources :cruises, controller: 'events', type: 'Cruise', only: [:index, :show]
-		resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', only: [:index, :show]
-	end
+	resources :venues, only: [:index, :show]
 	
 	get '/:id', to: "pages#show", as: 'short_page'
 

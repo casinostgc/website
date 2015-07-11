@@ -30,7 +30,7 @@
 	<h4>Upcoming Events</h4>
 	<ul class="list-group">
 		<% @venue.events.each do |event| %>
-		<%= link_to event.title, venue_event_path(@venue, event), class: 'list-group-item' -%>
+		<%= link_to event.title, event, class: 'list-group-item' -%>
 		<% end -%>
 	</ul>
 	<%# end -%>

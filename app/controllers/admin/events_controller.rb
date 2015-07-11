@@ -67,7 +67,7 @@ class Admin::EventsController < Admin::AdminController
 	end
 
 	def event_params
-		params.require(type.underscore.to_sym).permit(:title, :slug, :venue_id, :host, :start_at, :end_at, :type, :content)
+		params.require(type.underscore.to_sym).permit(:title, :slug, :venue_id, :host, :start_at, :end_at, :content, port_of_calls_attributes: [:id, :port_id, :arrives_at, :departs_at, :_destroy])
 	end
 
 end

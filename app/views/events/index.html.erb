@@ -1,7 +1,7 @@
-<section class="parallax" style="background-image: url('<%= image_url('bg-water.jpg') -%>');">
+<section class="parallax" style="background-image: url('<%= image_url(@background_image) -%>');">
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Events</h1>
+			<%= content_tag :h1, @type.underscore.humanize.pluralize.titleize -%>
 		</div>
 	</div>
 </section>
