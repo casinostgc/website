@@ -4,9 +4,15 @@
 
 $ ->
 
+	# tooltips
 	$('[data-toggle="tooltip"]').tooltip()
 	$('[data-toggle="popover"]').popover
 		trigger: 'hover'
+
+	# destroy remote modals after hidden for refresh
+	$('body').on 'hidden.bs.modal', '#defaultModal', ->
+		$(this).removeData 'bs.modal'
+		return
 
 	# parallax
 	if $(window).width() >= 992

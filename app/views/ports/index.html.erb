@@ -1,35 +1,20 @@
-<h1>Listing Ports</h1>
+<div class="container">
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Slug</th>
-      <th>Location</th>
-      <th>Content</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<header class="page-header">
+		<h1 class="text-center">Port Listing</h1>
+	</header>
 
-  <tbody>
-    <% @ports.each do |port| %>
-      <tr>
-        <td><%= port.name %></td>
-        <td><%= port.slug %></td>
-        <td><%= port.location %></td>
-        <td><%= port.content %></td>
-        <td><%= port.latitude %></td>
-        <td><%= port.longitude %></td>
-        <td><%#= link_to 'Show', port %></td>
-        <td><%#= link_to 'Edit', edit_port_path(port) %></td>
-        <td><%#= link_to 'Destroy', port, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<ul class="text-center list-inline">
+		
+		<% @ports.each do |port| %>
 
-<br>
+		<%= content_tag :li, link_to(port.name, port, data: {toggle: :modal, target: '#defaultModal'}, class: 'btn btn-default btn-xs', style: 'margin-bottom: 5px;') -%>
+
+		<% end -%>
+
+	</ul>
+
+
+</div>
 
 <%#= link_to 'New Port', new_port_path %>

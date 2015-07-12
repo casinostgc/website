@@ -2,22 +2,37 @@
 
 	<header class="page-header">
 		<h1>
-			<%= @event.title %><br>
-			<%= content_tag :small, @event.venue.name -%>
+			<%= @event.title %>
 		</h1>
 	</header>
 
 	<div class="row">
 		
 		<div class="col-sm-4">
+
+			<div class="thumbnail">
+				<%# if @event.first_image -%>
+				<%#= link_to image_tag(@event.first_image), '#', data: {toggle: :modal, target: '#pictureGallery'} -%>
+				<%= link_to image_tag('http://cdn.pursuitist.com/wp-content/uploads/2012/03/cruise-ship.jpg'), '#', data: {toggle: :modal, target: '#pictureGallery'} -%>
+				<%#= render 'layouts/pictures/gallery_modal', instance: @event -%>
+				<%# else -%>
+				<!-- default event image -->
+				<%# end -%>
+			</div>
+
 			<div class="panel panel-default">
 				<header class="panel-heading">
 					<h4 class="panel-title">Details</h4>
 				</header>
 				<div class="panel-body">
 					<p>
+						<strong>Venue:</strong>
+						<%= link_to @event.venue.name, venue_path(@event.venue) %>
+					</p>
+
+					<p>
 						<strong>Host:</strong>
-						<%= @event.host %>
+						<%= link_to @event.host, '#@event.host' %>
 					</p>
 
 					<p>

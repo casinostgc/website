@@ -1,34 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="defaultModalLabel">
+				<%= @port.name %>
+			</h4>
+		</div>
+		<div class="modal-body">
 
-<p>
-  <strong>Name:</strong>
-  <%= @port.name %>
-</p>
+			<%#= image_tag 'https://upload.wikimedia.org/wikipedia/commons/7/73/Peggys_Cove_Nova_Scotia_01.jpg', class: 'img-thumbnail' -%>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @port.slug %>
-</p>
+			<%= @port.rendered_content %>
 
-<p>
-  <strong>Location:</strong>
-  <%= @port.location %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @port.content %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @port.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @port.longitude %>
-</p>
-
-<%= link_to 'Edit', edit_port_path(@port) %> |
-<%= link_to 'Back', ports_path %>
+		</div>
+		<div class="modal-footer">
+			<%= link_to 'Edit', edit_admin_port_path(@port), class: 'btn btn-warning' if is_admin? -%>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+</div>
