@@ -1,11 +1,12 @@
 class Admin::AdminController < ApplicationController
 
 	before_action :authenticate_user!
-	# before_action :authenticate_admin!
+	before_action :authenticate_admin!
 
 	layout 'admin'
 
 	def index
+		redirect_to admin_pages_path
 	end
 
 	private

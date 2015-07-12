@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 	resources :cruises, controller: 'events', type: 'Cruise', only: [:index, :show]
 	resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', only: [:index, :show]
 	resources :venues, only: [:index, :show]
-	
-	get '/:id', to: "pages#show", as: 'short_page'
 
 	namespace :admin do
 		get '/' => 'admin#index', as: :admin
@@ -38,8 +36,9 @@ Rails.application.routes.draw do
 		get '/menus', to: "menu_items#index"
 	end
 
+	get '/:id', to: "pages#show", as: 'short_page'
+
 	root 'static_pages#index'
 	# root 'pages#root'
-
 
 end

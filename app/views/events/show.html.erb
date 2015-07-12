@@ -1,42 +1,48 @@
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Slug:</strong>
-  <%= @event.slug %>
-</p>
+	<header class="page-header">
+		<h1>
+			<%= @event.title %><br>
+			<%= content_tag :small, @event.venue.name -%>
+		</h1>
+	</header>
 
-<p>
-  <strong>Venue:</strong>
-  <%= @event.venue %>
-</p>
+	<div class="row">
+		
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<header class="panel-heading">
+					<h4 class="panel-title">Details</h4>
+				</header>
+				<div class="panel-body">
+					<p>
+						<strong>Host:</strong>
+						<%= @event.host %>
+					</p>
 
-<p>
-  <strong>Host:</strong>
-  <%= @event.host %>
-</p>
+					<p>
+						<strong>Start at:</strong>
+						<%= @event.start_at %>
+					</p>
 
-<p>
-  <strong>Start at:</strong>
-  <%= @event.start_at %>
-</p>
+					<p>
+						<strong>End at:</strong>
+						<%= @event.end_at %>
+					</p>
+				</div>
+			</div>
+		</div>
 
-<p>
-  <strong>End at:</strong>
-  <%= @event.end_at %>
-</p>
+		<div class="col-sm-8">
+			<%= @event.rendered_content %>
 
-<p>
-  <strong>Type:</strong>
-  <%= @event.type %>
-</p>
+			<%= render 'ports' if @event.type == 'Cruise' -%>
+		</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @event.content %>
-</p>
 
-<%= link_to 'Edit', sti_event_path(@event.type, @event, :edit) %> |
-<%= link_to 'Back', sti_event_path(@event.type) %>
+	</div>
+
+	<%= link_to 'Edit', sti_event_path(@event.type, @event, :edit) %> |
+	<%= link_to 'Back', sti_event_path(@event.type) %>
+
+</div>
