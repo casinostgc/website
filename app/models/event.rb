@@ -1,12 +1,10 @@
 class Event < ActiveRecord::Base
 
 	include Content
+	include Imageable
 	# include Datetimeformat
-	# include NestedPictures
 	
-	default_scope { where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
-
-	# scope :only_events, -> { where.not(type: self.types) }
+	default_scope { includes(:venue).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
 
 	belongs_to :venue
 

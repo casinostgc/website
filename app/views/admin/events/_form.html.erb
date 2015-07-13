@@ -42,6 +42,13 @@
 	<%= f.text_field :host, class: 'form-control' %>
 </div>
 
+<div class="row">
+	<%= f.fields_for :pictures do |pics| -%>
+	<%= render 'admin/pictures/nested_fields', obj: f.object, f: pics -%>
+	<% end -%>
+</div>
+
+<%#= render 'admin/pictures/modal', f: f -%>
 <%= render 'poc_modal', f: f if @event.type == 'Cruise' -%>
 
 <div class="actions">

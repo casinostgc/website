@@ -16,5 +16,7 @@
 //= require froala_editor.min.js
 //= require plugins/lists.min.js
 //= require cocoon
+//= require underscore
+//= require gmaps/google
 //= require bootstrap.min
 //= require_tree .

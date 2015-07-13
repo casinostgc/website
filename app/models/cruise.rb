@@ -1,7 +1,8 @@
 class Cruise < Event
 
+	default_scope { includes(:port_of_calls).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
 
-	# after_save :update_times
+	after_save :update_times
 
 	has_many :port_of_calls
 	has_many :ports, through: :port_of_calls

@@ -8,17 +8,14 @@
 
 	<div class="row">
 		
-		<div class="col-sm-4">
-
-			<div class="thumbnail">
-				<%# if @event.first_image -%>
-				<%#= link_to image_tag(@event.first_image), '#', data: {toggle: :modal, target: '#pictureGallery'} -%>
-				<%= link_to image_tag('http://cdn.pursuitist.com/wp-content/uploads/2012/03/cruise-ship.jpg'), '#', data: {toggle: :modal, target: '#pictureGallery'} -%>
-				<%#= render 'layouts/pictures/gallery_modal', instance: @event -%>
-				<%# else -%>
-				<!-- default event image -->
-				<%# end -%>
-			</div>
+		<aside class="col-sm-4">
+			<% if @event.pictures.any? -%>
+			<figure class="thumbnail">
+				<%= link_to image_tag(@event.pictures.first.gh_url), sti_event_pictures_path(@event), data: {toggle: :modal, target: '#defaultModal'} -%>
+			</figure>
+			<% else -%>
+			<!-- default event image -->
+			<% end -%>
 
 			<div class="panel panel-default">
 				<header class="panel-heading">
@@ -46,7 +43,10 @@
 					</p>
 				</div>
 			</div>
-		</div>
+
+
+
+		</aside>
 
 		<div class="col-sm-8">
 			<%= @event.rendered_content %>
@@ -57,7 +57,11 @@
 
 	</div>
 
+	<% if is_admin? -%>
+	<hr>
 	<%= link_to 'Edit', sti_event_path(@event.type, @event, :edit) %> |
 	<%= link_to 'Back', sti_event_path(@event.type) %>
+	<% end -%>
+	
 
 </div>

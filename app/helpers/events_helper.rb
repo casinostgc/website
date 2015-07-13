@@ -1,5 +1,9 @@
 module EventsHelper
 
+	def sti_event_pictures_path(event)
+		send "#{event.type.underscore}_pictures_path", event
+	end
+
 	def sti_event_path(type = "event", event = nil, action = nil)
 		send "#{format_sti(action, type, event)}_path", event
 	end

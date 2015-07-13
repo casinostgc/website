@@ -1,37 +1,42 @@
 Rails.application.routes.draw do
 
+	concern :imageable do
+		resources :pictures, only: [:index, :show]
+	end
+	concern :admin_imageable do
+		resources :pictures, except: [:show]
+	end
+
 	devise_for :users
 
 	resources :pages, only: [:show]
-	resources :destinations, only: [:index, :show]
-	# resources :casinos, only: [:index, :show]
+
 	resources :flights, only: [:index, :show]
-	resources :ports, only: [:index, :show]
-	resources :cruises, controller: 'events', type: 'Cruise', only: [:index, :show]
-	resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', only: [:index, :show]
-	resources :venues, only: [:index, :show]
+
+	resources :destinations, :casinos, :ports, :venues, concerns: [:imageable], only: [:index, :show]
+
+	resources :cruises, controller: 'events', type: 'Cruise', concerns: [:imageable], only: [:index, :show]
+	resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', concerns: [:imageable], only: [:index, :show]
 
 	namespace :admin do
 		get '/' => 'admin#index', as: :admin
+
 		resources :admin, only: [:index]
-		resources :pages, except: [:show]
-		resources :menu_items, except: [:show] do
-			collection { post :sort }
-		end
-		resources :events, except: [:show]
-		resources :cruises, controller: 'events', type: 'Cruise', except: [:show]
-		resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', except: [:show]
-		resources :destinations, except: [:show]
-		resources :casinos, except: [:show]
+
+		resources :pages, :events, :pictures, except: [:show]
+
+		resources :destinations, :casinos, :ports, :venues, concerns: [:admin_imageable], except: [:show]
+
+		resources :cruises, controller: 'events', type: 'Cruise', concerns: [:admin_imageable], except: [:show]
+		resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', concerns: [:admin_imageable], except: [:show]
+
 		resources :flights, except: [:show] do
 			collection { post :import }
 		end
-		resources :ports, except: [:show]
-		resources :venues, except: [:show] do
-			# resources :ships
-		end
 
-		# resources :pictures, except: [:show]
+		resources :menu_items, except: [:show] do
+			collection { post :sort }
+		end
 
 		get '/menus', to: "menu_items#index"
 	end

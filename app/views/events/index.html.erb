@@ -11,19 +11,19 @@
 <div class="container">
 
 	<div class="row">
-		<%# Destination.featured.each do |destination| -%>
+		<% @type.constantize.has_image.each do |event| -%>
 		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail auto-height" style="">
-				<a class="destination-thumb" href="<%#= destination_path(destination) -%>" style="display: block; height: 150px; background: url('<%#= destination.pictures.first.image_url -%>') center center; background-size: cover;"></a>
+			<div class="well well-sm">
+				<%= link_to image_tag(event.pictures.first.gh_url, class: 'img-thumbnail'), event -%>
 				<div class="caption">
 					<h4>
-						<%#= destination.name -%>
+						<%= event.title -%>
 						<!-- <br><small>Theme Park</small> -->
 					</h4>
 				</div>
 			</div>
 		</div>
-		<%# end -%>
+		<% end -%>
 	</div>
 
 	<div class="table-responsive">
@@ -31,10 +31,9 @@
 			<thead>
 				<tr>
 					<th>Title</th>
+					<th>Dates</th>
 					<th>Venue</th>
 					<th>Host</th>
-					<th>Dates</th>
-					<th colspan="2"></th>
 				</tr>
 			</thead>
 
@@ -42,11 +41,9 @@
 				<% @events.each do |event| %>
 				<tr>
 					<td><%= link_to event.title, event %></td>
+					<td><%= event.date_span %></td>
 					<td><%= link_to event.venue.name, venue_path(event.venue) %></td>
 					<td><%= event.host %></td>
-					<td><%= event.date_span %></td>
-					<td><%= link_to 'Edit', edit_admin_event_path(event) %></td>
-					<td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 				</tr>
 				<% end %>
 			</tbody>

@@ -1,0 +1,49 @@
+<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="defaultModalLabel">
+				Pictures
+			</h4>
+		</div>
+		<div class="modal-body">
+
+			<div id="pictureGalleryCarousel" class="carousel slide" data-ride="carousel">
+				
+				<ol class="carousel-indicators">
+					<% @pictures.each_with_index do |picture, index| -%>
+					<%= content_tag :li, nil, data: {target: '#pictureGalleryCarousel', slide_to: index}, class: ('active' if index.zero?) -%>
+					<% end -%>
+				</ol>
+
+				<div class="carousel-inner" role="listbox">
+					<% @pictures.each_with_index do |picture, index| -%>
+					<div class="item <%= 'active' if index.zero? -%>">
+						<%= image_tag picture.gh_url, alt: picture.alt, class: 'center-block' -%>
+						<% if picture.title.present? || picture.caption.present? -%>
+						<div class="carousel-caption">
+							<%= content_tag :h3, picture.title if picture.title.present? -%>
+							<%= content_tag :p, picture.caption if picture.caption.present? -%>
+						</div>
+						<% end -%>
+					</div>
+					<% end -%>
+				</div>
+
+				<a class="left carousel-control" href="#pictureGalleryCarousel" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#pictureGalleryCarousel" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<%#= link_to 'Edit', edit_admin_port_path(@port), class: 'btn btn-warning' if is_admin? -%>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+</div>

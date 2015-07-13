@@ -1,19 +1,19 @@
 class PortsController < ApplicationController
-  
-  before_action :set_port, only: [:show, :edit, :update, :destroy]
+	
+	before_action :set_port, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @ports = Port.all
-  end
+	def index
+		@ports = Port.all
+	end
 
-  def show
-    render :show, layout: false
-  end
+	def show
+		render :show, layout: false
+	end
 
-  private
+	private
 
-    def set_port
-      @port = Port.friendly.find(params[:id])
-    end
+	def set_port
+		@port = Port.friendly.find(params[:id])
+	end
 
 end
