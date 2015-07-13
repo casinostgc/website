@@ -70,6 +70,6 @@ class Admin::MenuItemsController < Admin::AdminController
 	end
 
 	def menu_item_params
-		params.require(:menu_item).permit(:href, :text, :icon, :position, :page_id, :blank_target)
+		params.require(:admin_menu_item).permit(:href, :text, :icon, :position, :page_id, :blank_target)
 	end
 end
