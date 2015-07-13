@@ -4,7 +4,7 @@ class CreatePortOfCalls < ActiveRecord::Migration
       t.datetime :arrives_at
       t.datetime :departs_at
       t.integer :position
-      t.belongs_to :cruise, index: true, foreign_key: true
+      t.belongs_to :event, index: true, foreign_key: true
       t.belongs_to :port, index: true, foreign_key: true
 
       t.timestamps null: false

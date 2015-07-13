@@ -4,7 +4,7 @@ class Cruise < Event
 
 	after_save :update_times
 
-	has_many :port_of_calls
+	has_many :port_of_calls, foreign_key: 'event_id'
 	has_many :ports, through: :port_of_calls
 	
 	accepts_nested_attributes_for :port_of_calls, reject_if: proc { |attributes| attributes['port_id'].blank? }, allow_destroy: true

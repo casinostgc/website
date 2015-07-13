@@ -8,6 +8,6 @@
 
 Admin::MenuItem.find_or_create_by(href: "/destinations", icon: "globe", text: "Destinations")
 Admin::MenuItem.find_or_create_by(href: "/casinos", icon: "building", text: "Casinos")
-Admin::MenuItem.find_or_create_by(href: "/events", icon: "calendar", text: "On Land")
+Admin::MenuItem.find_or_create_by(href: "/land-events", icon: "calendar", text: "On Land")
 Admin::MenuItem.find_or_create_by(href: "/cruises", icon: "ship", text: "At Sea")
 Admin::MenuItem.find_or_create_by(href: "/flights", icon: "plane", text: "Flights")

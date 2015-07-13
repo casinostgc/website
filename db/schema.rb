@@ -109,13 +109,13 @@ ActiveRecord::Schema.define(version: 20150712154109) do
     t.datetime "arrives_at"
     t.datetime "departs_at"
     t.integer  "position"
-    t.integer  "cruise_id"
+    t.integer  "event_id"
     t.integer  "port_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "port_of_calls", ["cruise_id"], name: "index_port_of_calls_on_cruise_id"
+  add_index "port_of_calls", ["event_id"], name: "index_port_of_calls_on_event_id"
   add_index "port_of_calls", ["port_id"], name: "index_port_of_calls_on_port_id"
 
   create_table "ports", force: :cascade do |t|

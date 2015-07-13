@@ -1,4 +1,4 @@
-<%#= link_to 'New Event', new_admin_event_path, class: 'btn btn-primary' %>
+<%= link_to "New #{@type}", sti_event_path(@type, nil, :new), class: 'btn btn-primary' %>
 <hr>
 
 <div class="table-responsive">
