@@ -9,7 +9,7 @@ class Venue < ActiveRecord::Base
 
 	delegate :cruises, to: :events
 
-	default_scope { group(:type).order(name: :asc) }
+	default_scope { order(name: :asc) }
 
 	# scope :only_cruises, -> { where(cruise_line: true) }
 	# scope :only_events, -> { where(cruise_line: false) }
@@ -30,4 +30,4 @@ class Venue < ActiveRecord::Base
 
 end
 
-class VenueCruiseLine < Venue; end
+# class VenueCruiseLine < Venue; end

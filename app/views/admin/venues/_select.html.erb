@@ -1,0 +1,3 @@
+<% type ||= @type -%>
+<% selected =  @venue.present? ? @venue.id : @event.try(:venue).try(:id) -%>
+<%= collection_select type.underscore, :venue_id, Venue.all, :id, :name, {selected: selected, include_blank: 'Select Venue'}, class: 'form-control', id: 'select_venue' -%>

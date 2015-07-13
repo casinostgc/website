@@ -17,3 +17,7 @@
 	}
 
 }
+
+.btn-group > .btn:not(:last-of-type) {
+		border-right: solid 1px #222;
+}

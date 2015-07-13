@@ -17,6 +17,23 @@
 	<%= f.label :title %>
 	<%= f.text_field :title, class: 'form-control' %>
 </div>
+
+<div class="form-group">
+	<%= f.label :venue_id %>
+	<div class="input-group">
+		<%= render 'admin/venues/select' -%>
+		<span class="input-group-btn">
+			<%= link_to 'New Venue', new_admin_venue_path(modal: true, type: @type), class: 'btn btn-info', data: {toggle: :modal, target: '#defaultModal'} -%>
+		</span>
+	</div>
+</div>
+
+<div class="btn-group btn-group-justified form-group" role="group">
+	<%= link_to 'Port of Calls', nil, class: 'btn btn-info', data: {toggle: :modal, target: '#portOfCallsModal'} if @event.type == 'Cruise' -%>
+	<%#= link_to 'Pictures', nil, class: 'btn btn-info' -%>
+</div>
+<%= render 'poc_modal', f: f if @event.type == 'Cruise' -%>
+
 <div class="form-group">
 	<%= f.label :content %>
 	<%= f.text_area :content, class: 'froala_content' %>
@@ -33,25 +50,13 @@
 </div>
 <% end -%>
 
-<div class="form-group">
-	<%= f.label :venue_id %>
-	<%= f.number_field :venue_id, class: 'form-control' %>
-</div>
-<div class="form-group">
-	<%= f.label :host %>
-	<%= f.text_field :host, class: 'form-control' %>
-</div>
-
 <div class="row">
 	<%= f.fields_for :pictures do |pics| -%>
 	<%= render 'admin/pictures/nested_fields', obj: f.object, f: pics -%>
 	<% end -%>
 </div>
 
-<%#= render 'admin/pictures/modal', f: f -%>
-<%= render 'poc_modal', f: f if @event.type == 'Cruise' -%>
-
 <div class="actions">
-	<%= f.submit nil, class: 'btn btn-success' %>
+	<%= f.submit nil, class: 'btn btn-primary btn-lg' %>
 </div>
 <% end %>
