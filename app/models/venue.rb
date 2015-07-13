@@ -1,8 +1,8 @@
 class Venue < ActiveRecord::Base
 
 	include Content
-	# include NestedPictures
 	include Geolocation
+	include Imageable
 
 	has_many :events
 	has_many :cruises

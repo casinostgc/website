@@ -23,13 +23,13 @@
 	<div class="input-group">
 		<%= render 'admin/venues/select' -%>
 		<span class="input-group-btn">
-			<%= link_to 'New Venue', new_admin_venue_path(modal: true, type: @type), class: 'btn btn-info', data: {toggle: :modal, target: '#defaultModal'} -%>
+			<%= link_to 'Add Venue', new_admin_venue_path(modal: true, type: @type), class: 'btn btn-info', data: {toggle: :modal, target: '#defaultModal'} -%>
 		</span>
 	</div>
 </div>
 
 <div class="btn-group btn-group-justified form-group" role="group">
-	<%= link_to 'Port of Calls', nil, class: 'btn btn-info', data: {toggle: :modal, target: '#portOfCallsModal'} if @event.type == 'Cruise' -%>
+	<%= link_to 'Port of Calls', '#', class: 'btn btn-info', data: {toggle: :modal, target: '#portOfCallsModal'} if @event.type == 'Cruise' -%>
 	<%#= link_to 'Pictures', nil, class: 'btn btn-info' -%>
 </div>
 <%= render 'poc_modal', f: f if @event.type == 'Cruise' -%>

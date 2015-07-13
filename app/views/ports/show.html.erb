@@ -8,9 +8,11 @@
 		</div>
 		<div class="modal-body">
 
-			<%#= image_tag 'https://upload.wikimedia.org/wikipedia/commons/7/73/Peggys_Cove_Nova_Scotia_01.jpg', class: 'img-thumbnail' -%>
+			<%= image_tag @port.pictures.first.gh_url, class: 'img-responsive col-sm-4 pull-left' if @port.pictures.any? -%>
 
 			<%= @port.rendered_content %>
+
+			<span class="clearfix"></span>
 
 		</div>
 		<div class="modal-footer">

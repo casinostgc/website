@@ -1,8 +1,8 @@
 class Port < ActiveRecord::Base
 
-	# include NestedPictures
 	include Geolocation
 	include Content
+	include Imageable
 
 	has_many :port_of_calls
 	has_many :cruises, through: :port_of_calls
