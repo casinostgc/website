@@ -12,19 +12,19 @@ $ ->
 
 	# enable custom url on select
 	checkPageSelector = ->
-		if $('#menu_item_page_id option:selected').val() == ''
-			$('#menu_item_href').prop 'disabled', false
+		if $('#admin_menu_item_page_id option:selected').val() == ''
+			$('#admin_menu_item_href').prop 'disabled', false
 		else
-			$('#menu_item_href').prop 'disabled', true
-			$('#menu_item_href').val ''
+			$('#admin_menu_item_href').prop 'disabled', true
+			$('#admin_menu_item_href').val ''
 			# $.post( $(this).data('sort-url'), $(this).sortable('serialize') )
 
 	checkPageSelector()
-	$('#menu_item_page_id').change ->
+	$('#admin_menu_item_page_id').change ->
 		checkPageSelector()
-		if $('#menu_item_value').val() == ''
-			$('#menu_item_value').val $(this).find(":selected").text()
+		if $('#admin_menu_item_value').val() == ''
+			$('#admin_menu_item_value').val $(this).find(":selected").text()
 	
 
-	$('#menu_item_icon').change ->
-		$('#iconPreview').attr 'class', 'fa fa-fw fa-'+$(this).find(":selected").text()
+	$('#admin_menu_item_icon').change ->
+		$('#iconPreview').attr 'class', 'fa fa-fw fa-'+$(this).find(":selected").val()

@@ -37,16 +37,16 @@
 	<%= f.label :icon %>
 	<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1">
-			<i id="iconPreview" class="fa fa-fw fa-<%#= @menu_item.icon.present? ? @menu_item.icon : @icons.first -%>"></i>
+			<i id="iconPreview" class="fa fa-fw fa-<%= @menu_item.icon.present? ? @menu_item.icon : @icons.first -%>"></i>
 		</span>
-		<%#= f.select :icon, @icons, {}, {class: 'form-control'} -%>
+		<%= f.select :icon, @icons.map{|i| [i[:name], i[:id]]}, {}, {class: 'form-control'} -%>
 	</div>
 	<span class="help-block pull-right">
-		<%= link_to 'Icon List', 'http://fortawesome.github.io/Font-Awesome/icons/', target: '_blank' -%>
+		<%= link_to 'Icon Cheat Sheet', 'http://fortawesome.github.io/Font-Awesome/cheatsheet/', target: '_blank' -%>
 	</span>
 </div>
 
 <div class="actions">
-	<%= f.submit %>
+	<%= f.submit nil, class: 'btn btn-primary btn-lg' %>
 </div>
 <% end %>

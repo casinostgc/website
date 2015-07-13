@@ -1,7 +1,7 @@
 class Admin::MenuItemsController < Admin::AdminController
 	before_action :set_menu_item, only: [:edit, :update, :destroy]
 	before_action :set_pages, except: [:sort]
-	# before_action :set_icons, except: [:sort]
+	before_action :set_icons, except: [:sort]
 
 	respond_to :html
 
@@ -66,12 +66,7 @@ class Admin::MenuItemsController < Admin::AdminController
 	end
 
 	def set_icons
-		file = File.read("#{Rails.root}/vendor/assets/stylesheets/fa-4.3.0/_variables.scss")
-		icons = Array.new
-		file.scan(/fa-var-(.*?)\:/).each do |icon|
-			icons.push(icon.first.to_s)
-		end
-		@icons = icons
+		@icons = YAML.load(File.read("#{Rails.root}/vendor/assets/fonts/fontawesome.yml")).symbolize_keys[:icons].map(&:symbolize_keys)
 	end
 
 	def menu_item_params
