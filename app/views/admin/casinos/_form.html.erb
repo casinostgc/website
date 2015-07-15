@@ -1,4 +1,4 @@
-<%= form_for [:admin, @casino], html: {multipart: true} do |f| %>
+<%= form_for(@casino) do |f| %>
   <% if @casino.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@casino.errors.count, "error") %> prohibited this casino from being saved:</h2>
@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
 
   <div class="field">
     <%= f.label :name %><br>
@@ -34,9 +33,12 @@
   </div>
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content, class: 'froala_content' %>
+    <%= f.text_area :content %>
   </div>
-  <%= render 'admin/admin/images/pictures_upload', f: f -%>
+  <div class="field">
+    <%= f.label :destination_id %><br>
+    <%= f.text_field :destination_id %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

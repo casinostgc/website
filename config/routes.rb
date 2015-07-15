@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :casinos
 	concern :imageable do
 		resources :pictures, only: [:index, :show]
 	end
