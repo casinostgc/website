@@ -9,7 +9,7 @@ class Admin::MenuItem < ActiveRecord::Base
 	belongs_to :page
 
 	# scopes
-	default_scope { order(position: :asc) }
+	default_scope { includes(:page).order(position: :asc) }
 
 	# callbacks
 

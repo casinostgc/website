@@ -22,18 +22,13 @@
 	
 	<%= render 'layouts/nav' %>
 
-	<%= yield :pre_container -%>
+	<%= content_tag :div, class: 'container' do -%>
+	<%= content_tag :header, class: 'page-header' do -%>
+	<%= content_tag :h1, @page_header -%>
+	<% end -%>
+	<% end if @page_header.present? -%>
 
-	<div class="container">
-
-		<%= content_tag :header, class: 'page-header' do -%>
-		<%= content_tag :h1, @page_header -%>
-		<% end if @page_header.present? -%>
-
-		<%= yield %>
-	</div>
-
-	<%= yield :post_container -%>
+	<%= yield %>
 
 	<%= render 'layouts/footer' %>
 

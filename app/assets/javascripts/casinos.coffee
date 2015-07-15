@@ -1,0 +1,28 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+$ ->
+
+	if $('.casino').length
+		marker_arr = []
+		$('.casino').each ->
+			casino = $(this).data('casino')
+			if $(this).data('lat') != null
+				infoWindow = '<p><strong>'+casino.name+'</strong></p>'
+				# infoWindow += $(this).find('a').attr('src')
+				console.log casino.name
+				marker_arr.push
+					lat: casino.latitude
+					lng: casino.longitude
+					infowindow: infoWindow
+			return
+		handler = Gmaps.build('Google')
+		handler.buildMap {
+			provider: {}
+			internal: id: 'casinosMap'
+		}, ->
+			markers = handler.addMarkers(marker_arr)
+			handler.bounds.extendWith markers
+			handler.fitMapToBounds()
+			return

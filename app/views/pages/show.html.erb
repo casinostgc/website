@@ -1,22 +1,10 @@
-<p>
-  <strong>Title:</strong>
-  <%= @page.title %>
-</p>
+<% @page_header = @page.title if false -%>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @page.slug %>
-</p>
+<%= raw('<div class="container">') if @page.try(:skip_container) -%>
 
-<p>
-  <strong>Content:</strong>
-  <%= @page.rendered_content %>
-</p>
+<%= @page.rendered_content %>
 
-<p>
-  <strong>Status:</strong>
-  <%= @page.status %>
-</p>
-
-<%#= link_to 'Edit', edit_page_path(@page) %> |
+<%#= link_to 'Edit', edit_page_path(@page) %>
 <%#= link_to 'Back', pages_path %>
+
+<%= raw('</div> <!-- end .contianer -->') if @page.try(:skip_container) -%>

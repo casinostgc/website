@@ -10,9 +10,8 @@ class Destination < ActiveRecord::Base
 	geocoded_by :name
 
 	# assocations
-	# has_many :casino_destinations, dependent: :destroy
-	# has_many :casinos, -> { uniq.select("casinos.*, casino_destinations.distance AS distance") }, through: :casino_destinations
-	has_many :flights, dependent: :destroy
+	has_many :casinos
+	has_many :flights
 
 	# scopes
 	default_scope { order(name: :asc) }

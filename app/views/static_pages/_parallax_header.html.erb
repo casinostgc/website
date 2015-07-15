@@ -1,0 +1,10 @@
+<% text||=nil; img_url||='bg-caesars-palace.jpg'; divider||=true -%>
+
+<section class="parallax" style="background-image: url('<%= image_url(img_url) -%>');">
+	<div class="jumbotron">
+		<div class="container text-center">
+			<%= content_tag :h1, text -%>
+		</div>
+	</div>
+</section>
+<%= content_tag :span, nil, class: 'divider' if divider -%>

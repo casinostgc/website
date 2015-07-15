@@ -4,7 +4,8 @@ class PicturesController < ApplicationController
 
 	def index
 		if parent_object
-			@pictures = Picture.where(imageable: parent_object)
+			# @pictures = Picture.where(imageable: parent_object)
+			@pictures = parent_object.all_pictures
 			render :index, layout: false
 		else
 			@pictures = Picture.all

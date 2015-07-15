@@ -1,56 +1,46 @@
-<section class="parallax" style="background-image: url('<%= image_url(@background_image) -%>');">
-	<div class="jumbotron">
-		<div class="container text-center">
-			<%= content_tag :h1, @type.underscore.humanize.pluralize.titleize -%>
-		</div>
-	</div>
-</section>
+<% content_for :pre_container do -%>
+<%= render 'static_pages/parallax_header', text: @type.underscore.humanize.pluralize.titleize, img_url: @background_image -%>
+<% end -%>
 
-<span class="divider"></span>
-
-<div class="container">
-
-	<div class="row">
-		<% @type.constantize.has_image.each do |event| -%>
-		<div class="col-sm-6 col-md-3">
-			<div class="well well-sm">
-				<%= link_to image_tag(event.pictures.first.gh_url, class: 'img-thumbnail'), event -%>
-				<div class="caption">
-					<h4>
-						<%= event.title -%>
-						<!-- <br><small>Theme Park</small> -->
-					</h4>
-				</div>
+<div class="row">
+	<% @type.constantize.has_image.each do |event| -%>
+	<div class="col-sm-6 col-md-3">
+		<div class="well well-sm">
+			<%= link_to image_tag(event.all_pictures.first.gh_url, class: 'img-thumbnail'), event -%>
+			<div class="caption">
+				<h4>
+					<%= event.title -%>
+					<!-- <br><small>Theme Park</small> -->
+				</h4>
 			</div>
 		</div>
-		<% end -%>
 	</div>
+	<% end -%>
+</div>
 
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Title</th>
-					<th>Dates</th>
-					<th>Venue</th>
-					<th>Host</th>
-				</tr>
-			</thead>
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Dates</th>
+				<th>Venue</th>
+				<th>Host</th>
+			</tr>
+		</thead>
 
-			<tbody>
-				<% @events.each do |event| %>
-				<tr>
-					<td><%= link_to event.title, event %></td>
-					<td><%= event.date_span %></td>
-					<td><%= link_to event.venue.name, venue_path(event.venue) %></td>
-					<td><%= event.host %></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-
-	</div>
-
-	<%#= link_to 'New Event', new_event_path %>
+		<tbody>
+			<% @events.each do |event| %>
+			<tr>
+				<td><%= link_to event.title, event %></td>
+				<td><%= event.date_span %></td>
+				<td><%= link_to event.venue.name, venue_path(event.venue) %></td>
+				<td><%= event.host %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
 
 </div>
+
+<%#= link_to 'New Event', new_event_path %>

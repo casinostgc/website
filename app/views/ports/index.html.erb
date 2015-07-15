@@ -1,20 +1,16 @@
-<div class="container">
+<header class="page-header">
+	<h1 class="text-center">Port Listing</h1>
+</header>
 
-	<header class="page-header">
-		<h1 class="text-center">Port Listing</h1>
-	</header>
+<ul class="text-center list-inline">
+	
+	<% @ports.each do |port| %>
 
-	<ul class="text-center list-inline">
-		
-		<% @ports.each do |port| %>
+	<%= content_tag :li, link_to(port.name, port, data: {toggle: :modal, target: '#defaultModal'}, class: 'btn btn-default btn-xs', style: 'margin-bottom: 5px;') -%>
 
-		<%= content_tag :li, link_to(port.name, port, data: {toggle: :modal, target: '#defaultModal'}, class: 'btn btn-default btn-xs', style: 'margin-bottom: 5px;') -%>
+	<% end -%>
 
-		<% end -%>
+</ul>
 
-	</ul>
-
-
-</div>
-
-<%#= link_to 'New Port', new_port_path %>
+<hr>
+<%= link_to 'New Port', new_admin_port_path if is_admin? %>

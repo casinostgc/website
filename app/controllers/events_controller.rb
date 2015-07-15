@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
 	def index
 		@events = type_class.all
-		@background_image = params[:type] == 'Cruise' ? 'bg-water.jpg' : 'bg-caesars-palace.jpg'
+		@background_image = params[:type] == 'Cruise' ? 'bg-water.jpg' : 'bg-event.jpg'
 	end
 
 	def show

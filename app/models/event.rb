@@ -10,6 +10,10 @@ class Event < ActiveRecord::Base
 
 	validates :venue_id, presence: true
 
+	def all_pictures
+		Picture.where(imageable: [self, venue])
+	end
+
 	def date_span
 		self.start_at.strftime("%b %d, %Y") + ' - ' + self.end_at.strftime("%b %d, %Y")
 	end
@@ -25,10 +29,8 @@ class Event < ActiveRecord::Base
 
 	class << self
 		def types
-			%w(Cruise LandEvent)
+			%w(LandEvent Cruise)
 		end
 	end
 	
 end
-
-class LandEvent < Event; end;

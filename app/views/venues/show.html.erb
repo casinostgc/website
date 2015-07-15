@@ -1,9 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-	<strong>Name:</strong>
-	<%= @venue.name %>
-</p>
+<% @page_header = @venue.name -%>
 
 <p>
 	<strong>Address:</strong>
@@ -15,7 +10,7 @@
 	<%#= @venue.cruise_line %>
 </p>
 
-<%#= @venue.rendered_content %>
+<%= @venue.rendered_content %>
 
 
 <p>
