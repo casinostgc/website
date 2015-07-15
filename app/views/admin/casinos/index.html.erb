@@ -8,19 +8,18 @@
 			<th>Name</th>
 			<th>Address</th>
 			<th>Destination</th>
-			<th colspan="3"></th>
+			<th colspan="2"></th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<% @casinos.each do |casino| %>
 		<tr>
-			<td><%= casino.name %></td>
+			<td><%= link_to casino.name, edit_admin_casino_path(casino) %></td>
 			<td><%= casino.address %></td>
 			<td><%= casino.destination.try(:name) %></td>
 			<td><%= link_to 'Show', casino %></td>
-			<td><%= link_to 'Edit', edit_casino_path(casino) %></td>
-			<td><%= link_to 'Destroy', casino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td><%= link_to 'Destroy', [:admin, casino], method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		</tr>
 		<% end %>
 	</tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Casino', new_casino_path %>
+<%= link_to 'New Casino', new_admin_casino_path %>

@@ -16,5 +16,8 @@
   <%= @casino.destination %>
 </p>
 
-<%= link_to 'Edit', edit_casino_path(@casino) %> |
+<% if is_admin? -%>
+<hr>
+<%= link_to 'Edit', edit_admin_casino_path(@casino) %> |
 <%= link_to 'Back', casinos_path %>
+<% end -%>
