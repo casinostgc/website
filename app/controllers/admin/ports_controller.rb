@@ -4,17 +4,13 @@ class Admin::PortsController < Admin::AdminController
 
 	before_action :set_port, only: [:edit, :update, :destroy]
 
-	respond_to :html
-
 	def index
 		@ports = Port.all
-		respond_with(@ports)
 	end
 
 	def new
 		@port = Port.new
 		# build_pictures @port
-		respond_with(@port)
 	end
 
 	def edit
@@ -23,18 +19,35 @@ class Admin::PortsController < Admin::AdminController
 
 	def create
 		@port = Port.new(port_params)
-		@port.save
-		respond_with(@port)
+		respond_to do |format|
+			if @port.save
+				format.html { redirect_to @port, notice: 'Port was successfully created.' }
+				format.json { render :show, status: :created, location: @port }
+			else
+				format.html { render :new }
+				format.json { render json: @port.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def update
-		@port.update(port_params)
-		respond_with(@port)
+		respond_to do |format|
+			if @port.update(port_params)
+				format.html { redirect_to edit_admin_port_path(@port), notice: 'Port was successfully updated.' }
+				format.json { render :show, status: :ok, location: @port }
+			else
+				format.html { render :edit }
+				format.json { render json: @port.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def destroy
 		@port.destroy
-		respond_with(@port, location: admin_ports_path)
+		respond_to do |format|
+			format.html { redirect_to admin_ports_url, notice: 'Port was successfully destroyed.' }
+			format.json { head :no_content }
+		end
 	end
 
 	private
