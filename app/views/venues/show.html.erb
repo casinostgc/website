@@ -33,26 +33,18 @@
 	<div class="col-sm-8">
 		<%= @venue.rendered_content %>
 
+		<% if @venue.attractions.any? -%>
 		<section class="panel panel-default">
 			<header class="panel-heading">
 				<h4 class="panel-title">Attractions</h4>
 			</header>
 			<ul class="list-group">
-				<% 4.times do -%>
-				<li class="list-group-item">
-					<div class="list-group-item-text media">
-						<div class="media-left">
-							<%= image_tag 'http://www.thelodgeatbridgemill.com/images/page_blocks/pb_fine_dining.jpg', width: 96 -%>
-						</div>
-						<div class="media-body">
-							<h4 class="media-heading">Fine Dining</h4>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-						</div>
-					</div>
-				</li>
+				<% @venue.attractions.each do |attraction| -%>
+				<%= render 'attractions/show', attraction: attraction -%>
 				<% end -%>
 			</ul>
 		</section>
+		<% end -%>
 
 	</div>
 

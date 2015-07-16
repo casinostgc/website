@@ -35,6 +35,10 @@
 					<strong>End at:</strong>
 					<%= @event.end_at %>
 				</p>
+
+				<p>
+					<%= link_to 'Attractions', venue_attractions_path(@event.venue), class: 'btn btn-default btn-block btn-sm', data: {toggle: :modal, target: '#defaultModal'} %>
+				</p>
 			</div>
 		</div>
 

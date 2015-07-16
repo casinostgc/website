@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 		resources :casinos, concerns: [:imageable], only: [:index, :show]
 	end
 
-	resources :ports, :venues, concerns: [:imageable], only: [:index, :show]
+	resources :venues, concerns: [:imageable], only: [:index, :show] do
+		resources :attractions, concerns: [:imageable], only: [:index]
+	end
+
+	resources :ports, concerns: [:imageable], only: [:index, :show]
 
 	resources :cruises, controller: 'events', type: 'Cruise', concerns: [:imageable], only: [:index, :show]
 	resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', concerns: [:imageable], only: [:index, :show]
@@ -30,7 +34,7 @@ Rails.application.routes.draw do
 
 		resources :pages, :events, :pictures, except: [:show]
 
-		resources :destinations, :casinos, :ports, :venues, concerns: [:admin_imageable], except: [:show]
+		resources :destinations, :casinos, :ports, :venues, :attractions, concerns: [:admin_imageable], except: [:show]
 
 		resources :cruises, controller: 'events', type: 'Cruise', concerns: [:admin_imageable], except: [:show]
 		resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', concerns: [:admin_imageable], except: [:show]

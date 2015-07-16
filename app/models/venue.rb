@@ -7,6 +7,9 @@ class Venue < ActiveRecord::Base
 	has_many :events
 	has_many :cruises
 
+	has_many :venue_attractions, dependent: :destroy
+	has_many :attractions, through: :venue_attractions
+
 	delegate :cruises, to: :events
 
 	default_scope { order(name: :asc) }
@@ -29,5 +32,3 @@ class Venue < ActiveRecord::Base
 	# end
 
 end
-
-# class VenueCruiseLine < Venue; end
