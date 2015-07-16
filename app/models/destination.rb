@@ -15,8 +15,7 @@ class Destination < ActiveRecord::Base
 	has_many :flights
 
 	# scopes
-	default_scope { order(name: :asc) }
-	# default_scope { includes(:casino_destinations).order(name: :asc) }
+	default_scope { includes(:casinos).order(name: :asc) }
 	# scope :featured, -> { joins(:casinos).uniq.shuffle.sample(4) }
 
 	# callbacks
@@ -25,11 +24,11 @@ class Destination < ActiveRecord::Base
 	# class methods
 
 	# instance methods
-	def should_generate_new_friendly_id?
-		name_changed? || slug.blank?
-	end
 
 	# filters
+	def should_generate_new_friendly_id?
+		slug.blank?
+	end
 
 	# validations
 

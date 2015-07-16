@@ -4,7 +4,7 @@ class Cruise < Event
 	include Imageable
 
 	# assocations
-	has_many :port_of_calls, foreign_key: 'event_id'
+	has_many :port_of_calls, foreign_key: 'event_id', dependent: :destroy
 	has_many :ports, through: :port_of_calls
 
 	accepts_nested_attributes_for :port_of_calls, reject_if: proc { |attributes| attributes['port_id'].blank? }, allow_destroy: true
@@ -14,7 +14,7 @@ class Cruise < Event
 
 	# scope :has_image, -> { joins(ports: :pictures).distinct }
 	scope :has_image, -> {
-		includes(ports: :pictures).where.not(pictures: {imageable: nil})
+		includes(venue: :pictures).where.not(pictures: {imageable: nil})
 	}
 
 
@@ -27,7 +27,8 @@ class Cruise < Event
 
 	# instance methods
 	def all_pictures
-		Picture.where(imageable: ports+[self, venue])
+		# Picture.where(imageable: ports+[self, venue])
+		Picture.where imageable: venue
 	end
 
 	def update_times

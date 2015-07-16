@@ -1,35 +1,42 @@
 <% modal_bool = (params[:modal].present? ? true : false) -%>
 
 <%= form_for [:admin, @venue], remote: modal_bool, authenticity_token: true do |f| %>
-  <% if @venue.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+<% if @venue.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
 
-      <ul>
-      <% @venue.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @venue.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <%= hidden_field :event_type, nil, value: params[:type] -%>
+<%= hidden_field :event_type, nil, value: params[:type] -%>
 
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :address %>
-    <%= f.text_field :address, class: 'form-control' %>
-  </div>
-  <% unless modal_bool -%>
-  <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_area :content, class: 'froala_content' %>
-  </div>
-  <% end -%>
-  <div class="actions">
-    <%= f.submit nil, class: 'btn btn-primary btn-lg' %>
-  </div>
+<div class="form-group">
+	<%= f.label :name %>
+	<%= f.text_field :name, class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :address %>
+	<%= f.text_field :address, class: 'form-control' %>
+</div>
+<% unless modal_bool -%>
+<div class="form-group">
+	<%= f.label :content %>
+	<%= f.text_area :content, class: 'froala_content' %>
+</div>
+
+<div class="row">
+	<%= f.fields_for :pictures do |pics| -%>
+	<%= render 'admin/pictures/nested_fields', obj: f.object, f: pics -%>
+	<% end -%>
+</div>
+
+<% end -%>
+<div class="actions">
+	<%= f.submit nil, class: 'btn btn-primary btn-lg' %>
+</div>
 <% end %>

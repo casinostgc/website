@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @port %> |
-<%= link_to 'Back', admin_ports_path %>
+<%= link_to 'Back', admin_ports_path %> |
+<%= link_to 'Delete', [:admin, @port], method: :delete, data: { confirm: 'Are you sure?' } %>

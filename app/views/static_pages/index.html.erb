@@ -48,7 +48,7 @@
 			<hr class="visible-xs-block">
 		</div>
 		<div class="col-sm-6 col-md-5">
-			<%= render 'events/upcoming' -%>
+			<%= render 'events/upcoming', render_footer: true -%>
 		</div>
 	</div>
 </div>
@@ -125,12 +125,12 @@
 				<p>
 					<form role="form">
 						<div class="row">
-							<div class="col-xs-6">
+							<div class="col-sm-6">
 								<div class="form-group">
 									<input type="text" class="form-control" id="firstname" placeholder="First Name">
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-sm-6">
 								<div class="form-group">
 									<input type="text" class="form-control" id="lastname" placeholder="Last Name">
 								</div>

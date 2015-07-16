@@ -1,36 +1,65 @@
 <% @page_header = @venue.name -%>
 
-<p>
-	<strong>Address:</strong>
-	<%= @venue.address %>
-</p>
+<div class="row">
+	
+	<aside class="col-sm-4">
+		
+		<div class="panel panel-default">
+			
+			<% if @venue.pictures.any? -%>
+			<%= link_to image_tag(@venue.pictures.first.gh_url, class: 'img-responsive'), venue_pictures_path(@venue), data: {toggle: :modal, target: '#defaultModal'} -%>
+			<% else -%>
+			<!-- default venue image -->
+			<% end -%>
 
-<p>
-	<strong>Cruise Line:</strong>
-	<%#= @venue.cruise_line %>
-</p>
+			<div class="panel-body">
+				<p>
+					<strong>Address:</strong>
+					<%= @venue.address %>
+				</p>
 
-<%= @venue.rendered_content %>
+				<p>
+					<strong>Host:</strong>
+					<%#= link_to @venue.host, '#@venue.host' %>
+				</p>
+			</div>
 
+		</div>
 
-<p>
-	<%# if @venue.cruise_line -%>
-	<h4>Upcoming Cruises</h4>
-	<ul class="list-group">
-		<%# @venue.cruises.each do |cruise| %>
-		<%#= link_to cruise.title, cruise, class: 'list-group-item' -%>
-		<%# end -%>
-	</ul>
-	<%# else -%>
-	<h4>Upcoming Events</h4>
-	<ul class="list-group">
-		<% @venue.events.each do |event| %>
-		<%= link_to event.title, event, class: 'list-group-item' -%>
-		<% end -%>
-	</ul>
-	<%# end -%>
-</p>
+		<%= render 'events/upcoming', events: @venue.events, render_footer: false -%>
 
+	</aside>
 
-<%#= link_to 'Edit', edit_admin_venue_path(@venue) %> |
-<%#= link_to 'Back', admin_venues_path %>
+	<div class="col-sm-8">
+		<%= @venue.rendered_content %>
+
+		<section class="panel panel-default">
+			<header class="panel-heading">
+				<h4 class="panel-title">Attractions</h4>
+			</header>
+			<ul class="list-group">
+				<% 4.times do -%>
+				<li class="list-group-item">
+					<div class="list-group-item-text media">
+						<div class="media-left">
+							<%= image_tag 'http://www.thelodgeatbridgemill.com/images/page_blocks/pb_fine_dining.jpg', width: 96 -%>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">Fine Dining</h4>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+						</div>
+					</div>
+				</li>
+				<% end -%>
+			</ul>
+		</section>
+
+	</div>
+
+</div>
+
+<% if is_admin? -%>
+<hr>
+<%= link_to 'Edit', edit_admin_venue_path(@venue) %> |
+<%= link_to 'Back', admin_venues_path %>
+<% end -%>

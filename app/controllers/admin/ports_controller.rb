@@ -21,7 +21,7 @@ class Admin::PortsController < Admin::AdminController
 		@port = Port.new(port_params)
 		respond_to do |format|
 			if @port.save
-				format.html { redirect_to @port, notice: 'Port was successfully created.' }
+				format.html { redirect_to edit_admin_port_path(@port), notice: 'Port was successfully created.' }
 				format.json { render :show, status: :created, location: @port }
 			else
 				format.html { render :new }

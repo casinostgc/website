@@ -4,7 +4,7 @@ class Port < ActiveRecord::Base
 	include Content
 	include Imageable
 
-	has_many :port_of_calls
+	has_many :port_of_calls, dependent: :destroy
 	has_many :cruises, through: :port_of_calls
 
 	default_scope { order(name: :asc) }
@@ -13,7 +13,7 @@ class Port < ActiveRecord::Base
 	friendly_id :name, use: :slugged
 
 	def should_generate_new_friendly_id?
-		name_changed? || slug.blank?
+		slug.blank?
 	end
 
 	geocoded_by :name
