@@ -3,7 +3,9 @@ class Admin::CasinosController < Admin::AdminController
 	before_action :set_casino, only: [:edit, :update, :destroy]
 
 	def index
-		@casinos = Casino.all
+		@casinos = Casino.all.page(params[:page])
+		@items = @casinos
+		render template: 'admin/admin/shared_index'
 	end
 
 	def new

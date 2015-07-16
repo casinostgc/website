@@ -8,6 +8,8 @@ class Admin::DestinationsController < Admin::AdminController
 
 	def index
 		@destinations = Destination.all.page(params[:page])
+		@items = @destinations
+		render template: 'admin/admin/shared_index'
 	end
 
 	def new

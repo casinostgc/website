@@ -7,7 +7,9 @@ class Admin::VenuesController < Admin::AdminController
 	# respond_to :html
 
 	def index
-		@venues = Venue.all
+		@venues = Venue.all.page(params[:page])
+		@items = @venues
+		render template: 'admin/admin/shared_index'
 	end
 
 	def new

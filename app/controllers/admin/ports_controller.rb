@@ -5,7 +5,9 @@ class Admin::PortsController < Admin::AdminController
 	before_action :set_port, only: [:edit, :update, :destroy]
 
 	def index
-		@ports = Port.all
+		@ports = Port.all.page(params[:page])
+		@items = @ports
+		render template: 'admin/admin/shared_index'
 	end
 
 	def new

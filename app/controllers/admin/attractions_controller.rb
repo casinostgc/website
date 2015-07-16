@@ -3,7 +3,9 @@ class Admin::AttractionsController < Admin::AdminController
 	before_action :set_attraction, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@attractions = Attraction.all
+		@attractions = Attraction.all.page(params[:page])
+		@items = @attractions
+		render template: 'admin/admin/shared_index'
 	end
 
 	def new
