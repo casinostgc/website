@@ -11,7 +11,6 @@ $ ->
 			if $(this).data('lat') != null
 				infoWindow = '<p><strong>'+casino.name+'</strong></p>'
 				# infoWindow += $(this).find('a').attr('src')
-				console.log casino.name
 				marker_arr.push
 					lat: casino.latitude
 					lng: casino.longitude

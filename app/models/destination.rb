@@ -3,6 +3,7 @@ class Destination < ActiveRecord::Base
 	# includes and requirements
 	include Content
 	include Geolocation
+	include Imageable
 
 	extend FriendlyId
 	friendly_id :name, use: :slugged

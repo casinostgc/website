@@ -2,7 +2,7 @@ class Casino < ActiveRecord::Base
 
 	include Content
 	include Geolocation
-	# include NestedPictures
+	include Imageable
 	
 	belongs_to :destination
 

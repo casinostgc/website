@@ -23,9 +23,13 @@
 				<div id="casinosMap" class="gmap"></div>
 			</div>
 			<div class="list-group">
-				<% @destination.casinos.each do |casino| -%>
+				<% @destination.casinos.first(4).each do |casino| -%>
 				<%= link_to casino.name, [@destination, casino], class: 'casino list-group-item', data: {casino: casino.to_json} -%>
 				<% end -%>
+			</div>
+			<div class="panel-footer">
+				<%= link_to 'View All', destination_casinos_path(@destination), class: 'small' -%>
+
 			</div>
 		</div>
 		<% end -%>
