@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716172304) do
+ActiveRecord::Schema.define(version: 20150716185542) do
 
   create_table "admin_menu_items", force: :cascade do |t|
     t.string   "href"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20150716172304) do
     t.string   "title"
     t.string   "slug"
     t.integer  "venue_id"
-    t.string   "host"
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "type"
