@@ -14,11 +14,13 @@ class Admin::VenuesController < Admin::AdminController
 
 	def new
 		@venue = Venue.new
+		@venue.venue_attractions.build
 		# build_pictures @venue
 		render :new_modal, layout: false if params[:modal].present?
 	end
 
 	def edit
+		@venue.venue_attractions.build
 		# build_pictures @venue
 	end
 
@@ -65,6 +67,6 @@ class Admin::VenuesController < Admin::AdminController
 	end
 
 	def venue_params
-		params.require(:venue).permit(:name, :address, :type, :content)
+		params.require(:venue).permit(:name, :address, :content, venue_attractions_attributes: [:id, :attraction_id, :_destroy])
 	end
 end
