@@ -8,11 +8,14 @@
 
 	<div class="col-md-4 col-md-pull-8 col-sm-6 col-sm-pull-6">
 
-		<%# if @destination.first_image -%>
-		<div class="thumbnail">
-			<%#= image_tag @destination.first_image -%>
-		</div>
-		<%# end -%>
+		<% if @destination.pictures.any? -%>
+		<figure class="thumbnail">
+			<%= link_to image_tag(@destination.pictures.first.gh_url), destination_pictures_path(@destination), data: {toggle: :modal, target: '#defaultModal'} -%>
+		</figure>
+		<% else -%>
+		<!-- default destination image -->
+		<% end -%>
+
 
 		<% if @destination.casinos.any? -%>
 		<div class="panel panel-default">

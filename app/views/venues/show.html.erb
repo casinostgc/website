@@ -13,10 +13,12 @@
 			<% end -%>
 
 			<div class="panel-body">
+				<% if @venue.address.present? -%>
 				<p>
 					<strong>Address:</strong>
 					<%= @venue.address %>
 				</p>
+				<% end -%>
 			</div>
 
 		</div>

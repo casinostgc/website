@@ -30,8 +30,14 @@ class Cruise < Event
 	end
 
 	# filters
+	def check_ports
+		if self.ports.count < 2
+			errors[:base] << "At least 2 Port of Calls must be selected."
+		end
+	end
 
 
 	# validations
+	validate :check_ports
 
 end
