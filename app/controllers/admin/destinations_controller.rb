@@ -4,8 +4,6 @@ class Admin::DestinationsController < Admin::AdminController
 
 	before_action :set_destination, only: [:edit, :update, :destroy]
 
-	respond_to :html
-
 	def index
 		@destinations = Destination.all.page(params[:page])
 		@items = @destinations
@@ -23,18 +21,35 @@ class Admin::DestinationsController < Admin::AdminController
 
 	def create
 		@destination = Destination.new(destination_params)
-		@destination.save
-		respond_with(@destination)
+		respond_to do |format|
+			if @destination.save
+				format.html { redirect_to edit_admin_destination_path(@destination), notice: 'Destination was successfully created.' }
+				format.json { render :show, status: :created, location: @destination }
+			else
+				format.html { render :new }
+				format.json { render json: @destination.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def update
-		@destination.update(destination_params)
-		respond_with(@destination)
+		respond_to do |format|
+			if @destination.update(destination_params)
+				format.html { redirect_to edit_admin_destination_path(@destination), notice: 'Destination was successfully updated.' }
+				format.json { render :show, status: :ok, location: @destination }
+			else
+				format.html { render :edit }
+				format.json { render json: @destination.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def destroy
 		@destination.destroy
-		redirect_to admin_destinations_url, notice: 'Destination was successfully destroyed.'
+		respond_to do |format|
+			format.html { redirect_to admin_destinations_url, notice: 'destination was successfully destroyed.' }
+			format.json { head :no_content }
+		end
 	end
 
 	private

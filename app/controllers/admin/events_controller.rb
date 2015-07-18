@@ -1,5 +1,7 @@
 class Admin::EventsController < Admin::AdminController
 
+	include EventsHelper
+
 	include ImageableBuilder
 
 	before_action :set_event, only: [:edit, :update, :destroy]
@@ -33,7 +35,7 @@ class Admin::EventsController < Admin::AdminController
 
 		respond_to do |format|
 			if @event.save
-				format.html { redirect_to edit_admin_event_path(@event), notice: 'Event was successfully created.' }
+				format.html { redirect_to sti_event_path(@event.type, @event, :edit), notice: 'Event was successfully created.' }
 				format.json { render :show, status: :created, location: @event }
 			else
 				format.html { render :new }
@@ -45,7 +47,7 @@ class Admin::EventsController < Admin::AdminController
 	def update
 		respond_to do |format|
 			if @event.update(event_params)
-				format.html { redirect_to edit_admin_event_path(@event), notice: 'Event was successfully updated.' }
+				format.html { redirect_to sti_event_path(@event.type, @event, :edit), notice: 'Event was successfully updated.' }
 				format.json { render :show, status: :ok, location: @event }
 			else
 				format.html { render :edit }
@@ -81,7 +83,8 @@ class Admin::EventsController < Admin::AdminController
 	end
 
 	def set_nested_includes
-		@nested_includes = [:pictures]
+		@nested_includes = []
+		@nested_includes << :pictures unless type == 'Cruise'
 		@nested_includes << :port_of_calls if type == 'Cruise'
 	end
 

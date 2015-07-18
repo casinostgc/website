@@ -1,7 +1,7 @@
 class Cruise < Event
 
 	# includes and requirements
-	include Imageable
+	# include Imageable
 
 	# assocations
 	has_many :port_of_calls, foreign_key: 'event_id', dependent: :destroy
@@ -12,12 +12,16 @@ class Cruise < Event
 	# scopes
 	default_scope { includes(:port_of_calls).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
 
+	scope :has_image, -> { joins(ports: :pictures).distinct }
+
 	# callbacks
 	after_save :update_times
 
 
 	# class methods
-
+	def pictures
+		Picture.where imageable: self.ports
+	end
 
 	# instance methods
 	def update_times
@@ -35,7 +39,6 @@ class Cruise < Event
 			errors[:base] << "At least 2 Port of Calls must be selected."
 		end
 	end
-
 
 	# validations
 	validate :check_ports
