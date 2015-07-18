@@ -1,6 +1,6 @@
 class Admin::VenuesController < Admin::AdminController
 
-	# include PictureBuilder
+	include ImageableBuilder
 
 	before_action :set_venue, only: [:edit, :update, :destroy]
 
@@ -14,14 +14,14 @@ class Admin::VenuesController < Admin::AdminController
 
 	def new
 		@venue = Venue.new
+		@venue.pictures.build
 		@venue.venue_attractions.build
-		# build_pictures @venue
 		render :new_modal, layout: false if params[:modal].present?
 	end
 
 	def edit
+		@venue.pictures.build
 		@venue.venue_attractions.build
-		# build_pictures @venue
 	end
 
 	def create
@@ -67,6 +67,6 @@ class Admin::VenuesController < Admin::AdminController
 	end
 
 	def venue_params
-		params.require(:venue).permit(:name, :address, :content, venue_attractions_attributes: [:id, :attraction_id, :_destroy])
+		params.require(:venue).permit(:name, :address, :content, pictures_attributes: picture_params, venue_attractions_attributes: [:id, :attraction_id, :_destroy])
 	end
 end

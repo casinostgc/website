@@ -1,6 +1,6 @@
 class Admin::PortsController < Admin::AdminController
 
-	# include PictureBuilder
+	include ImageableBuilder
 
 	before_action :set_port, only: [:edit, :update, :destroy]
 

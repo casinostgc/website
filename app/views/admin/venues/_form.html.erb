@@ -29,52 +29,7 @@
 	<%= f.text_area :content, class: 'froala_content' %>
 </div>
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingOne">
-			<h4 class="panel-title">
-				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					Pictures
-				</a>
-			</h4>
-		</div>
-		<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-			<div class="panel-body">
-				<div class="row">
-					<%= f.fields_for :pictures do |pics| -%>
-					<%= render 'admin/pictures/nested_fields', obj: f.object, f: pics -%>
-					<% end -%>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingTwo">
-			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-					Attractions
-				</a>
-			</h4>
-		</div>
-		<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-			<div id="nested_attractions" class="panel-body">
-				<%= f.fields_for :venue_attractions do |va| -%>
-				<%= render 'admin/attractions/nested_fields', f: va -%>
-				<% end -%>
-			</div>
-			<footer class="panel-footer">
-				<div class="row">
-					<div class="col-sm-6">
-						<%= link_to_add_association 'Add Attraction', f, :venue_attractions, data: {association_insertion_node: '#nested_attractions', association_insertion_method: :append}, partial: 'admin/attractions/nested_fields', class: 'btn btn-info btn-xs btn-block' %>
-					</div>
-					<div class="col-sm-6">
-						<%= link_to 'Create Attraction', '#', class: 'btn btn-success btn-xs btn-block' -%>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</div>
-</div>
+<%= render 'admin/admin/nested_accordion', f: f, includes: [:pictures, :attractions] -%>
 
 <% end -%>
 <div class="actions">

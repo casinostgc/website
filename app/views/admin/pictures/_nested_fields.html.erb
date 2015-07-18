@@ -1,30 +1,43 @@
-<div class="col-sm-6">
-	<div class="thumbnail">
-		<div class="caption">
-			<div class="form-group">
-				<%= f.label :title %>
-				<%= f.text_field :title, class: 'form-control input-sm' %>
+<li class="nested-fields list-group-item">
+	<div class="list-group-item-text media">
+
+		<div class="media-left">
+			<p>
+				<% if f.object.persisted? -%>
+				<%= image_tag f.object.gh_url, class: 'media-object', width: 96  -%>
+				<% else -%>
+				<span class="btn btn-success btn-file" style="width: 96px;">
+					<%= fa_icon 'file' -%> <%= f.file_field :tmp_file %>
+				</span>
+				<% end -%>
+			</p>
+			<p>
+			<%= link_to_remove_association fa_icon('remove'), f, class: 'btn btn-danger btn-xs btn-block', data: { confirm: 'Are you sure?' } %>
+			</p>
+		</div>
+
+		<div class="media-body">
+
+			<div class="row">
+				<div class="col-sm-7">
+					<div class="form-group">
+						<%= f.label :title %>
+						<%= f.text_field :title, class: 'form-control input-sm' %>
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<div class="form-group">
+						<%= f.label :alt %>
+						<%= f.text_field :alt, class: 'form-control input-sm' %>
+					</div>
+				</div>
 			</div>
+
 			<div class="form-group">
 				<%= f.label :caption %>
 				<%= f.text_area :caption, class: 'form-control input-sm' %>
 			</div>
-			<div class="form-group">
-				<%= f.label :alt %>
-				<%= f.text_field :alt, class: 'form-control input-sm' %>
-			</div>
-			<div class="form-group">
-				<%= f.label :description %>
-				<%= f.text_area :description, class: 'form-control input-sm' %>
-			</div>
-			<div class="form-group">
-				<%= f.label :gh_name %>
-				<%= f.text_field :gh_name, class: 'form-control input-sm' %>
-			</div>
-			<div class="form-group">
-				<%= f.label :gh_url %>
-				<%= f.text_field :gh_url, class: 'form-control input-sm' %>
-			</div>
+
 		</div>
 	</div>
-</div>
+</li>

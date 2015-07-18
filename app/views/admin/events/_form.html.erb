@@ -11,8 +11,6 @@
 </div>
 <% end %>
 
-<%#= render 'admin/admin/images/pictures_upload', f: f -%>
-
 <div class="form-group">
 	<%= f.label :title %>
 	<%= f.text_field :title, class: 'form-control' %>
@@ -27,12 +25,6 @@
 		</span>
 	</div>
 </div>
-
-<div class="btn-group btn-group-justified form-group" role="group">
-	<%= link_to 'Port of Calls', '#', class: 'btn btn-info', data: {toggle: :modal, target: '#portOfCallsModal'} if @event.type == 'Cruise' -%>
-	<%#= link_to 'Pictures', nil, class: 'btn btn-info' -%>
-</div>
-<%= render 'poc_modal', f: f if @event.type == 'Cruise' -%>
 
 <div class="form-group">
 	<%= f.label :content %>
@@ -50,11 +42,19 @@
 </div>
 <% end -%>
 
-<div class="row">
-	<%= f.fields_for :pictures do |pics| -%>
-	<%= render 'admin/pictures/nested_fields', obj: f.object, f: pics -%>
-	<% end -%>
+<%= render 'admin/admin/nested_accordion', f: f, includes: @nested_includes -%>
+
+
+
+<% if false -%>
+<div class="btn-group btn-group-justified form-group" role="group">
+	<%= link_to 'Port of Calls', '#', class: 'btn btn-info', data: {toggle: :modal, target: '#portOfCallsModal'} if @event.type == 'Cruise' -%>
 </div>
+<%= render 'poc_modal', f: f if @event.type == 'Cruise' -%>
+<% end -%>
+
+
+
 
 <div class="actions">
 	<%= f.submit nil, class: 'btn btn-primary btn-lg' %>

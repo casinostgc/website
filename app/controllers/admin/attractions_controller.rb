@@ -1,5 +1,7 @@
 class Admin::AttractionsController < Admin::AdminController
 
+	include ImageableBuilder
+
 	before_action :set_attraction, only: [:show, :edit, :update, :destroy]
 
 	def index

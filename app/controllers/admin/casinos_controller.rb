@@ -1,5 +1,7 @@
 class Admin::CasinosController < Admin::AdminController
 
+	include ImageableBuilder
+
 	before_action :set_casino, only: [:edit, :update, :destroy]
 
 	def index

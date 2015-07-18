@@ -1,0 +1,68 @@
+<% includes ||= []; accepted = [:pictures, :attractions, :port_of_calls] -%>
+
+<div class="panel-group" id="nestAccordion" role="tablist" aria-multiselectable="true">
+	<% includes.each do |nest| -%>
+
+	<% next unless accepted.include?(nest) -%>
+
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="<%= nest %>Heading">
+			<h4 class="panel-title">
+				<a role="button" data-toggle="collapse" href="#<%= nest %>Collapse" aria-expanded="true" aria-controls="<%= nest %>Collapse" data-parent="">
+					<%= nest.to_s.titleize -%>
+				</a>
+			</h4>
+		</div>
+		<div id="<%= nest %>Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<%= nest %>Heading">
+			
+			<% case nest when :pictures -%>
+			
+			<ul id="nested_pictures" class="list-group">
+				<%= f.fields_for :pictures do |pics| -%>
+				<%= render 'admin/pictures/nested_fields', f: pics -%>
+				<% end -%>
+			</ul>
+			
+			<footer class="panel-footer">
+				<%= link_to_add_association 'Add Picture', f, :pictures, data: {association_insertion_node: '#nested_pictures', association_insertion_method: :append}, partial: 'admin/pictures/nested_fields', class: 'btn btn-info btn-xs btn-block' %>
+			</footer>
+
+			<% when :attractions -%>
+			<div id="nested_attractions" class="panel-body">
+				<%= f.fields_for :venue_attractions do |va| -%>
+				<%= render 'admin/attractions/nested_fields', f: va -%>
+				<% end -%>
+			</div>
+			<footer class="panel-footer">
+				<div class="row">
+					<div class="col-sm-6">
+						<%= link_to_add_association 'Add Attraction', f, :venue_attractions, data: {association_insertion_node: '#nested_attractions', association_insertion_method: :append}, partial: 'admin/attractions/nested_fields', class: 'btn btn-info btn-xs btn-block' %>
+					</div>
+					<div class="col-sm-6">
+						<%= link_to 'Create Attraction', '#', class: 'btn btn-success btn-xs btn-block' -%>
+					</div>
+				</div>
+			</footer>
+
+			<% when :port_of_calls -%>
+			<div id="nested_attractions" class="panel-body">
+				<%#= f.fields_for :venue_attractions do |va| -%>
+				<%#= render 'admin/attractions/nested_fields', f: va -%>
+				<%# end -%>
+			</div>
+			<footer class="panel-footer">
+				<div class="row">
+					<div class="col-sm-6">
+						<%#= link_to_add_association 'Add Attraction', f, :venue_attractions, data: {association_insertion_node: '#nested_attractions', association_insertion_method: :append}, partial: 'admin/attractions/nested_fields', class: 'btn btn-info btn-xs btn-block' %>
+					</div>
+					<div class="col-sm-6">
+						<%#= link_to 'Create Attraction', '#', class: 'btn btn-success btn-xs btn-block' -%>
+					</div>
+				</div>
+			</footer>
+
+			<% end -%>
+		</div>
+	</div>
+	<% end -%>
+</div>

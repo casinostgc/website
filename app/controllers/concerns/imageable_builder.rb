@@ -14,7 +14,7 @@ module ImageableBuilder
 
 	def picture_params
 		# [:id, :name, :image, :imageable_id, :imageable_type, :_destroy]
-		[:id, :title, :caption, :alt, :description, :gh_name, :gh_url, :_destroy]
+		[:id, :tmp_file, :title, :caption, :alt, :_destroy]
 	end
 
 	private

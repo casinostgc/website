@@ -1,6 +1,6 @@
 <% item_type = @items.klass.name.underscore -%>
 
-<%= link_to "New Item", send("new_admin_#{item_type}_path"), class: 'btn btn-primary' -%>
+<%= link_to "New #{item_type.titleize}", send("new_admin_#{item_type}_path"), class: 'btn btn-primary' -%>
 
 <hr>
 

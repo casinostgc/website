@@ -1,6 +1,6 @@
 class Admin::DestinationsController < Admin::AdminController
 
-	# include PictureBuilder
+	include ImageableBuilder
 
 	before_action :set_destination, only: [:edit, :update, :destroy]
 

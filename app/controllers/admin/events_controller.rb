@@ -4,6 +4,7 @@ class Admin::EventsController < Admin::AdminController
 
 	before_action :set_event, only: [:edit, :update, :destroy]
 	before_action :set_type
+	before_action :set_nested_includes, only: [:new, :edit]
 
 	def index
 		@events = type_class.all
@@ -79,6 +80,11 @@ class Admin::EventsController < Admin::AdminController
 
 	def set_event
 		@event = type_class.find(params[:id])
+	end
+
+	def set_nested_includes
+		@nested_includes = [:pictures]
+		@nested_includes << :port_of_calls if type == 'Cruise'
 	end
 
 	def event_params
