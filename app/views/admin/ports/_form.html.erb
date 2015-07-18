@@ -34,7 +34,7 @@
 	<%= f.text_area :content, class: 'froala_content form-control' %>
 </div>
 
-<%# render -%>
+<%= render 'admin/admin/nested_accordion', f: f, includes: [:pictures] -%>
 
 <div class="actions">
 	<%= f.submit nil, class: 'btn btn-lg btn-primary' %>

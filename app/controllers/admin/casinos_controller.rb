@@ -12,9 +12,11 @@ class Admin::CasinosController < Admin::AdminController
 
 	def new
 		@casino = Casino.new
+		@casino.pictures.build
 	end
 
 	def edit
+		@casino.pictures.build
 	end
 
 	def create
@@ -58,7 +60,7 @@ class Admin::CasinosController < Admin::AdminController
 	end
 
 	def casino_params
-		params.require(:casino).permit(:name, :slug, :address, :latitude, :longitude, :content, :destination_id)
+		params.require(:casino).permit(:name, :slug, :address, :latitude, :longitude, :content, :destination_id, pictures_attributes: picture_params)
 	end
 
 end

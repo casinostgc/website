@@ -14,11 +14,11 @@ class Admin::DestinationsController < Admin::AdminController
 
 	def new
 		@destination = Destination.new
-		# build_pictures @destination
+		@destination.pictures.build
 	end
 
 	def edit
-		# build_pictures @destination
+		@destination.pictures.build
 	end
 
 	def create
@@ -43,6 +43,6 @@ class Admin::DestinationsController < Admin::AdminController
 	end
 
 	def destination_params
-		params.require(:destination).permit(:name, :content, :location, :international, :latitude, :longitude)
+		params.require(:destination).permit(:name, :slug, :content, :location, :international, :latitude, :longitude, pictures_attributes: picture_params)
 	end
 end

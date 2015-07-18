@@ -32,7 +32,6 @@ class Admin::VenuesController < Admin::AdminController
 			if @venue.save
 				format.html { redirect_to edit_admin_venue_path(@venue), notice: 'Venue was successfully created.' }
 				format.json { render :show, status: :created, location: @venue }
-				format.js { render :create, status: :created, location: @venue }
 			else
 				format.html { render :new }
 				format.json { render json: @venue.errors, status: :unprocessable_entity }
@@ -67,6 +66,6 @@ class Admin::VenuesController < Admin::AdminController
 	end
 
 	def venue_params
-		params.require(:venue).permit(:name, :address, :content, pictures_attributes: picture_params, venue_attractions_attributes: [:id, :attraction_id, :_destroy])
+		params.require(:venue).permit(:name, :slug, :address, :content, pictures_attributes: picture_params, venue_attractions_attributes: [:id, :attraction_id, :_destroy])
 	end
 end

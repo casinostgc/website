@@ -12,9 +12,11 @@ class Admin::AttractionsController < Admin::AdminController
 
 	def new
 		@attraction = Attraction.new
+		@attraction.pictures.build
 	end
 
 	def edit
+		@attraction.pictures.build
 	end
 
 	def create
@@ -58,7 +60,7 @@ class Admin::AttractionsController < Admin::AdminController
 	end
 
 	def attraction_params
-		params.require(:attraction).permit(:name, :content)
+		params.require(:attraction).permit(:name, :content, pictures_attributes: picture_params)
 	end
 
 end

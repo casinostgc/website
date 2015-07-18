@@ -1,45 +1,48 @@
 <%= form_for [:admin, @casino], html: {multipart: true} do |f| %>
-  <% if @casino.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@casino.errors.count, "error") %> prohibited this casino from being saved:</h2>
+<% if @casino.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@casino.errors.count, "error") %> prohibited this casino from being saved:</h2>
 
-      <ul>
-      <% @casino.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @casino.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :slug %><br>
-    <%= f.text_field :slug %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :destination_id %><br>
-    <%= f.text_field :destination_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="form-group">
+	<%= f.label :name %>
+	<%= f.text_field :name, class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :slug %>
+	<%= f.text_field :slug, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+	<%= f.label :destination_id %>
+	<div class="input-group">
+		<%= f.collection_select :destination_id, Destination.all, :id, :name, {include_blank: 'Select Destination'}, class: 'form-control', id: 'select_destination' -%>
+		<span class="input-group-btn">
+			<%= link_to 'Add Venue', new_admin_destination_path, class: 'btn btn-warning', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>
+		</span>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :address %>
+	<%= f.text_field :address, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+	<%= f.label :content %>
+	<%= f.text_area :content, class: 'froala_content form-control' %>
+</div>
+
+<%= render 'admin/admin/nested_accordion', f: f, includes: [:pictures] -%>
+
+<div class="actions">
+	<%= f.submit nil, class: 'btn btn-lg bnt-primary' %>
+</div>
 <% end %>

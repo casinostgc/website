@@ -12,12 +12,12 @@ class Admin::PortsController < Admin::AdminController
 
 	def new
 		@port = Port.new
-		# build_pictures @port
+		@port.pictures.build
 		render :new_modal, layout: false if params[:modal].present?
 	end
 
 	def edit
-		# build_pictures @port
+		@port.pictures.build
 	end
 
 	def create
@@ -26,7 +26,6 @@ class Admin::PortsController < Admin::AdminController
 			if @port.save
 				format.html { redirect_to edit_admin_port_path(@port), notice: 'Port was successfully created.' }
 				format.json { render :show, status: :created, location: @port }
-				format.js { render :create, status: :created, location: @port }
 			else
 				format.html { render :new }
 				format.json { render json: @port.errors, status: :unprocessable_entity }
@@ -61,7 +60,7 @@ class Admin::PortsController < Admin::AdminController
 	end
 
 	def port_params
-		params.require(:port).permit(:name, :slug, :content, :location, :latitude, :longitude)
+		params.require(:port).permit(:name, :slug, :content, :location, :latitude, :longitude, pictures_attributes: picture_params)
 	end
 
 end
