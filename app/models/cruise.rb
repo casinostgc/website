@@ -12,12 +12,6 @@ class Cruise < Event
 	# scopes
 	default_scope { includes(:port_of_calls).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
 
-	# scope :has_image, -> { joins(ports: :pictures).distinct }
-	scope :has_image, -> {
-		includes(venue: :pictures).where.not(pictures: {imageable: nil})
-	}
-
-
 	# callbacks
 	after_save :update_times
 
@@ -26,11 +20,6 @@ class Cruise < Event
 
 
 	# instance methods
-	def all_pictures
-		# Picture.where(imageable: ports+[self, venue])
-		Picture.where imageable: venue
-	end
-
 	def update_times
 		self.update_column(:start_at, self.port_of_calls.first.departs_at)
 		self.update_column(:end_at, self.port_of_calls.last.arrives_at)

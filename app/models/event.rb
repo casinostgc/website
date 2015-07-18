@@ -10,10 +10,6 @@ class Event < ActiveRecord::Base
 
 	validates :venue_id, presence: true
 
-	def all_pictures
-		Picture.where(imageable: [self, venue])
-	end
-
 	def date_span
 		self.start_at.strftime("%b %d, %Y") + ' - ' + self.end_at.strftime("%b %d, %Y")
 	end

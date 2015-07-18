@@ -16,7 +16,6 @@
 		<div id="<%= nest %>Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<%= nest %>Heading">
 			
 			<% case nest when :pictures -%>
-			
 			<ul id="nested_pictures" class="list-group">
 				<%= f.fields_for :pictures do |pics| -%>
 				<%= render 'admin/pictures/nested_fields', f: pics -%>
@@ -33,30 +32,32 @@
 				<%= render 'admin/attractions/nested_fields', f: va -%>
 				<% end -%>
 			</div>
+
 			<footer class="panel-footer">
 				<div class="row">
 					<div class="col-sm-6">
 						<%= link_to_add_association 'Add Attraction', f, :venue_attractions, data: {association_insertion_node: '#nested_attractions', association_insertion_method: :append}, partial: 'admin/attractions/nested_fields', class: 'btn btn-info btn-xs btn-block' %>
 					</div>
 					<div class="col-sm-6">
-						<%= link_to 'Create Attraction', '#', class: 'btn btn-success btn-xs btn-block' -%>
+						<%= link_to 'Create Attraction', new_admin_attraction_path, class: 'btn btn-warning btn-xs btn-block', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>
 					</div>
 				</div>
 			</footer>
 
 			<% when :port_of_calls -%>
-			<div id="nested_attractions" class="panel-body">
-				<%#= f.fields_for :venue_attractions do |va| -%>
-				<%#= render 'admin/attractions/nested_fields', f: va -%>
-				<%# end -%>
-			</div>
+			<ul id="nested_pocs" class="list-group">
+				<%= f.fields_for :port_of_calls do |poc| -%>
+				<%= render 'admin/ports/nested_fields', f: poc -%>
+				<% end -%>
+			</ul>
+
 			<footer class="panel-footer">
 				<div class="row">
 					<div class="col-sm-6">
-						<%#= link_to_add_association 'Add Attraction', f, :venue_attractions, data: {association_insertion_node: '#nested_attractions', association_insertion_method: :append}, partial: 'admin/attractions/nested_fields', class: 'btn btn-info btn-xs btn-block' %>
+						<%= link_to_add_association 'Add Port of Call', f, :port_of_calls, data: {association_insertion_node: '#nested_pocs', association_insertion_method: :append}, partial: 'admin/ports/nested_fields', class: 'btn btn-info btn-xs btn-block', id: 'addPortAssociation' %>
 					</div>
 					<div class="col-sm-6">
-						<%#= link_to 'Create Attraction', '#', class: 'btn btn-success btn-xs btn-block' -%>
+						<%= link_to 'Create Port', new_admin_port_path, class: 'btn btn-warning btn-xs btn-block', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>
 					</div>
 				</div>
 			</footer>

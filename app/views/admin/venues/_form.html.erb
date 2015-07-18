@@ -1,6 +1,4 @@
-<% modal_bool = (params[:modal].present? ? true : false) -%>
-
-<%= form_for [:admin, @venue], remote: modal_bool, authenticity_token: true do |f| %>
+<%= form_for [:admin, @venue], html: {multipart: true} do |f| %>
 <% if @venue.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
@@ -23,7 +21,7 @@
 	<%= f.label :address %>
 	<%= f.text_field :address, class: 'form-control' %>
 </div>
-<% unless modal_bool -%>
+
 <div class="form-group">
 	<%= f.label :content %>
 	<%= f.text_area :content, class: 'froala_content' %>
@@ -31,7 +29,6 @@
 
 <%= render 'admin/admin/nested_accordion', f: f, includes: [:pictures, :attractions] -%>
 
-<% end -%>
 <div class="actions">
 	<%= f.submit nil, class: 'btn btn-primary btn-lg' %>
 </div>

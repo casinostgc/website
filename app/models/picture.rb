@@ -1,7 +1,7 @@
 class Picture < ActiveRecord::Base
 
-	belongs_to :imageable, polymorphic: true
+	include GithubMediaUploader
 
-	attr_accessor :tmp_file, :tmp_gh_file
+	belongs_to :imageable, polymorphic: true
 
 end

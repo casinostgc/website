@@ -6,7 +6,7 @@
 	<% @destinations.has_image.each do |destination| -%>
 	<div class="col-sm-6 col-md-3">
 		<div class="well well-sm">
-			<%= link_to image_tag(destination.all_pictures.first.gh_url, class: 'img-thumbnail'), destination -%>
+			<%= link_to image_tag(destination.pictures.first.gh_url, class: 'img-thumbnail'), destination -%>
 			<div class="caption">
 				<h4>
 					<%= destination.title -%>

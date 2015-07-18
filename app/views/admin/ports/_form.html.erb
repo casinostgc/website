@@ -11,21 +11,15 @@
 </div>
 <% end %>
 
-<%#= render 'admin/admin/images/pictures_upload', f: f -%>
-
 <div class="form-group">
 	<%= f.label :name %>
 	<%= f.text_field :name, class: 'form-control' %>
 </div>
+
 <div class="form-group">
 	<%= f.label :slug %>
 	<%= f.text_field :slug, class: 'form-control' %>
 </div>
-<div class="form-group">
-	<%= f.label :content %>
-	<%= f.text_area :content, class: 'froala_content' %>
-</div>
-
 <div class="form-group">
 	<%= f.label :latitude %>
 	<%= f.text_field :latitude, class: 'form-control' %>
@@ -34,6 +28,13 @@
 	<%= f.label :longitude %>
 	<%= f.text_field :longitude, class: 'form-control' %>
 </div>
+
+<div class="form-group">
+	<%= f.label :content %>
+	<%= f.text_area :content, class: 'froala_content form-control' %>
+</div>
+
+<%# render -%>
 
 <div class="actions">
 	<%= f.submit nil, class: 'btn btn-lg btn-primary' %>
