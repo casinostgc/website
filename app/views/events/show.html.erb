@@ -5,7 +5,7 @@
 	<aside class="col-sm-4">
 		<% if @event.pictures.any? -%>
 		<figure class="thumbnail">
-			<%= link_to image_tag(@event.pictures.first.gh_url), sti_event_pictures_path(@event), data: {toggle: :modal, target: '#defaultModal'} -%>
+			<%= link_to image_tag(@event.pictures.first.image_url), sti_event_pictures_path(@event), data: {toggle: :modal, target: '#defaultModal'} -%>
 		</figure>
 		<% else -%>
 		<!-- default event image -->

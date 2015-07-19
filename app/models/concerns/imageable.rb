@@ -15,7 +15,7 @@ module Imageable
 	def should_reject(attributes)
 		if attributes[:id].present?
 			return false
-		elsif attributes[:tmp_file].blank?
+		elsif attributes[:image].blank?
 			return true
 		else
 			return false

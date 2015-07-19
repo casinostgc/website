@@ -10,7 +10,7 @@
 
 		<% if @destination.pictures.any? -%>
 		<figure class="thumbnail">
-			<%= link_to image_tag(@destination.pictures.first.gh_url), destination_pictures_path(@destination), data: {toggle: :modal, target: '#defaultModal'} -%>
+			<%= link_to image_tag(@destination.pictures.first.image_url), destination_pictures_path(@destination), data: {toggle: :modal, target: '#defaultModal'} -%>
 		</figure>
 		<% else -%>
 		<!-- default destination image -->

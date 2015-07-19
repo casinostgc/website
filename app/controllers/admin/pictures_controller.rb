@@ -1,4 +1,6 @@
 class Admin::PicturesController < Admin::AdminController
+
+  include ImageableBuilder
   
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
@@ -33,7 +35,7 @@ class Admin::PicturesController < Admin::AdminController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(picture_params)
+    @picture = Picture.new(controler_picture_params)
 
     respond_to do |format|
       if @picture.save
@@ -50,7 +52,7 @@ class Admin::PicturesController < Admin::AdminController
   # PATCH/PUT /pictures/1.json
   def update
     respond_to do |format|
-      if @picture.update(picture_params)
+      if @picture.update(controler_picture_params)
         format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
         format.json { render :show, status: :ok, location: @picture }
       else
@@ -77,7 +79,7 @@ class Admin::PicturesController < Admin::AdminController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def picture_params
-      params.require(:picture).permit(:title, :caption, :alt, :description, :gh_name, :gh_url)
+    def controler_picture_params
+      params.require(:picture).permit(picture_params)
     end
 end

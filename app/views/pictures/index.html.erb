@@ -19,7 +19,7 @@
 				<div class="carousel-inner" role="listbox">
 					<% @pictures.each_with_index do |picture, index| -%>
 					<div class="item <%= 'active' if index.zero? -%>">
-						<%= image_tag picture.gh_url, alt: picture.alt, class: 'center-block' -%>
+						<%= image_tag picture.image_url, alt: picture.alt, class: 'center-block' -%>
 						<% if picture.title.present? || picture.caption.present? -%>
 						<div class="carousel-caption">
 							<%= content_tag :h3, picture.title if picture.title.present? -%>

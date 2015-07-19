@@ -66,10 +66,10 @@ gem 'smarter_csv'
 gem 'font-awesome-rails'
 
 # images
-gem 'octokit'
-# gem 'carrierwave'
-# gem 'rmagick'
-# gem 'fog'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'fog'
+# gem 'fog-aws'
 
 # pagination
 gem 'kaminari'

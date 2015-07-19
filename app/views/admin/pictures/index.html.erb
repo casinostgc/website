@@ -12,7 +12,7 @@
 		<tbody>
 			<% @pictures.each do |picture| %>
 			<tr>
-				<td><%= image_tag picture.gh_url, width: 50 %></td>
+				<td><%= image_tag picture.image_url, width: 50 %></td>
 				<td><%= picture.title %></td>
 				<td><%= picture.imageable %></td>
 				<td><%= link_to 'Show', '#picture' %></td>
