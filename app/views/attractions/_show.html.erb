@@ -1,7 +1,9 @@
 <li class="list-group-item">
 	<div class="list-group-item-text media">
 		<div class="media-left">
-			<%= image_tag 'http://www.thelodgeatbridgemill.com/images/page_blocks/pb_fine_dining.jpg', width: 96 -%>
+			<% if attraction.pictures.any? -%>
+			<%= image_tag attraction.pictures.first.gh_url, width: 96 -%>
+			<% end -%>
 		</div>
 		<div class="media-body">
 			<%= content_tag :h4, attraction.name, class: 'media-heading' -%>
