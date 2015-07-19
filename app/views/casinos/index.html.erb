@@ -8,8 +8,18 @@
 			<div id="casinosMap" class="gmap"></div>
 		</div>
 	</div>
-	<div class="col-sm-3"><div class="thumbnail"></div></div>
-	<div class="col-sm-3"><div class="thumbnail"></div></div>
+	<% @casinos.has_image.first(2).each do |casino| -%>
+	<div class="col-sm-3">
+		<div class="well well-sm">
+			<%= link_to image_tag(casino.pictures.first.image_url, class: 'img-thumbnail'), casino -%>
+			<div class="caption">
+				<h4>
+					<%= casino.name -%>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<% end -%>
 </div>
 
 <div class="table-responsive">

@@ -1,7 +1,6 @@
 class Admin::FlightsController < Admin::AdminController
+	
 	before_action :set_flight, only: [:edit, :update, :destroy]
-
-	respond_to :html
 
 	def index
 		@flights = @flights_q.result(distinct: true).page(params[:page])
@@ -15,7 +14,6 @@ class Admin::FlightsController < Admin::AdminController
 
 	def new
 		@flight = Flight.new
-		respond_with(@flight)
 	end
 
 	def edit
@@ -23,18 +21,35 @@ class Admin::FlightsController < Admin::AdminController
 
 	def create
 		@flight = Flight.new(flight_params)
-		@flight.save
-		respond_with(@flight)
+		respond_to do |format|
+			if @flight.save
+				format.html { redirect_to edit_admin_flight_path(@flight), notice: 'Flight was successfully created.' }
+				format.json { render :show, status: :created, location: @flight }
+			else
+				format.html { render :new }
+				format.json { render json: @flight.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def update
-		@flight.update(flight_params)
-		respond_with(@flight)
+		respond_to do |format|
+			if @flight.update(flight_params)
+				format.html { redirect_to edit_admin_flight_path(@flight), notice: 'Flight was successfully updated.' }
+				format.json { render :show, status: :ok, location: @flight }
+			else
+				format.html { render :edit }
+				format.json { render json: @flight.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def destroy
 		@flight.destroy
-		respond_with(@flight)
+		respond_to do |format|
+			format.html { redirect_to admin_flights_url, notice: 'Flight was successfully destroyed.' }
+			format.json { head :no_content }
+		end
 	end
 
 	private

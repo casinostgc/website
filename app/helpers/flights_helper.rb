@@ -4,4 +4,14 @@ module FlightsHelper
 		content_tag :abbr, location.iata, title: location.name, data: {toggle: :popover, placement: :top, content: location.location}
 	end
 
+	def flight_info(flight)
+		raw "From #{airport_popover(flight.departing_location)} - " + flight.departing_at.to_formatted_s(:long)
+	end
+
+	def flight_title(flight)
+		out = "From #{flight.departing_location.iata} to #{flight.arriving_location.iata}"
+		out += "<br><small>#{flight.departing_at.to_formatted_s(:long_ordinal)}</small>"
+		raw out
+	end
+
 end

@@ -4,6 +4,26 @@
 
 	<div class="col-md-8 col-md-push-4 col-sm-6 col-sm-push-6">
 		<%= @destination.rendered_content %>
+
+		<% if @destination.casinos.any? -%>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Casinos</h3>
+			</div>
+			<div class="panel-body">
+				<div id="casinosMap" class="gmap"></div>
+			</div>
+			<div class="list-group">
+				<% @destination.casinos.first(10).each do |casino| -%>
+				<%= link_to casino.name, [@destination, casino], class: 'casino list-group-item', data: {casino: casino.to_json} -%>
+				<% end -%>
+			</div>
+			<div class="panel-footer">
+				<%= link_to 'View All', destination_casinos_path(@destination), class: 'small' -%>
+
+			</div>
+		</div>
+		<% end -%>
 	</div>
 
 	<div class="col-md-4 col-md-pull-8 col-sm-6 col-sm-pull-6">
@@ -17,39 +37,22 @@
 		<% end -%>
 
 
-		<% if @destination.casinos.any? -%>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Casinos</h3>
-			</div>
-			<div class="panel-body">
-				<div id="casinosMap" class="gmap"></div>
-			</div>
-			<div class="list-group">
-				<% @destination.casinos.first(4).each do |casino| -%>
-				<%= link_to casino.name, [@destination, casino], class: 'casino list-group-item', data: {casino: casino.to_json} -%>
-				<% end -%>
-			</div>
-			<div class="panel-footer">
-				<%= link_to 'View All', destination_casinos_path(@destination), class: 'small' -%>
-
-			</div>
-		</div>
-		<% end -%>
-
-		<% if @destination.flights.any? -%>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">Flights</h3>
 			</div>
-			<!-- <div class="panel-body"></div> -->
+			<% if @destination.flights.any? -%>
 			<div class="list-group">
 				<% @destination.flights.each do |flight| -%>
-				<%= link_to flight, flight, class: 'list-group-item' -%>
+				<%= link_to flight_info(flight), flight, class: 'list-group-item' -%>
 				<% end -%>
 			</div>
+			<% else -%>
+			<div class="panel-body text-center text-muted">
+				No Flights at this Time
+			</div>
+			<% end -%>
 		</div>
-		<% end -%>
 
 	</div>
 
