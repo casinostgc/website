@@ -1,34 +1,77 @@
 <% @page_header = flight_title(@flight) -%>
 
-<p>
-  <strong>Destination:</strong>
-  <%= @flight.destination_id %>
-</p>
+<div class="row">
 
-<p>
-  <strong>Departing location:</strong>
-  <%= @flight.departing_location %>
-</p>
+	<div class="col-md-8 col-md-push-4 col-sm-6 col-sm-push-6">
+		<div class="panel panel-default">
+			<header class="panel-heading">
+				<h3 class="panel-title">Nearby Casinos</h3>
+			</header>
 
-<p>
-  <strong>Departing at:</strong>
-  <%= @flight.departing_at %>
-</p>
+			<% if @flight.destination.casinos.any? -%>
+			<div class="panel-body">
+				<div id="casinosMap" class="gmap"></div>
+			</div>
+			<div class="list-group">
+				<% @flight.destination.casinos.first(10).each do |casino| -%>
+				<%= link_to casino.name, [@flight.destination, casino], class: 'casino list-group-item', data: {casino: casino.to_json} -%>
+				<% end -%>
+			</div>
+			<footer class="panel-footer">
+				<%= link_to 'View All', destination_casinos_path(@flight.destination), class: 'small' -%>
+			</footer>
+			<% else -%>
+			<div class="panel-body text-center text-muted">
+				No Nearby Casinos at this Time.
+			</div>
+			<% end -%>
 
-<p>
-  <strong>Arriving location:</strong>
-  <%= @flight.arriving_location %>
-</p>
+		</div>
+	</div>
 
-<p>
-  <strong>Arriving at:</strong>
-  <%= @flight.arriving_at %>
-</p>
 
-<p>
-  <strong>Flight number:</strong>
-  <%= @flight.flight_number %>
-</p>
+	<div class="col-md-4 col-md-pull-8 col-sm-6 col-sm-pull-6">
 
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Flight Details</h3>
+			</div>
+			<div class="panel-body">
+
+				<p>
+					<strong>Destination:</strong><br>
+					<%= link_to @flight.destination.name, @flight.destination %>
+				</p>
+
+				<p>
+					<strong>Departing location:</strong><br>
+					<%= @flight.departing_location.location %>
+				</p>
+
+				<p>
+					<strong>Departing at:</strong><br>
+					<%= @flight.departing_at %>
+				</p>
+
+				<p>
+					<strong>Arriving at:</strong><br>
+					<%= @flight.arriving_at %>
+				</p>
+
+				<p>
+					<strong>Flight number:</strong><br>
+					<%= @flight.flight_number %>
+				</p>
+
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<% if is_admin? -%>
+<hr>
 <%= link_to 'Edit', edit_admin_flight_path(@flight) %> |
 <%= link_to 'Back', flights_path %>
+<% end -%>

@@ -25,7 +25,7 @@
 	<div class="input-group">
 		<%= f.collection_select :destination_id, Destination.all, :id, :name, {include_blank: 'Select Destination'}, class: 'form-control', id: 'select_destination' -%>
 		<span class="input-group-btn">
-			<%= link_to 'Add Venue', new_admin_destination_path, class: 'btn btn-warning', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>
+			<%= link_to 'Add Destination', new_admin_destination_path, class: 'btn btn-warning', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>
 		</span>
 	</div>
 </div>

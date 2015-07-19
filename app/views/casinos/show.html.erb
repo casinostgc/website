@@ -1,20 +1,40 @@
 <% @page_header = @casino.name -%>
 
+<div class="row">
 
-<p>
-  <strong>Address:</strong>
-  <%= @casino.address %>
-</p>
+	<div class="col-md-8 col-md-push-4 col-sm-6 col-sm-push-6">
+		<%= @casino.rendered_content %>
+	</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @casino.rendered_content %>
-</p>
+	<div class="col-md-4 col-md-pull-8 col-sm-6 col-sm-pull-6">
 
-<p>
-  <strong>Destination:</strong>
-  <%= @casino.destination %>
-</p>
+		<% if @casino.pictures.any? -%>
+		<figure class="thumbnail">
+			<%= link_to image_tag(@casino.pictures.first.image_url), casino_pictures_path(@casino), data: {toggle: :modal, target: '#defaultModal'} -%>
+		</figure>
+		<% else -%>
+		<!-- default casino image -->
+		<% end -%>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Casino Details</h3>
+			</div>
+			<div class="panel-body">
+				<p>
+					<strong>Address:</strong><br>
+					<%= @casino.address %>
+				</p>
+				<p>
+					<strong>Destination:</strong><br>
+					<%= link_to @casino.destination.name, @casino.destination %>
+				</p>
+			</div>
+		</div>
+
+	</div>
+
+</div>
 
 <% if is_admin? -%>
 <hr>

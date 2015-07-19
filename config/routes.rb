@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 	resources :flights, only: [:index, :show]
 
-	resources :casinos, only: [:index, :show]
+	resources :casinos, concerns: [:imageable], only: [:index, :show]
 	resources :destinations, concerns: [:imageable], only: [:index, :show] do
 		resources :casinos, concerns: [:imageable], only: [:index, :show]
 	end
