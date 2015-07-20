@@ -1,7 +1,6 @@
 class Cruise < Event
 
 	# includes and requirements
-	# include Imageable
 
 	# assocations
 	has_many :port_of_calls, foreign_key: 'event_id', dependent: :destroy
@@ -20,7 +19,7 @@ class Cruise < Event
 
 	# class methods
 	def pictures
-		Picture.where imageable: self.ports
+		Picture.where(imageable: self.ports).reorder(reorder_pictures)
 	end
 
 	# instance methods
@@ -35,9 +34,16 @@ class Cruise < Event
 
 	# filters
 	def check_ports
-		if self.ports.count < 2
-			errors[:base] << "At least 2 Port of Calls must be selected."
+		errors[:base] << "At least 2 Port of Calls must be selected." if self.ports.count < 2
+	end
+
+	def reorder_pictures
+		mod_port_ids = self.port_of_calls.drop(1).map{ |p| p.port.pictures.first.id }
+		out = "CASE"
+		mod_port_ids.each_with_index do |id, i|
+			out << " WHEN id = '#{id}' THEN #{i}"
 		end
+		out << " END"
 	end
 
 	# validations

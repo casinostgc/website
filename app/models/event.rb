@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 
 	include Content
-	# include Imageable
+	include Imageable
 	# include Datetimeformat
 	
 	default_scope { includes(:venue).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }

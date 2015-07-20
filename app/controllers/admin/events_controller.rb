@@ -15,7 +15,7 @@ class Admin::EventsController < Admin::AdminController
 	def new
 		@event = type_class.new
 
-		@event.pictures.build
+		@event.pictures.build unless type == 'Cruise'
 
 		2.times do
 			@event.port_of_calls.build if type == 'Cruise'
@@ -23,7 +23,7 @@ class Admin::EventsController < Admin::AdminController
 	end
 
 	def edit
-		@event.pictures.build
+		@event.pictures.build unless type == 'Cruise'
 
 		3.times do
 			@event.port_of_calls.build if type == 'Cruise' && @event.port_of_calls.empty?
