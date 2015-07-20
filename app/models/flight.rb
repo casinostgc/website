@@ -5,7 +5,7 @@ class Flight < ActiveRecord::Base
 	require 'world_airports'
 	include DatetimeFormat
 
-	before_save :convert_times
+	# after_initialize :convert_datetimes
 
 	serialize :arriving_location
 	serialize :departing_location
@@ -86,7 +86,7 @@ class Flight < ActiveRecord::Base
 		self.update_column(:destination_id, destination.id)
 	end
 
-	def convert_times
+	def convert_datetimes
 		puts "converting times"
 		puts self.departing_at
 		self.departing_at = convert_str_to_time self.departing_at

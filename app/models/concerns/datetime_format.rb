@@ -6,10 +6,6 @@ module DatetimeFormat
 		
 	end
 
-	def convert_start_time
-		# dt = 
-	end
-
 	def convert_str_to_time(time_str)
 		DateTime.strptime time_str, '%m/%d/%Y %I:%M %p' unless time_str.nil?
 	end

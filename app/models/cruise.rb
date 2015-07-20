@@ -23,12 +23,6 @@ class Cruise < Event
 	end
 
 	# instance methods
-	def update_times
-		puts "updating cruise times"
-		self.update_column(:start_at, self.port_of_calls.first.departs_at)
-		self.update_column(:end_at, self.port_of_calls.last.arrives_at)
-	end
-
 	def night_length
 		(end_at.to_date - start_at.to_date).to_i
 	end
