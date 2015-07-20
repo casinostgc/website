@@ -16,4 +16,8 @@ module EventsHelper
 		action ? "#{action}_admin_" : ""
 	end
 
+	def sti_events_path(type = "event")
+		send "admin_#{type.underscore.pluralize}_path"
+	end
+
 end
