@@ -24,6 +24,7 @@ class Cruise < Event
 
 	# instance methods
 	def update_times
+		puts "updating cruise times"
 		self.update_column(:start_at, self.port_of_calls.first.departs_at)
 		self.update_column(:end_at, self.port_of_calls.last.arrives_at)
 	end
@@ -34,7 +35,8 @@ class Cruise < Event
 
 	# filters
 	def check_ports
-		errors[:base] << "At least 2 Port of Calls must be selected." if self.ports.count < 2
+		puts 'checking port count'
+		errors[:base] << "At least 2 Port of Calls must be selected." if self.port_of_calls.count < 2
 	end
 
 	def reorder_pictures

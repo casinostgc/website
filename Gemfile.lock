@@ -43,6 +43,8 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap3-datetimepicker-rails (4.7.14)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
@@ -204,6 +206,8 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
+    momentjs-rails (2.10.3)
+      railties (>= 3.1)
     multi_json (1.11.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -298,6 +302,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  bootstrap3-datetimepicker-rails
   byebug
   carrierwave
   cocoon
@@ -315,6 +320,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   kaminari-bootstrap
+  momentjs-rails
   nokogiri
   pg
   rails (= 4.2.1)

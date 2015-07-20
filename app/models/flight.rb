@@ -3,6 +3,9 @@ class Flight < ActiveRecord::Base
 	# includes and requirements
 	require 'smarter_csv'
 	require 'world_airports'
+	include DatetimeFormat
+
+	before_save :convert_times
 
 	serialize :arriving_location
 	serialize :departing_location
@@ -15,7 +18,7 @@ class Flight < ActiveRecord::Base
 	belongs_to :destination
 
 	# scopes
-	default_scope { where( "departing_at > ?", Time.now ) }
+	# default_scope { where( "departing_at > ?", Time.now ) }
 	
 	scope :unique_dates, -> {
 		select("date(departing_at) AS departing_at_date").distinct
@@ -81,6 +84,13 @@ class Flight < ActiveRecord::Base
 			# dest.location = "#{self.arriving_location.iata}, #{self.arriving_location.city}, #{self.arriving_location.country}"
 		end
 		self.update_column(:destination_id, destination.id)
+	end
+
+	def convert_times
+		puts "converting times"
+		puts self.departing_at
+		self.departing_at = convert_str_to_time self.departing_at
+		puts self.departing_at
 	end
 
 	# validations

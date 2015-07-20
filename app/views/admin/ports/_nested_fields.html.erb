@@ -11,6 +11,17 @@
 			</div>
 		</div>
 
+		<% usec = Time.now.usec -%>
+		<div class="row">
+			<div class="col-sm-6">
+				<%= render 'admin/admin/datepicker', f: f, field: :departs_at, dtp_class: 'start', usec: usec -%>
+			</div>
+			<div class="col-sm-6">
+				<%= render 'admin/admin/datepicker', f: f, field: :arrives_at, dtp_class: 'end', usec: usec -%>
+			</div>
+		</div>
+
+		<% if false -%>
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
@@ -25,6 +36,7 @@
 				</div>
 			</div>
 		</div>
+		<% end -%>
 
 	</div>
 </li>
