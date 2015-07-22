@@ -16,8 +16,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 		imageable_type = model.imageable_type.present? ? model.imageable_type.underscore : model.class.to_s.underscore
 		imageable_id = model.imageable_id.present? ? model.imageable_id : model.id
 		# "#{ENV['AWS_S3_DIR']}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-		"#{ENV['AWS_S3_DIR']}/#{model.class.to_s.underscore}/#{model.id}"
-		# "#{ENV['AWS_S3_DIR']}/#{imageable_type}/#{imageable_id}"
+		# "#{ENV['AWS_S3_DIR']}/#{model.class.to_s.underscore}/#{model.id}"
+		"#{ENV['AWS_S3_DIR']}/#{imageable_type}/#{imageable_id}"
 	end
 
 	# Provide a default URL as a default if there hasn't been a file uploaded:

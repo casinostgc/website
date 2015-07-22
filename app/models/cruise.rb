@@ -19,7 +19,9 @@ class Cruise < Event
 
 	# class methods
 	def pictures
-		Picture.where(imageable: self.ports).reorder(reorder_pictures)
+		pics = Picture.where(imageable: self.ports)
+		pics.reorder(reorder_pictures) if pics.any?
+		pics
 	end
 
 	# instance methods
@@ -38,7 +40,7 @@ class Cruise < Event
 	end
 
 	def reorder_pictures
-		mod_port_ids = self.port_of_calls.drop(1).map{ |p| p.port.pictures.first.id }
+		mod_port_ids = self.port_of_calls.drop(1).map{ |p| p.port.pictures.first.id if p.port.pictures.any? }
 		out = "CASE"
 		mod_port_ids.each_with_index do |id, i|
 			out << " WHEN id = '#{id}' THEN #{i}"
