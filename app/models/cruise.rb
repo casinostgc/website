@@ -19,7 +19,9 @@ class Cruise < Event
 
 	# class methods
 	def pictures
-		Picture.where(imageable: self.ports).reorder(reorder_pictures)
+		pics = Picture.where(imageable: self.ports)
+		pics.reorder(reorder_pictures) if pics.any?
+		pics
 	end
 
 	# instance methods
