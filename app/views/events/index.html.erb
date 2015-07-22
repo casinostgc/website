@@ -3,19 +3,7 @@
 <% end -%>
 
 <div class="row">
-	<% @type.constantize.has_image.each do |event| -%>
-	<div class="col-sm-6 col-md-3">
-		<div class="well well-sm">
-			<%= link_to image_tag(event.pictures.first.image_url, class: 'img-thumbnail'), event -%>
-			<div class="caption">
-				<h4>
-					<%= event.title -%>
-					<!-- <br><small>Theme Park</small> -->
-				</h4>
-			</div>
-		</div>
-	</div>
-	<% end -%>
+	<%= render 'layouts/featured_images', items: @type.constantize, heading: :title -%>
 </div>
 
 <div class="table-responsive">

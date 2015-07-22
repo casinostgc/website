@@ -27,7 +27,7 @@
 				</p>
 				<p>
 					<strong>Destination:</strong><br>
-					<%= link_to @casino.destination.name, @casino.destination %>
+					<%= link_to_if @casino.destination.present?, @casino.destination.try(:name), @casino.destination %>
 				</p>
 			</div>
 		</div>

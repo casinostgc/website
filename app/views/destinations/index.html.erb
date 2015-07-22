@@ -3,18 +3,7 @@
 <% end -%>
 
 <div class="row">
-	<% @destinations.has_image.each do |destination| -%>
-	<div class="col-sm-6 col-md-3">
-		<div class="well well-sm">
-			<%= link_to image_tag(destination.pictures.first.image_url, class: 'img-thumbnail'), destination -%>
-			<div class="caption">
-				<h4>
-					<%= destination.name -%>
-				</h4>
-			</div>
-		</div>
-	</div>
-	<% end -%>
+	<%= render 'layouts/featured_images', items: @destinations -%>
 </div>
 
 <table class="table table-striped">
