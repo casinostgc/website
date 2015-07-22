@@ -44,6 +44,10 @@ class ImageUploader < CarrierWave::Uploader::Base
 		process resize_to_fill: [735, 400]
 	end
 
+	version :thumb do
+	  process resize_to_fit: [175, 175]
+	end
+
 	version :attraction, if: :is_attraction? do
 		process resize_to_fill: [175, 100]
 	end
