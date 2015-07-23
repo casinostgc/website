@@ -20,7 +20,7 @@ class Cruise < Event
 	# class methods
 	def pictures
 		pics = Picture.where(imageable: self.ports)
-		pics = pics.order(reorder_pictures) if pics.any?
+		pics = pics.order(reorder_pictures) unless pics.nil?
 	end
 
 	# instance methods
@@ -30,8 +30,12 @@ class Cruise < Event
 
 	# filters
 	def check_ports
-		puts 'checking port count'
-		errors[:base] << "At least 2 Port of Calls must be selected." if self.port_of_calls.count < 2
+		errors[:base] << "At least 2 Port of Calls must be selected." if self.ports.count < 2
+	end
+
+	def update_times
+		self.update_column(:start_at, self.port_of_calls.first.departs_at)
+		self.update_column(:end_at, self.port_of_calls.last.arrives_at)
 	end
 
 	def reorder_pictures
@@ -44,6 +48,6 @@ class Cruise < Event
 	end
 
 	# validations
-	validate :check_ports
+	# validate :check_ports
 
 end

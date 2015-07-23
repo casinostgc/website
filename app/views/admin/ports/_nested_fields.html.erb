@@ -14,29 +14,12 @@
 		<% usec = Time.now.usec -%>
 		<div class="row">
 			<div class="col-sm-6">
-				<%= render 'admin/admin/datepicker', f: f, field: :departs_at, dtp_class: 'start', usec: usec -%>
+				<%= render 'admin/admin/datepicker', f: f, field: :start_string, label: 'Arriving Time', dtp_class: 'start', usec: usec -%>
 			</div>
 			<div class="col-sm-6">
-				<%= render 'admin/admin/datepicker', f: f, field: :arrives_at, dtp_class: 'end', usec: usec -%>
+				<%= render 'admin/admin/datepicker', f: f, field: :end_string, label: 'Departing Time', dtp_class: 'end', usec: usec -%>
 			</div>
 		</div>
-
-		<% if false -%>
-		<div class="row">
-			<div class="col-sm-6">
-				<div class="form-group">
-					<%= f.label :arrives_at, 'Arrival' %><br>
-					<%= f.datetime_select :arrives_at, class: 'form-control datetimepicker', placeholder: 'Date & Time' %>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="form-group">
-					<%= f.label :departs_at, 'Departure' %><br>
-					<%= f.datetime_select :departs_at, class: 'form-control datetimepicker', placeholder: 'Date & Time' %>
-				</div>
-			</div>
-		</div>
-		<% end -%>
 
 	</div>
 </li>

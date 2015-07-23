@@ -12,7 +12,6 @@ $ ->
 	initDateTimePicker = ->
 		$('.datetimepicker').datetimepicker
 			# minDate: moment()
-			format: "MM-DD-YYYY HH:mm:ss"
 			icons:
 				time: 'fa fa-clock-o'
 				date: 'fa fa-calendar'

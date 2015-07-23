@@ -7,33 +7,28 @@ class PortOfCall < ActiveRecord::Base
 	belongs_to :cruise
 	belongs_to :port
 
-	after_initialize :convert_datetimes
-
-	# def start_time
-	# 	persisted? ? convert_time_to_str(self.departs_at)
-	# end
-
-	# def end_time
-	# 	persisted? ? convert_time_to_str(self.arrives_at)
-	# end
-
-	def convert_times
-		puts "poc times:"
-		puts "#{self.departs_at}, #{self.arrives_at}"
-		# self.departs_at = convert_str_to_time(self.departs_at)
-		# self.arrives_at = convert_str_to_time(self.arrives_at)
+	def start_string
+		convert_time_to_str(self.arrives_at)
 	end
 
-	def convert_datetimes
-		self.departs_at = 'hello'
-		self.arrives_at = 'hello'
+	def start_string=(time_str)
+		self.arrives_at = convert_str_to_time(time_str)
+	end
+
+	def end_string
+		convert_time_to_str(self.departs_at)
+	end
+
+	def end_string=(time_str)
+		self.departs_at = convert_str_to_time(time_str)
 	end
 
 	def check_departure_date
 		puts 'checking valid departure date'
+		puts self.departs_at
 		errors[:base] << ": Departure date must be greater than today." if self.departs_at <= Date.today
 	end
 
-	# validate :check_departure_date
+	validate :check_departure_date
 
 end

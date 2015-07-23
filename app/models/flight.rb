@@ -5,8 +5,6 @@ class Flight < ActiveRecord::Base
 	require 'world_airports'
 	include DatetimeFormat
 
-	# after_initialize :convert_datetimes
-
 	serialize :arriving_location
 	serialize :departing_location
 
@@ -18,7 +16,7 @@ class Flight < ActiveRecord::Base
 	belongs_to :destination
 
 	# scopes
-	# default_scope { where( "departing_at > ?", Time.now ) }
+	default_scope { where( "departing_at > ?", Time.now ) }
 	
 	scope :unique_dates, -> {
 		select("date(departing_at) AS departing_at_date").distinct
@@ -73,6 +71,22 @@ class Flight < ActiveRecord::Base
 		["#{self.departing_airport.upcase} - #{WorldAirports.iata(self.departing_airport).name}", self.departing_airport]
 	end
 
+	def start_string
+		convert_time_to_str(self.departing_at)
+	end
+
+	def start_string=(time_str)
+		self.departing_at = convert_str_to_time(time_str)
+	end
+
+	def end_string
+		convert_time_to_str(self.arriving_at)
+	end
+
+	def end_string=(time_str)
+		self.arriving_at = convert_str_to_time(time_str)
+	end
+
 	# filters
 	def update_airports
 		self.update_column(:arriving_location, WorldAirports.iata(self.arriving_airport))
@@ -84,13 +98,6 @@ class Flight < ActiveRecord::Base
 			# dest.location = "#{self.arriving_location.iata}, #{self.arriving_location.city}, #{self.arriving_location.country}"
 		end
 		self.update_column(:destination_id, destination.id)
-	end
-
-	def convert_datetimes
-		puts "converting times"
-		puts self.departing_at
-		self.departing_at = convert_str_to_time self.departing_at
-		puts self.departing_at
 	end
 
 	# validations

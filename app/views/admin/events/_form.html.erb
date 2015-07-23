@@ -32,13 +32,18 @@
 </div>
 
 <% unless @event.type == 'Cruise' -%>
-<div class="form-group">
-	<%= f.label :start_at %>
-	<%= f.datetime_select :start_at %>
-</div>
-<div class="form-group">
-	<%= f.label :end_at %>
-	<%= f.datetime_select :end_at %>
+<% usec = Time.now.usec -%>
+<div class="row">
+	<div class="col-sm-6">
+		<div class="form-group">
+			<%= render 'admin/admin/datepicker', f: f, field: :start_string, label: 'Event Start Time', dtp_class: 'start', usec: usec -%>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="form-group">
+			<%= render 'admin/admin/datepicker', f: f, field: :end_string, label: 'Event End Time', dtp_class: 'end', usec: usec -%>
+		</div>
+	</div>
 </div>
 <% end -%>
 

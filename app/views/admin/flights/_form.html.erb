@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	<div class="col-sm-5">
-		<%= render 'admin/admin/datepicker', f: f, field: :departing_at, dtp_class: 'start', usec: usec -%>
+		<%= render 'admin/admin/datepicker', f: f, field: :start_string, label: 'Departing Time', dtp_class: 'start', usec: usec -%>
 	</div>
 </div>
 
@@ -33,7 +33,7 @@
 		</div>
 	</div>
 	<div class="col-sm-5">
-		<%= render 'admin/admin/datepicker', f: f, field: :arriving_at, dtp_class: 'end', usec: usec -%>
+		<%= render 'admin/admin/datepicker', f: f, field: :end_string, label: 'Arriving Time', dtp_class: 'end', usec: usec -%>
 	</div>
 </div>
 

@@ -10,6 +10,22 @@ class Event < ActiveRecord::Base
 
 	validates :venue_id, presence: true
 
+	def start_string
+		convert_time_to_str(self.start_at)
+	end
+
+	def start_string=(time_str)
+		self.start_at = convert_str_to_time(time_str)
+	end
+
+	def end_string
+		convert_time_to_str(self.end_at)
+	end
+
+	def end_string=(time_str)
+		self.end_at = convert_str_to_time(time_str)
+	end
+
 	def date_span
 		self.start_at.strftime("%b %d, %Y") + ' - ' + self.end_at.strftime("%b %d, %Y")
 	end
