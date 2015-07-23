@@ -50,7 +50,11 @@ Rails.application.routes.draw do
 		get '/menus', to: "menu_items#index"
 	end
 
+	get '/robots.txt' => 'static_pages#robots'
+
 	get '/:id', to: "pages#show", as: 'short_page'
+
+	get '/robots.txt' => 'static_pages#robots'
 
 	root 'static_pages#index'
 	# root 'pages#root'

@@ -6,15 +6,11 @@
 				Attractions
 			</h4>
 		</div>
-		<div class="modal-body">
 
-			<ul class="list-group">
-				<% @attractions.each do |attraction| -%>
-				<%= render 'show', attraction: attraction -%>
-				<% end -%>
-			</ul>
+		<% @attractions.each do |attraction| -%>
+		<%= render 'show', attraction: attraction -%>
+		<% end -%>
 
-		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		</div>

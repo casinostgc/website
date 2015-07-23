@@ -4,7 +4,7 @@
 
 $ ->
 
-	$('.btn-file input[type=file]').change (e) ->
+	$('body').on 'change', '.btn-file input[type=file]', (e) ->
 		$btn = $(this).closest('.btn-file')
 		if $(this).val().length
 			$btn.removeClass('btn-default').addClass('btn-success')
