@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 
-	layout 'pages'
+	layout 'pages', except: [:robots]
 
 	def index
 		@events = Event.all
@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
 	def robots
 		robots_file = ENV['EB_ENV'] == 'production' ? 'robots.production.txt' : 'robots.txt'
 		robots = File.read(Rails.root + "lib/#{robots_file}")
-		render :text => robots, :layout => false, :content_type => "text/plain"
+		render text: robots, layout: false, content_type: "text/plain"
 	end
 	
 end
