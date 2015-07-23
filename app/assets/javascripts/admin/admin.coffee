@@ -4,6 +4,7 @@ $ ->
 	$('.froala_content').editable
 		inlineMode: false
 		height: 300
+		imageLink: false
 		imageUpload: false
 
 	# $('body').on 'cocoon:after-insert', (e, insertedItem) ->

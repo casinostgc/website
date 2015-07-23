@@ -2,7 +2,7 @@
 	<div class="list-group-item-text media">
 		<div class="media-left">
 			<% if attraction.pictures.any? -%>
-			<%= image_tag attraction.pictures.first.image_url, width: 96 -%>
+			<%= image_tag attraction.pictures.first.image_url(:thumb), width: 96 -%>
 			<% end -%>
 		</div>
 		<div class="media-body">
