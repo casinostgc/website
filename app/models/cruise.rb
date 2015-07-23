@@ -39,10 +39,10 @@ class Cruise < Event
 	end
 
 	def reorder_pictures
-		mod_port_ids = self.port_of_calls.drop(1).map{ |p| p.port.pictures.first.id if p.port.pictures.any? }
+		mod_port_ids = self.port_of_calls.drop(1).map{ |p| p.port.pictures.any? ? p.port.pictures.first.id : 0 }
 		out = "CASE"
 		mod_port_ids.each_with_index do |id, i|
-			out << " WHEN id = '#{id}' THEN #{i}"
+			out << " WHEN id = #{id} THEN #{i}"
 		end
 		out << " END"
 	end
