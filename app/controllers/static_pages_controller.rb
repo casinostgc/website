@@ -3,7 +3,6 @@ class StaticPagesController < ApplicationController
 	layout 'pages', except: [:robots]
 
 	def index
-		@events = Event.all
 	end
 
 	def robots

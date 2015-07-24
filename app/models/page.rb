@@ -13,6 +13,7 @@ class Page < ActiveRecord::Base
 	default_scope { order(title: :asc) }
 	
 	# callbacks
+	before_save :update_front_page
 	
 	# class methods
 	
@@ -21,6 +22,10 @@ class Page < ActiveRecord::Base
 	# filters
 	def should_generate_new_friendly_id?
 		slug.blank?
+	end
+
+	def update_front_page
+		Page.where(front_page: true).update_all(front_page: false) if self.front_page && self.front_page_changed?
 	end
 	
 	# validations

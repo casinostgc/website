@@ -1,0 +1,34 @@
+<span class="divider"></span>
+<section style="background-color: #F39C12; color: #fff;">
+	<div class="container">
+
+		<div class="jumbotron" style="padding: 20px 60px 0">
+			<h2 class="text-center">
+				Travel Made Easy<br>
+				<small>Complimentary Airfare <%= fa_icon('plane') -%></small>
+			</h2>
+			<hr style="width: 200px;">
+		</div>
+
+		<div class="row">
+			<!-- <img src="http://i.huffpost.com/gen/1893910/thumbs/o-AIR-TRAVEL-facebook.jpg" class="img-responsive img-thumbnail"> -->
+			<div class="col-sm-6 col-sm-push-6">
+				<h4 class="hidden-xs">&nbsp;</h4>
+				<p>
+					Ask us about Complimentary Airfare, Hotel, and Transfers to the fabulous CAESARS Entertainment & Tropicana Las Vegas gaming resorts!
+				</p>
+				<p>
+					We have reserved seats on hundreds of flights from dozens of cities across the United States and Canada, including one near you. Reservations being accepted for qualified players.
+				</p>
+				<hr>
+			</div>
+			<div class="col-sm-6 col-sm-pull-6">
+				<h4>Browse by Date, Destination or Departing Airport</h4>
+
+				<%= render 'flights/search' -%>
+
+			</div>
+		</div>
+	</div>
+	<span class="divider"></span>
+</section>

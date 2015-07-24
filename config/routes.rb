@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
 	get '/robots.txt' => 'static_pages#robots'
 
-	root 'static_pages#index'
-	# root 'pages#root'
+	# root 'static_pages#index'
+	root 'pages#root'
 
 end

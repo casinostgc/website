@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719153033) do
+ActiveRecord::Schema.define(version: 20150724122452) do
 
   create_table "admin_menu_items", force: :cascade do |t|
     t.string   "href"
@@ -106,8 +106,10 @@ ActiveRecord::Schema.define(version: 20150719153033) do
     t.string   "slug"
     t.text     "content"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "front_page"
+    t.boolean  "container_layout", default: true
   end
 
   create_table "pictures", force: :cascade do |t|

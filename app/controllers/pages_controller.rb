@@ -7,8 +7,10 @@ class PagesController < ApplicationController
 	end
 
 	def root
-		# @page = Page.where(front_page: true).first
-		@page = Page.find(1)
+		@page = Page.where(front_page: true).try(:first)
+		@page.nil? ? render('static_pages/index') : render(:show)
+	rescue
+		render('static_pages/index')
 	end
 
 	def show

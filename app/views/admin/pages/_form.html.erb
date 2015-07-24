@@ -12,55 +12,49 @@
 <% end %>
 
 
-
-<div class="row">
-
-	<div class="col-sm-8">
-
-		<div class="form-group">
-			<%#= f.label :title %>
-			<%= f.text_field :title, class: 'form-control input-lg', placeholder: 'Page Title' %>
-		</div>
-		<div class="form-group">
-			<div class="input-group">
-				<%= content_tag :span, root_url, class: 'input-group-addon' %>
-				<%#= f.label :slug %>
-				<%= f.text_field :slug, class: 'form-control', placeholder: 'Permalink Slug' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :content, 'Page Content' %>
-			<%= f.text_area :content, class: 'froala_content form-control' %>
-		</div>
-
+<div class="form-group">
+	<%#= f.label :title %>
+	<%= f.text_field :title, class: 'form-control', placeholder: 'Page Title' %>
+</div>
+<div class="form-group">
+	<div class="input-group">
+		<%= content_tag :span, root_url, class: 'input-group-addon' %>
+		<%#= f.label :slug %>
+		<%= f.text_field :slug, class: 'form-control', placeholder: 'Permalink Slug' %>
 	</div>
-
-	<div class="col-sm-4">
-
-		<div class="form-group">
-			<%= f.label :status, 'Page Status' %>
-			<%= f.select :status, %w[Published Draft], {}, {class: 'form-control'} %>
-		</div>
-
-		<div class="actions">
-			<%= f.submit nil, class: 'btn btn-primary btn-lg btn-block' %>
-		</div>
-
-		<hr>
-
-		<div class="row">
-			<div class="col-xs-6">
-				<%= link_to 'View Page', short_page_path(@page), class: 'btn btn-info btn-sm btn-block' if @page.persisted? %>
-			</div>
-			<div class="col-xs-6">
-				<%= link_to 'Cancel', admin_pages_path, class: 'btn btn-warning btn-sm btn-block' %>
-			</div>
-		</div>
-
-	</div>
-
 </div>
 
+<div class="form-group">
+	<%= f.label :content, 'Page Content' %>
+	<%= f.text_area :content, class: 'froala_content form-control' %>
+</div>
 
+<div class="checkbox">
+	<label>
+		<%= f.check_box :container_layout -%> Container Layout
+	</label>
+</div>
+<div class="checkbox">
+	<label>
+	<%= f.check_box :front_page -%> Front Page
+	</label>
+</div>
+
+<div class="actions">
+	<%= f.submit nil, class: 'btn btn-primary btn-lg' %>
+</div>
+
+<hr>
+
+<div class="row">
+	<div class="col-xs-6">
+		<%= link_to 'View Page', short_page_path(@page), class: 'btn btn-info btn-sm btn-block' if @page.persisted? %>
+	</div>
+	<div class="col-xs-6">
+		<%= link_to 'Cancel', admin_pages_path, class: 'btn btn-warning btn-sm btn-block' %>
+	</div>
+</div>
+
+</div>
 
 <% end %>

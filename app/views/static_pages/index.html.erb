@@ -1,45 +1,25 @@
+<%= render 'layouts/shortcodes/home/jumbo' -%>
 
-<section class="parallax" style="background-image: url('<%= image_url('bg-vegas.jpg') -%>');">
-	<div class="jumbotron">
-		<div class="container text-center">
-			<%= image_tag( 'new-logo-white.png', alt: 'CASINOS The Grand Collection', class: 'img-responsive', style: 'margin: 0 auto;' ) -%>
-		</div>
-	</div>
-</section>
-<span class="divider"></span>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 lead">
-			<p>
-				<strong>CASINOS the Grand Collection</strong> may very well be the most prominent independent supplier of exclusive casino offers and customized gambling travel itineraries to the world's most experienced gamblers. We connect our clients to the <strong>best casino offers, complementary privileges, benefits &amp; services</strong> at gaming destinations across the United States and internationally.
-			</p>
-			<p>
-				Our long-term experience in this industry has created a worldwide network of gaming resorts and cruise lines. Working with our partners, we offer our clients an incredible selection of complimentary trips, amenities, and invitations to top-tier special events.
-			</p>
-			<p>
-				Take advantage of the wonderful opportunities that we can provide to create a memorable gaming holiday, celebrate an extended weekend, or just relax on a getaway to one of our exciting destinations or onboard some of the world's most luxurious cruise liners.
-			</p>
-		</div>
-
-	</div>
+<div class="container lead">
+	<p>
+		<strong>CASINOS the Grand Collection</strong> may very well be the most prominent independent supplier of exclusive casino offers and customized gambling travel itineraries to the world's most experienced gamblers. We connect our clients to the <strong>best casino offers, complementary privileges, benefits &amp; services</strong> at gaming destinations across the United States and internationally.
+	</p>
+	<p>
+		Our long-term experience in this industry has created a worldwide network of gaming resorts and cruise lines. Working with our partners, we offer our clients an incredible selection of complimentary trips, amenities, and invitations to top-tier special events.
+	</p>
+	<p>
+		Take advantage of the wonderful opportunities that we can provide to create a memorable gaming holiday, celebrate an extended weekend, or just relax on a getaway to one of our exciting destinations or onboard some of the world's most luxurious cruise liners.
+	</p>
 </div>
 
-<section class="parallax" style="background-image: url('<%= image_url('bg-roulette.jpg') -%>');">
-	<div class="jumbotron">
-		<div class="container text-center">
-			<h1>Gaming Tourism Offers</h1>
-		</div>
-	</div>
-</section>
-<span class="divider"></span>
+<%= render 'layouts/shortcodes/home/gaming' -%>
 
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6 col-md-7">
 			<h4>The Grand Collection of "On Land" Casinos</h4>
 			<p>
-				The Grand Collection offers “Very V.I.P” Group Departures to great <%= link_to 'Gaming Locations', destinations_url, class: 'btn btn-default btn-xs' -%> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
+				The Grand Collection offers “Very V.I.P” Group Departures to great <a class="btn btn-default btn-xs" href="/destinations">Gaming Locations</a> including: Las Vegas, Atlantic City, New Orleans, Tunica, Reno, Lake Tahoe, Dominican Republic, Windsor, Biloxi etc. We also arrange “Very V.I.P.” Customized Gaming Departures for your personally selected travel dates, as well as advice on where to gamble to receive the most casino comps.
 			</p>
 			<h4>The Grand Collection of Cruise Expereience & Gaming "At Sea"</h4>
 			<p>
@@ -48,55 +28,14 @@
 			<hr class="visible-xs-block">
 		</div>
 		<div class="col-sm-6 col-md-5">
-			<%= render 'events/upcoming', render_footer: true -%>
+			<%= render 'events/upcoming' -%>
 		</div>
 	</div>
 </div>
 
-<span class="divider"></span>
+<%= render 'layouts/shortcodes/home/travel' -%>
 
-<section style="background-color: #F39C12; color: #fff;">
-	<div class="container">
-
-		<div class="jumbotron" style="padding: 20px 60px 0">
-			<h2 class="text-center">
-				Travel Made Easy<br>
-				<small>Complimentary Airfare <%= fa_icon('plane') -%></small>
-			</h2>
-			<hr style="width: 200px;">
-		</div>
-
-		<div class="row">
-			<!-- <img src="http://i.huffpost.com/gen/1893910/thumbs/o-AIR-TRAVEL-facebook.jpg" class="img-responsive img-thumbnail"> -->
-			<div class="col-sm-6 col-sm-push-6">
-				<h4 class="hidden-xs">&nbsp;</h4>
-				<p>
-					Ask us about Complimentary Airfare, Hotel, and Transfers to the fabulous CAESARS Entertainment & Tropicana Las Vegas gaming resorts!
-				</p>
-				<p>
-					We have reserved seats on hundreds of flights from dozens of cities across the United States and Canada, including one near you. Reservations being accepted for qualified players.
-				</p>
-				<hr>
-			</div>
-			<div class="col-sm-6 col-sm-pull-6">
-				<h4>Browse by Date, Destination or Departing Airport</h4>
-
-				<%= render 'flights/search' -%>
-
-			</div>
-		</div>
-	</div>
-	<span class="divider"></span>
-</section>
-
-<section class="parallax" style="background-image: url('<%= image_url('bg-hotel-room.jpg') -%>');">
-	<div class="jumbotron">
-		<div class="container text-center">
-			<h1>Casino Comps</h1>
-		</div>
-	</div>
-</section>
-<span class="divider"></span>
+<%= render 'layouts/shortcodes/home/comps' -%>
 
 <div class="container">
 	<div class="row">
@@ -124,6 +63,5 @@
 			</div>
 		</div>
 	</div>
-
 </div>
 

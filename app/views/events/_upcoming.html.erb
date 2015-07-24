@@ -1,4 +1,4 @@
-<% events ||= @events -%>
+<% events ||= Event.all; render_footer ||= true -%>
 
 <% if events.any? -%>
 <div class="panel panel-default">
@@ -7,7 +7,7 @@
 	</div>
 
 	<div class="list-group">
-		<% events.each do |event| -%>
+		<% events.limit(3).each do |event| -%>
 		<%= link_to event, class: 'list-group-item' do -%>
 		<div class="list-group-item-text media">
 			<%= content_tag :i, nil, class: "fa fa-fw fa-#{event.icon} fa-2x media-object pull-left" -%>
@@ -25,7 +25,7 @@
 		<% end -%>
 	</div>
 
-	<% if render_footer -%>
+	<% if render_footer === true -%>
 	<footer class="panel-footer text-right">
 		<div class="row">
 			<p class="col-sm-6">

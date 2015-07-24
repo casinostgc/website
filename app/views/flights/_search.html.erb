@@ -1,15 +1,17 @@
-<%= search_form_for @flights_q, url: flights_path do |f| %>
+<form class="flight_search" id="flight_search" action="/flights" accept-charset="UTF-8" method="get">
 
-<p>
-	<%= f.select :departing_at_eq, options_for_select(Flight.unique_dates), {include_blank: 'Departing Date'}, {class: 'form-control'} %>
-</p>
-<p>
-	<%= f.select :destination_name_cont, options_for_select(Flight.available_destinations), {include_blank: 'Destination'}, {class: 'form-control'} -%>
-</p>
-<p>
-	<%= f.select :departing_airport_eq, options_for_select(Flight.departing_airports), {include_blank: 'Departing Airport'}, {class: 'form-control'} -%>
-</p>
+	<input name="utf8" type="hidden" value="✓">
 
-<button type="submit" class="btn btn-info btn-lg btn-block">Find Flights <%= fa_icon('plane') -%></button>
+	<p>
+		<%= select_tag 'q[departing_at_eq]', options_for_select(Flight.unique_dates), {include_blank: 'Departing Date', class: 'form-control'} %>
+	</p>
+	<p>
+		<%= select_tag 'q[destination_name_cont]', options_for_select(Flight.available_destinations), {include_blank: 'Destination', class: 'form-control'} -%>
+	</p>
+	<p>
+		<%= select_tag 'q[departing_airport_eq]', options_for_select(Flight.departing_airports), {include_blank: 'Departing Airport', class: 'form-control'} -%>
+	</p>
 
-<% end %>
+	<button type="submit" class="btn btn-info btn-lg btn-block">Find Flights <%= fa_icon('plane') -%></button>
+
+</form>
