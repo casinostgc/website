@@ -1,0 +1,23 @@
+<% content_for :pre_container do -%>
+<%= render 'static_pages/parallax_header', text: 'Feedback', img_url: 'bg-feedback.jpg' -%>
+<% end -%>
+
+<div class="row">
+	<div class="col-sm-8">
+		<% @testimonials.each do |testimonial| %>
+		<blockquote>
+			<%= testimonial.rendered_content %>
+			<footer>
+				<%= raw [testimonial.name, content_tag(:em, testimonial.subject)].join(', ') %>
+			</footer>
+		</blockquote>
+		<% end.empty? and begin %>
+		<p class="lead text-muted text-center">
+			Testimonials Coming Soon.
+		</p>
+		<% end %>
+	</div>
+	<div class="col-sm-4">
+		<%= content_tag :p, link_to('Leave Feedback', new_testimonial_path, class: 'btn btn-warning btn-lg btn-block') -%>
+	</div>
+</div>

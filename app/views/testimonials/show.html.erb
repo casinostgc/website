@@ -1,0 +1,14 @@
+<% @page_header = @testimonial.subject -%>
+
+<blockquote>
+	<%= @testimonial.rendered_content %>
+	<footer>
+		<%= raw [@testimonial.name, content_tag(:em, @testimonial.subject)].join(', ') %>
+	</footer>
+</blockquote>
+
+<% if is_admin? -%>
+<hr>
+<%= link_to 'Edit', edit_admin_testimonial_path(@testimonial) %> |
+<%= link_to 'Back', testimonials_path %>
+<% end -%>

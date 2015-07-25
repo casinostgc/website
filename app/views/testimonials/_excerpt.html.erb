@@ -1,0 +1,10 @@
+<% testimonial ||= @testimonial -%>
+
+<blockquote>
+	<%= testimonial.excerpt(155) %>
+	<%= link_to 'More', testimonial, class: 'btn btn-xs btn-default' -%>
+	<footer>
+		<%= raw [testimonial.name, content_tag(:em, testimonial.subject)].join(', ') %>
+	</footer>
+</blockquote>
+

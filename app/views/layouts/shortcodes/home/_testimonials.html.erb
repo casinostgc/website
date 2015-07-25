@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+	<header class="panel-heading">
+		<h4 class="panel-title text-center">
+			Testimonials
+		</h4>
+	</header>
+
+	<article class="panel-body">
+		<%= render 'testimonials/carousel' -%>
+	</article>
+
+	<footer class="panel-footer">
+		<div class="row">
+			<p class="col-md-6">
+				<%= link_to fa_icon('comments', text: 'More Testimonials', right: true), testimonials_path, class: 'btn btn-info btn-xs btn-block' -%>
+			</p>
+			<p class="col-md-6">
+				<%= link_to fa_icon('comment', text: 'Leave Feedback', right: true), new_testimonial_path, class: 'btn btn-warning btn-xs btn-block' -%>
+			</p>
+		</div>
+	</footer>
+</div>

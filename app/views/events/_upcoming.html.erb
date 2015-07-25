@@ -28,11 +28,11 @@
 	<% if render_footer === true -%>
 	<footer class="panel-footer text-right">
 		<div class="row">
-			<p class="col-sm-6">
-				<%= link_to raw('Browse Events '+fa_icon('calendar')), land_events_path, class: 'btn btn-info btn-xs btn-block' -%>
+			<p class="col-md-6">
+				<%= link_to fa_icon('calendar', text: 'Browse Events', right: true), land_events_path, class: 'btn btn-info btn-xs btn-block' -%>
 			</p>
-			<p class="col-sm-6">
-				<%= link_to raw('Browse Cruises '+fa_icon('ship')), cruises_path, class: 'btn btn-info btn-xs btn-block' -%>
+			<p class="col-md-6">
+				<%= link_to fa_icon('ship', text: 'Browse Cruises', right: true), cruises_path, class: 'btn btn-info btn-xs btn-block' -%>
 			</p>
 		</div>
 	</footer>

@@ -8,6 +8,13 @@ $ ->
 		imageLink: false
 		imageUpload: false
 
+	$('.froala_content_limited').editable
+		inlineMode: false
+		height: 300
+		imageLink: false
+		imageUpload: false
+		buttons: []
+
 	# datetimepicker
 	initDateTimePicker = ->
 		$('.datetimepicker').datetimepicker

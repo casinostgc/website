@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+	resources :testimonials, except: [:edit, :update, :destroy]
+
 	concern :imageable do
 		resources :pictures, only: [:index, :show]
 	end
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
 
 		resources :admin, only: [:index]
 
-		resources :pages, :events, :pictures, except: [:show]
+		resources :pages, :events, :pictures, :testimonials, except: [:show]
 
 		resources :destinations, :casinos, :ports, :venues, :attractions, concerns: [:admin_imageable], except: [:show]
 
