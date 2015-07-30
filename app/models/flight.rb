@@ -4,6 +4,7 @@ class Flight < ActiveRecord::Base
 	require 'smarter_csv'
 	require 'world_airports'
 	include DatetimeFormat
+	datetime_vars start_var: :departing_at, end_var: :arriving_at
 
 	serialize :arriving_location
 	serialize :departing_location
@@ -69,22 +70,6 @@ class Flight < ActiveRecord::Base
 	# instance methods
 	def select_departing_airport
 		["#{self.departing_airport.upcase} - #{WorldAirports.iata(self.departing_airport).name}", self.departing_airport]
-	end
-
-	def start_string
-		convert_time_to_str(self.departing_at)
-	end
-
-	def start_string=(time_str)
-		self.departing_at = convert_str_to_time(time_str)
-	end
-
-	def end_string
-		convert_time_to_str(self.arriving_at)
-	end
-
-	def end_string=(time_str)
-		self.arriving_at = convert_str_to_time(time_str)
 	end
 
 	# filters
