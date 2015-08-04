@@ -60,7 +60,7 @@ class Admin::CasinosController < Admin::AdminController
 	end
 
 	def casino_params
-		params.require(:casino).permit(:name, :slug, :address, :latitude, :longitude, :content, :destination_id, pictures_attributes: picture_params)
+		params.require(:casino).permit(:name, :slug, :code, :address, :latitude, :longitude, :content, :destination_id, pictures_attributes: picture_params)
 	end
 
 end

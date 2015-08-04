@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725010703) do
+ActiveRecord::Schema.define(version: 20150804224221) do
 
   create_table "admin_menu_items", force: :cascade do |t|
     t.string   "href"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150725010703) do
     t.integer  "destination_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "code"
   end
 
   add_index "casinos", ["destination_id"], name: "index_casinos_on_destination_id"
