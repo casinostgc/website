@@ -6,7 +6,6 @@ class Flight < ActiveRecord::Base
 	include DatetimeFormat
 	datetime_vars start_var: :departing_at, end_var: :arriving_at
 
-	serialize :arriving_location
 	serialize :departing_location
 
 	ransacker :departing_at do
@@ -14,7 +13,7 @@ class Flight < ActiveRecord::Base
 	end
 
 	# assocations
-	belongs_to :destination
+	belongs_to :casino
 
 	# scopes
 	default_scope { where( "departing_at > ?", Time.now ) }
@@ -24,7 +23,7 @@ class Flight < ActiveRecord::Base
 		.map(&:departing_at_date).sort
 	}
 	scope :available_destinations, -> { 
-		joins(:destination)
+		joins(casino: :destination)
 		.select("destinations.name AS destinaition_name").distinct
 		.map(&:destinaition_name).sort
 	}
@@ -34,7 +33,10 @@ class Flight < ActiveRecord::Base
 	}
 
 	# callbacks
-	after_save :update_airports, :update_destination
+	before_save :update_airport_location
+
+	# validations
+	validates :departing_airport, :departing_at, :arriving_at, :casino_code, presence: true
 
 	# class methods
 	def self.to_csv(options = {})
@@ -51,18 +53,14 @@ class Flight < ActiveRecord::Base
 		SmarterCSV.process( file.path, {chunk_size: 1000} ) do |chunk|
 			chunk.each do |data_hash|
 
-				# flight = Flight.new
-				# flight.arriving_at = data_hash[:arriving_at]
-				# flight.departing_at = data_hash[:departing_at]
-				# flight.departing_airport = data_hash[:departing_airport]
-				# flight.arriving_airport = data_hash[:arriving_airport]
-				# flight.flight_num = data_hash[:flight_num]
-				# flight.save
+				flight = Flight.new
+				flight.departing_airport = data_hash[:departing_airport]
+				flight.departing_at = flight_datetime_format( data_hash[:departing_at] )
+				flight.arriving_at = flight_datetime_format( data_hash[:arriving_at] )
+				flight.casino = assign_casino( data_hash[:casino_code] )
 
-				data_hash.delete(:destination)
-				data_hash[:arriving_at] = Time.strptime(data_hash[:arriving_at], "%m/%d/%Y")
-				data_hash[:departing_at] = Time.strptime(data_hash[:departing_at], "%m/%d/%Y")
-				flight = Flight.create!(data_hash)
+				flight.save!
+
 			end
 		end
 	end
@@ -72,19 +70,28 @@ class Flight < ActiveRecord::Base
 		["#{self.departing_airport.upcase} - #{WorldAirports.iata(self.departing_airport).name}", self.departing_airport]
 	end
 
-	# filters
-	def update_airports
-		self.update_column(:arriving_location, WorldAirports.iata(self.arriving_airport))
-		self.update_column(:departing_location, WorldAirports.iata(self.departing_airport))
+	def casino_code
+		self.casino.code if self.casino.present?
 	end
 
-	def update_destination
-		destination = Destination.find_or_create_by!(name: "#{self.arriving_location.city}, #{self.arriving_location.country}") do |dest|
-			# dest.location = "#{self.arriving_location.iata}, #{self.arriving_location.city}, #{self.arriving_location.country}"
+	def casino_code=(code)
+		self.casino = assign_casino( code )
+	end
+
+	private
+
+	def assign_casino(code)
+		Casino.find_or_create_by(code: code) do |casino|
+			casino.name = code
 		end
-		self.update_column(:destination_id, destination.id)
 	end
 
-	# validations
+	def flight_datetime_format(time)
+		Time.strptime( time, "%m/%d/%Y" )
+	end
+
+	def update_airport_location
+		self.departing_location = WorldAirports.iata(self.departing_airport)
+	end
 
 end

@@ -12,6 +12,7 @@ class Casino < ActiveRecord::Base
 
 	# assocations
 	belongs_to :destination
+	has_many :flights, dependent: :destroy
 	
 	# scopes
 	default_scope { order(name: :asc) }
@@ -20,7 +21,7 @@ class Casino < ActiveRecord::Base
 	# callbacks
 	after_validation { geocode_conditionals(:address) }
 
-	after_validation :assign_destination
+	# after_validation :assign_destination
 
 	# class methods
 
@@ -31,9 +32,9 @@ class Casino < ActiveRecord::Base
 		slug.blank?
 	end
 
-	def assign_destination
-		self.destination = Destination.near(self.address, 50, order: 'distance').first
-	end
+	# def assign_destination
+	# 	self.destination = Destination.near(self.address, 50, order: 'distance').first
+	# end
 
 	# validations
 	

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804224221) do
+ActiveRecord::Schema.define(version: 20150805153044) do
 
   create_table "admin_menu_items", force: :cascade do |t|
     t.string   "href"
@@ -75,19 +75,16 @@ ActiveRecord::Schema.define(version: 20150804224221) do
   add_index "events", ["venue_id"], name: "index_events_on_venue_id"
 
   create_table "flights", force: :cascade do |t|
-    t.integer  "destination_id"
+    t.integer  "casino_id"
     t.text     "departing_location"
-    t.text     "arriving_location"
     t.datetime "departing_at"
     t.datetime "arriving_at"
     t.string   "departing_airport"
-    t.string   "arriving_airport"
-    t.string   "flight_number"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
-  add_index "flights", ["destination_id"], name: "index_flights_on_destination_id"
+  add_index "flights", ["casino_id"], name: "index_flights_on_casino_id"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

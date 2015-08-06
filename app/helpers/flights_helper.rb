@@ -9,7 +9,7 @@ module FlightsHelper
 	end
 
 	def flight_title(flight)
-		out = "From #{flight.departing_location.iata} to #{flight.arriving_location.iata}"
+		out = "From #{flight.departing_location.iata} to #{flight.casino.name}"
 		out += "<br><small>#{flight.departing_at.to_formatted_s(:long_ordinal)}</small>"
 		raw out
 	end

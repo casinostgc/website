@@ -12,7 +12,7 @@ class Destination < ActiveRecord::Base
 
 	# assocations
 	has_many :casinos
-	has_many :flights
+	has_many :flights, through: :casinos
 
 	# scopes
 	default_scope { includes(:casinos).order(name: :asc) }
