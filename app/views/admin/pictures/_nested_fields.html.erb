@@ -6,7 +6,7 @@
 				<% if f.object.persisted? -%>
 				<%= image_tag f.object.image_url, class: 'media-object', width: 96  -%>
 				<% else -%>
-				<span class="btn btn-default btn-file" style="width: 96px;">
+				<span class="btn btn-default btn-file btn-block" style="width: 96px;">
 					<%= fa_icon 'file 2x', class: 'file-input-icon' -%> <%= f.file_field :image %>
 				</span>
 				<% end -%>

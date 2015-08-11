@@ -19,7 +19,9 @@ class Casino < ActiveRecord::Base
 	# scope :featured, -> { uniq.shuffle.sample(4) }
 
 	# callbacks
+	before_validation :require_name_from_code
 	after_validation { geocode_conditionals(:address) }
+
 
 	# after_validation :assign_destination
 
@@ -32,11 +34,18 @@ class Casino < ActiveRecord::Base
 		slug.blank?
 	end
 
+	def require_name_from_code
+		unless self.name.present?
+			self.name = self.code
+			self.slug = self.code
+		end
+	end
+
 	# def assign_destination
 	# 	self.destination = Destination.near(self.address, 50, order: 'distance').first
 	# end
 
 	# validations
-	
+	validates :code, presence: true
 
 end

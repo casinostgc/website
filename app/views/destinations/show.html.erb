@@ -41,17 +41,11 @@
 			<header class="panel-heading">
 				<h3 class="panel-title">Flights</h3>
 			</header>
-			<% if @destination.flights.any? -%>
+
 			<div class="list-group">
-				<% @destination.flights.each do |flight| -%>
-				<%= link_to flight_info(flight), flight, class: 'list-group-item' -%>
-				<% end -%>
+				<%= render(@destination.flights) || content_tag(:div, 'No Flights at this Time', class: 'panel-body text-center') -%>
 			</div>
-			<% else -%>
-			<div class="panel-body text-center text-muted">
-				No Flights at this Time
-			</div>
-			<% end -%>
+
 		</div>
 
 	</div>
