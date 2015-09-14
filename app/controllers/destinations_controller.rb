@@ -3,7 +3,7 @@ class DestinationsController < ApplicationController
 	before_action :set_destination, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@destinations = Destination.page(params[:Page])
+		@destinations = Destination.page(params[:page])
 	end
 
 	def show
