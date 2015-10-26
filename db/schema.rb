@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026140445) do
+ActiveRecord::Schema.define(version: 20151026195058) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admin_menu_items", force: :cascade do |t|
     t.string   "href"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "admin_menu_items", ["page_id"], name: "index_admin_menu_items_on_page_id"
+  add_index "admin_menu_items", ["page_id"], name: "index_admin_menu_items_on_page_id", using: :btree
 
   create_table "attractions", force: :cascade do |t|
     t.string   "name"
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.string   "code"
   end
 
-  add_index "casinos", ["destination_id"], name: "index_casinos_on_destination_id"
+  add_index "casinos", ["destination_id"], name: "index_casinos_on_destination_id", using: :btree
 
   create_table "cruises", force: :cascade do |t|
     t.string   "title"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "cruises", ["venue_id"], name: "index_cruises_on_venue_id"
+  add_index "cruises", ["venue_id"], name: "index_cruises_on_venue_id", using: :btree
 
   create_table "destinations", force: :cascade do |t|
     t.string   "name"
@@ -84,7 +87,7 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "events", ["casino_id"], name: "index_events_on_casino_id"
+  add_index "events", ["casino_id"], name: "index_events_on_casino_id", using: :btree
 
   create_table "flights", force: :cascade do |t|
     t.integer  "casino_id"
@@ -96,7 +99,7 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.datetime "updated_at",         null: false
   end
 
-  add_index "flights", ["casino_id"], name: "index_flights_on_casino_id"
+  add_index "flights", ["casino_id"], name: "index_flights_on_casino_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -106,10 +109,10 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
@@ -134,7 +137,7 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.string   "image"
   end
 
-  add_index "pictures", ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
+  add_index "pictures", ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id", using: :btree
 
   create_table "port_of_calls", force: :cascade do |t|
     t.datetime "arrives_at"
@@ -146,8 +149,8 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "port_of_calls", ["cruise_id"], name: "index_port_of_calls_on_cruise_id"
-  add_index "port_of_calls", ["port_id"], name: "index_port_of_calls_on_port_id"
+  add_index "port_of_calls", ["cruise_id"], name: "index_port_of_calls_on_cruise_id", using: :btree
+  add_index "port_of_calls", ["port_id"], name: "index_port_of_calls_on_port_id", using: :btree
 
   create_table "ports", force: :cascade do |t|
     t.string   "name"
@@ -185,8 +188,8 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.datetime "updated_at",                             null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "venue_attractions", force: :cascade do |t|
     t.integer  "venue_id"
@@ -195,8 +198,8 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "venue_attractions", ["attraction_id"], name: "index_venue_attractions_on_attraction_id"
-  add_index "venue_attractions", ["venue_id"], name: "index_venue_attractions_on_venue_id"
+  add_index "venue_attractions", ["attraction_id"], name: "index_venue_attractions_on_attraction_id", using: :btree
+  add_index "venue_attractions", ["venue_id"], name: "index_venue_attractions_on_venue_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
     t.string   "name"
@@ -204,10 +207,16 @@ ActiveRecord::Schema.define(version: 20151026140445) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "type"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "admin_menu_items", "pages"
+  add_foreign_key "casinos", "destinations"
+  add_foreign_key "cruises", "venues"
+  add_foreign_key "flights", "destinations", column: "casino_id"
+  add_foreign_key "port_of_calls", "ports"
+  add_foreign_key "venue_attractions", "attractions"
+  add_foreign_key "venue_attractions", "venues"
 end

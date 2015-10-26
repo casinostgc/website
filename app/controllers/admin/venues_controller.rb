@@ -26,7 +26,6 @@ class Admin::VenuesController < Admin::AdminController
 
 	def create
 		@venue = Venue.new(venue_params)
-		@type = params[:event_type][0]
 		
 		respond_to do |format|
 			if @venue.save
