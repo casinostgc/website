@@ -2,7 +2,10 @@ class Cruise < ActiveRecord::Base
 
 	# includes and requirements
 	include Content
-	include Imageable
+	# include Imageable
+
+	# include DatetimeFormat
+	# datetime_vars start_var: :start_at, end_var: :end_at
 
 	# assocations
 	belongs_to :venue

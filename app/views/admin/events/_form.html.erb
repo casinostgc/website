@@ -17,9 +17,9 @@
 </div>
 
 <div class="form-group">
-	<%= f.label :casino_id %>
+	<%= f.label :casino_id, 'Casino (Venue)' %>
 	<div class="input-group">
-		<%= f.collection_select :casino_id, Casino.all, :id, :name, {include_blank: 'Select Venue'}, class: 'form-control', id: 'select_venue' -%>
+		<%= f.collection_select :casino_id, Casino.all, :id, :name, {include_blank: 'Select Venue'}, class: 'form-control', id: 'select_casino' -%>
 		<span class="input-group-btn">
 			<%= link_to 'Add Venue', new_admin_casino_path, class: 'btn btn-warning', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>
 		</span>
