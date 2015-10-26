@@ -13,7 +13,9 @@ class Cruise < ActiveRecord::Base
 
 	# scopes
 	# default_scope { includes(:port_of_calls).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
-	default_scope { where("start_at > ?", Date.today ).order(start_at: :asc) }
+	default_scope { order(start_at: :asc) }
+
+	scope :future, -> { where("start_at > ?", Time.now) }
 
 	scope :has_image, -> { joins(ports: :pictures).distinct }
 

@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @cruises.each do |cruise| %>
+			<% @cruises.reverse_order.each do |cruise| %>
 			<tr>
 				<td><%= link_to cruise.title, edit_admin_cruise_path(cruise) -%></td>
 				<td><%= link_to cruise.venue.try(:name), edit_admin_venue_path(cruise.venue) -%></td>

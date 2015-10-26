@@ -6,7 +6,9 @@ class Event < ActiveRecord::Base
 	include Content
 	include Imageable
 
-	default_scope { includes(:casino).where("start_at > ?", Date.today ).order(start_at: :asc) }
+	default_scope { includes(:casino).order(start_at: :asc) }
+
+	scope :future, -> { where("start_at > ?", Time.now ) }
 
 	belongs_to :casino
 

@@ -17,7 +17,7 @@
 		</thead>
 
 		<tbody>
-			<% @cruises.each do |cruise| %>
+			<% @cruises.future.each do |cruise| %>
 			<tr>
 				<td><%= link_to cruise.title, cruise %></td>
 				<td><%= cruise.date_span %></td>
