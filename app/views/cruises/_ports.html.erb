@@ -16,14 +16,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @event.port_of_calls.each_with_index do |poc, index| -%>
+				<% @cruise.port_of_calls.each_with_index do |poc, index| -%>
 
 				<%= content_tag :tr, class: 'port-of-call', data: {port: poc.port.to_json, index: index} do -%>
 				<td>
 					<%= link_to poc.port.name, poc.port, data: {toggle: :modal, target: '#defaultModal'} -%>
 				</td>
-				<td><%= poc == @event.port_of_calls.first ? '-' : poc.arrives_at -%></td>
-				<td><%= poc == @event.port_of_calls.last ? '-' : poc.departs_at -%></td>
+				<td><%= poc == @cruise.port_of_calls.first ? '-' : poc.arrives_at -%></td>
+				<td><%= poc == @cruise.port_of_calls.last ? '-' : poc.departs_at -%></td>
 				<% end -%>
 
 				<% end -%>

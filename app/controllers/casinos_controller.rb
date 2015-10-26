@@ -4,7 +4,7 @@ class CasinosController < ApplicationController
 	before_action :set_destination, only: [:index]
 
 	def index
-		@casinos = @destination.present? ? @destination.casinos : Casino.all
+		@casinos = @destination.present? ? @destination.casinos : Casino.all.page(params[:page])
 	end
 
 	def show

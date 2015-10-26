@@ -8,7 +8,7 @@ $ ->
 		marker_arr = []
 		$('.port-of-call').each ->
 			port = $(this).data('port')
-			if $(this).data('lat') != null
+			unless port.latitude == null
 				infoWindow = '<p><strong>'+port.name+'</strong></p>'
 				# infoWindow += $(this).find('a').attr('src')
 				marker_arr.push

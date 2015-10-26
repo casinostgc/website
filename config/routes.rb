@@ -1,45 +1,43 @@
 Rails.application.routes.draw do
 
-	resources :testimonials, except: [:edit, :update, :destroy]
-
 	concern :imageable do
 		resources :pictures, only: [:index, :show]
 	end
+
 	concern :admin_imageable do
 		resources :pictures, except: [:show]
 	end
 
 	devise_for :users
 
+	resources :testimonials, except: [:edit, :update, :destroy]
+
 	resources :pages, only: [:show]
 
 	resources :flights, only: [:index, :show]
 
 	resources :casinos, concerns: [:imageable], only: [:index, :show]
+
 	resources :destinations, concerns: [:imageable], only: [:index, :show] do
 		resources :casinos, concerns: [:imageable], only: [:index, :show]
 	end
 
-	resources :venues, concerns: [:imageable], only: [:index, :show] do
+	resources :venues, path: :ships, concerns: [:imageable], only: [:index, :show] do
 		resources :attractions, concerns: [:imageable], only: [:index]
 	end
 
-	resources :ports, concerns: [:imageable], only: [:index, :show]
-
-	resources :cruises, controller: 'events', type: 'Cruise', concerns: [:imageable], only: [:index, :show]
-	resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', concerns: [:imageable], only: [:index, :show]
+	resources :ports, :events, :cruises, concerns: [:imageable], only: [:index, :show]
 
 	namespace :admin do
 		get '/' => 'admin#index', as: :admin
 
 		resources :admin, only: [:index]
 
-		resources :pages, :events, :pictures, :testimonials, except: [:show]
+		resources :pages, :pictures, :testimonials, except: [:show]
 
-		resources :destinations, :casinos, :ports, :venues, :attractions, concerns: [:admin_imageable], except: [:show]
+		resources :destinations, :casinos, :events, :cruises, :ports, :attractions, concerns: [:admin_imageable], except: [:show]
 
-		resources :cruises, controller: 'events', type: 'Cruise', concerns: [:admin_imageable], except: [:show]
-		resources :land_events, controller: 'events', type: 'LandEvent', path: 'land-events', concerns: [:admin_imageable], except: [:show]
+		resources :venues, path: :ships, concerns: [:admin_imageable], except: [:show]
 
 		resources :flights, except: [:show] do
 			collection { post :import }

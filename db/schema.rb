@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805153044) do
+ActiveRecord::Schema.define(version: 20151026140445) do
 
   create_table "admin_menu_items", force: :cascade do |t|
     t.string   "href"
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 20150805153044) do
 
   add_index "casinos", ["destination_id"], name: "index_casinos_on_destination_id"
 
+  create_table "cruises", force: :cascade do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.integer  "venue_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cruises", ["venue_id"], name: "index_cruises_on_venue_id"
+
   create_table "destinations", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
@@ -63,16 +76,15 @@ ActiveRecord::Schema.define(version: 20150805153044) do
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.string   "slug"
-    t.integer  "venue_id"
+    t.integer  "casino_id"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.string   "type"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "events", ["venue_id"], name: "index_events_on_venue_id"
+  add_index "events", ["casino_id"], name: "index_events_on_casino_id"
 
   create_table "flights", force: :cascade do |t|
     t.integer  "casino_id"
@@ -128,13 +140,13 @@ ActiveRecord::Schema.define(version: 20150805153044) do
     t.datetime "arrives_at"
     t.datetime "departs_at"
     t.integer  "position"
-    t.integer  "event_id"
+    t.integer  "cruise_id"
     t.integer  "port_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "port_of_calls", ["event_id"], name: "index_port_of_calls_on_event_id"
+  add_index "port_of_calls", ["cruise_id"], name: "index_port_of_calls_on_cruise_id"
   add_index "port_of_calls", ["port_id"], name: "index_port_of_calls_on_port_id"
 
   create_table "ports", force: :cascade do |t|

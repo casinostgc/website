@@ -1,13 +1,13 @@
-<% events ||= Event.all; render_footer ||= true -%>
+<% @events =  Event.limit(3) | Cruise.limit(3) -%>
 
-<% if events.any? -%>
+<% if @events.any? -%>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title text-center">Upcoming Events</h3>
+		<h3 class="panel-title text-center">Upcoming Events & Cruises</h3>
 	</div>
 
 	<div class="list-group">
-		<% events.limit(3).each do |event| -%>
+		<% @events.sort_by(&:start_at).first(3).each do |event| -%>
 		<%= link_to event, class: 'list-group-item' do -%>
 		<div class="list-group-item-text media">
 			<%= content_tag :i, nil, class: "fa fa-fw fa-#{event.icon} fa-2x media-object pull-left" -%>
@@ -16,31 +16,26 @@
 					<%= event.title -%><br>
 					<small><%= event.date_span -%></small>
 				</h5>
-				<small>
-					<%= event.excerpt(80) -%>
-				</small>
 			</div>
 		</div>
 		<% end -%>
 		<% end -%>
 	</div>
 
-	<% if render_footer === true -%>
 	<footer class="panel-footer text-right">
 		<div class="row">
 			<p class="col-md-6">
-				<%= link_to fa_icon('calendar', text: 'Browse Events', right: true), land_events_path, class: 'btn btn-info btn-xs btn-block' -%>
+				<%= link_to fa_icon('calendar', text: 'Browse Events', right: true), events_path, class: 'btn btn-info btn-xs btn-block' -%>
 			</p>
 			<p class="col-md-6">
 				<%= link_to fa_icon('ship', text: 'Browse Cruises', right: true), cruises_path, class: 'btn btn-info btn-xs btn-block' -%>
 			</p>
 		</div>
 	</footer>
-	<% end -%>
 
 </div>
 <% else -%>
 <p class="lead text-muted text-center">
-	There are no upcoming events.
+	There are no upcoming events or cruises.
 </p>
 <% end -%>

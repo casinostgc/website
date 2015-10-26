@@ -1,0 +1,30 @@
+<% content_for :pre_container do -%>
+<%= render 'static_pages/parallax_header', text: 'Cruises', img_url: @background_image -%>
+<% end -%>
+
+<div class="row">
+	<%= render 'layouts/featured_images', items: @cruises, heading: :title -%>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Dates</th>
+				<th>Venue</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @cruises.each do |cruise| %>
+			<tr>
+				<td><%= link_to cruise.title, cruise %></td>
+				<td><%= cruise.date_span %></td>
+				<td><%= link_to cruise.venue.name, venue_path(cruise.venue) %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>

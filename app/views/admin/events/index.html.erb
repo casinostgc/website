@@ -1,4 +1,4 @@
-<%= link_to "New #{@type.titleize}", sti_event_path(@type, nil, :new), class: 'btn btn-primary' %>
+<%= link_to "New Event", new_admin_event_path(@event), class: 'btn btn-primary' %>
 <hr>
 
 <div class="table-responsive">
@@ -13,8 +13,8 @@
 		<tbody>
 			<% @events.each do |event| %>
 			<tr>
-				<td><%= link_to event.title, sti_event_path(event.type, event, :edit) -%></td>
-				<td><%#= event.venue -%></td>
+				<td><%= link_to event.title, edit_admin_event_path(event) -%></td>
+				<td><%= link_to event.casino.try(:name), edit_admin_casino_path(event.casino) -%></td>
 				<td><%= event.date_span -%></td>
 			</tr>
 			<% end -%>
@@ -23,5 +23,5 @@
 </div>
 
 <div class="pagination-container text-center">
-	<%#= paginate @events %>
+	<%= paginate @events %>
 </div>

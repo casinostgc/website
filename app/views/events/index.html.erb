@@ -1,9 +1,9 @@
 <% content_for :pre_container do -%>
-<%= render 'static_pages/parallax_header', text: @type.underscore.humanize.pluralize.titleize, img_url: @background_image -%>
+<%= render 'static_pages/parallax_header', text: 'Land Events', img_url: @background_image -%>
 <% end -%>
 
 <div class="row">
-	<%= render 'layouts/featured_images', items: @type.constantize, heading: :title -%>
+	<%= render 'layouts/featured_images', items: @events, heading: :title -%>
 </div>
 
 <div class="table-responsive">
@@ -21,12 +21,10 @@
 			<tr>
 				<td><%= link_to event.title, event %></td>
 				<td><%= event.date_span %></td>
-				<td><%= link_to event.venue.name, venue_path(event.venue) %></td>
+				<td><%= link_to event.casino.name, casino_path(event.casino) %></td>
 			</tr>
 			<% end %>
 		</tbody>
 	</table>
 
 </div>
-
-<%#= link_to 'New Event', new_event_path %>

@@ -39,6 +39,10 @@
 	</table>
 </div>
 
+<div class="pagination-container text-center">
+	<%= paginate @casinos %>
+</div>
+
 <% if is_admin? -%>
 <hr>
 <%= link_to 'New Casino', new_admin_casino_path %>

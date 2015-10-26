@@ -8,7 +8,7 @@ $ ->
 		marker_arr = []
 		$('.casino').each ->
 			casino = $(this).data('casino')
-			if $(this).data('lat') != null
+			unless casino.latitude == null
 				infoWindow = '<p><strong>'+casino.name+'</strong></p>'
 				# infoWindow += $(this).find('a').attr('src')
 				marker_arr.push

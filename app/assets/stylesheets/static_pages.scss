@@ -21,3 +21,9 @@
 .btn-group > .btn:not(:last-of-type) {
 		border-right: solid 1px #222;
 }
+
+@media (max-width: 768px) {
+	.auto-height {
+		margin-bottom: 20px !important;
+	}
+}

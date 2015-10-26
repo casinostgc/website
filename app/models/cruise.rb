@@ -1,15 +1,19 @@
-class Cruise < Event
+class Cruise < ActiveRecord::Base
 
 	# includes and requirements
+	include Content
+	include Imageable
 
 	# assocations
-	has_many :port_of_calls, foreign_key: 'event_id', dependent: :destroy
+	belongs_to :venue
+	has_many :port_of_calls, dependent: :destroy
 	has_many :ports, through: :port_of_calls
 
 	accepts_nested_attributes_for :port_of_calls, reject_if: proc { |attributes| attributes['port_id'].blank? }, allow_destroy: true
 
 	# scopes
-	default_scope { includes(:port_of_calls).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
+	# default_scope { includes(:port_of_calls).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
+	default_scope { where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
 
 	scope :has_image, -> { joins(ports: :pictures).distinct }
 
@@ -27,6 +31,11 @@ class Cruise < Event
 	def night_length
 		(end_at.to_date - start_at.to_date).to_i
 	end
+
+	def date_span
+		self.start_at.strftime("%b %d, %Y") + ' - ' + self.end_at.strftime("%b %d, %Y")
+	end
+
 
 	# filters
 	def check_ports
@@ -47,7 +56,12 @@ class Cruise < Event
 		out << " END"
 	end
 
+	def icon
+		'ship'
+	end
+
 	# validations
 	# validate :check_ports
+	validates :venue_id, presence: true
 
 end

@@ -1,31 +1,23 @@
 class Event < ActiveRecord::Base
 
+	include DatetimeFormat
+	datetime_vars start_var: :start_at, end_var: :end_at
+
 	include Content
 	include Imageable
-	
-	default_scope { includes(:venue).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
 
-	belongs_to :venue
+	default_scope { includes(:casino).where("DATE(start_at) > ?", Date.today ).order(start_at: :asc) }
 
-	validates :venue_id, presence: true
+	belongs_to :casino
+
+	validates :casino_id, presence: true
 
 	def date_span
 		self.start_at.strftime("%b %d, %Y") + ' - ' + self.end_at.strftime("%b %d, %Y")
 	end
 
 	def icon
-		case type
-		when 'Cruise'
-			'ship'
-		else
-			'calendar'
-		end
+		'calendar'
 	end
 
-	class << self
-		def types
-			%w(LandEvent Cruise)
-		end
-	end
-	
 end

@@ -1,0 +1,54 @@
+<% @page_header = @cruise.title -%>
+
+<div class="row">
+	
+	<aside class="col-sm-4">
+		<% if @cruise.pictures.any? -%>
+		<figure class="thumbnail">
+			<%= link_to image_tag(@cruise.pictures.first.image_url), cruise_pictures_path(@cruise), data: {toggle: :modal, target: '#defaultModal'} -%>
+		</figure>
+		<% else -%>
+		<!-- default cruise image -->
+		<% end -%>
+
+		<div class="panel panel-default">
+			<header class="panel-heading">
+				<h4 class="panel-title">Details</h4>
+			</header>
+			<div class="panel-body">
+				<p>
+					<strong>Ship:</strong>
+					<%= link_to @cruise.venue.name, venue_path(@cruise.venue) %>
+				</p>
+
+				<p>
+					<strong>Start at:</strong>
+					<%= @cruise.start_at %>
+				</p>
+
+				<p>
+					<strong>End at:</strong>
+					<%= @cruise.end_at %>
+				</p>
+
+				<p>
+					<%= link_to fa_icon('asterisk', text: 'Attractions'), venue_attractions_path(@cruise.venue), class: 'btn btn-default btn-block btn-sm', data: {toggle: :modal, target: '#defaultModal'} %>
+				</p>
+			</div>
+		</div>
+
+	</aside>
+
+	<div class="col-sm-8">
+		<%= @cruise.rendered_content %>
+
+		<%= render 'ports' -%>
+	</div>
+
+</div>
+
+<% if is_admin? -%>
+<hr>
+<%= link_to 'Edit', edit_admin_cruise_path(@cruise) %> |
+<%= link_to 'Back', cruises_path %>
+<% end -%>

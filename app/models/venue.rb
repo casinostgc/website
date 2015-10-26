@@ -4,7 +4,6 @@ class Venue < ActiveRecord::Base
 	include Geolocation
 	include Imageable
 
-	has_many :events
 	has_many :cruises
 
 	has_many :venue_attractions, dependent: :destroy
@@ -12,12 +11,7 @@ class Venue < ActiveRecord::Base
 
 	accepts_nested_attributes_for :venue_attractions, reject_if: proc { |attributes| attributes[:attraction_id].blank? }, allow_destroy: true
 
-	delegate :cruises, :land_events, to: :events
-
 	default_scope { order(name: :asc) }
-
-	# scope :only_cruises, -> { where(cruise_line: true) }
-	# scope :only_events, -> { where(cruise_line: false) }
 
 	extend FriendlyId
 	friendly_id :name, use: :slugged
