@@ -8,6 +8,7 @@
 				<th>Title</th>
 				<th>Ship</th>
 				<th>Dates</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,6 +17,9 @@
 				<td><%= link_to cruise.title, edit_admin_cruise_path(cruise) -%></td>
 				<td><%= link_to cruise.venue.try(:name), edit_admin_venue_path(cruise.venue) -%></td>
 				<td><%= cruise.date_span -%></td>
+				<td>
+					<%= link_to fa_icon('remove'), [:admin, cruise], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' -%>
+				</td>
 			</tr>
 			<% end -%>
 		</tbody>
