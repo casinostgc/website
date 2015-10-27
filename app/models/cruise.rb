@@ -22,8 +22,13 @@ class Cruise < ActiveRecord::Base
 
 	scope :has_image, -> { joins(ports: :pictures).distinct }
 
+	# validations
+	# validate :validate_port_count
+	validates :venue_id, presence: true
+	validates :port_of_calls, length: { minimum: 2, too_short: "requires %{count} or more to be selected" }
+
 	# callbacks
-	after_save :update_times
+	after_validation :update_times
 
 
 	# class methods
@@ -43,13 +48,10 @@ class Cruise < ActiveRecord::Base
 
 
 	# filters
-	def check_ports
-		errors[:base] << "At least 2 Port of Calls must be selected." if self.ports.count < 2
-	end
-
 	def update_times
-		self.update_column(:start_at, self.port_of_calls.first.departs_at)
-		self.update_column(:end_at, self.port_of_calls.last.arrives_at)
+		pocs = self.port_of_calls.order(departs_at: :asc)
+		self.update_column(:start_at, pocs.first.departs_at)
+		self.update_column(:end_at, pocs.last.arrives_at)
 	end
 
 	def reorder_pictures
@@ -64,9 +66,5 @@ class Cruise < ActiveRecord::Base
 	def icon
 		'ship'
 	end
-
-	# validations
-	# validate :check_ports
-	validates :venue_id, presence: true
 
 end

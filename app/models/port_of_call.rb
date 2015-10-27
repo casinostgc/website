@@ -3,7 +3,7 @@ class PortOfCall < ActiveRecord::Base
 	include DatetimeFormat
 	datetime_vars start_var: :arrives_at, end_var: :departs_at
 
-	default_scope { order(arrives_at: :asc) }
+	default_scope { order(departs_at: :asc) }
 	
 	belongs_to :cruise
 	belongs_to :port
