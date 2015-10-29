@@ -24,7 +24,7 @@ class Cruise < ActiveRecord::Base
 
 	# validations
 	validates :venue_id, presence: true
-	validates :port_of_calls, length: { minimum: 2, too_short: "requires %{count} or more to be selected. Go back to edit." }
+	validates :port_of_calls, length: { minimum: 2, message: "requires %{count} or more. Go back to add more." }
 	validates_associated :port_of_calls, message: 'are invalid. Go back to edit.'
 
 	# callbacks
