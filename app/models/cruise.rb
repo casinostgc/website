@@ -23,13 +23,12 @@ class Cruise < ActiveRecord::Base
 	scope :has_image, -> { joins(ports: :pictures).distinct }
 
 	# validations
-	# validate :validate_port_count
 	validates :venue_id, presence: true
 	validates :port_of_calls, length: { minimum: 2, too_short: "requires %{count} or more to be selected. Go back to edit." }
+	validates_associated :port_of_calls, message: 'are invalid. Go back to edit.'
 
 	# callbacks
 	after_save :update_times
-
 
 	# class methods
 	def pictures
