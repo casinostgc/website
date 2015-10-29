@@ -8,12 +8,12 @@ class PortOfCall < ActiveRecord::Base
 	belongs_to :cruise
 	belongs_to :port
 
-	validate :check_departure_date
+	validates :departs_at, :arrives_at, presence: { message: 'must be present. Go back to edit.' }
+	# validate :check_dates
 
-	def check_departure_date
-		puts 'checking valid departure date'
-		puts self.departs_at
-		errors[:base] << ": Departure date must be greater than today." if self.departs_at <= Date.today
-	end
+	# def check_dates
+	# 	arrives_at = departs_at if arrives_at.nil?
+	# 	departs_at = arrives_at if departs_at.nil?
+	# end
 
 end

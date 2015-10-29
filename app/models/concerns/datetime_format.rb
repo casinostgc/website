@@ -15,11 +15,11 @@ module DatetimeFormat
 
 	# instance classes
 	def convert_str_to_time(time_str)
-		DateTime.strptime time_str, '%m/%d/%Y %I:%M %p' unless time_str.nil?
+		DateTime.strptime time_str, '%m/%d/%Y %I:%M %p' unless time_str.blank?
 	end
 
 	def convert_time_to_str(time)
-		time.strftime('%m/%d/%Y %I:%M %p') unless time.nil?
+		time.strftime('%m/%d/%Y %I:%M %p') unless time.blank?
 	end
 
 	# 

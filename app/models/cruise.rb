@@ -25,10 +25,10 @@ class Cruise < ActiveRecord::Base
 	# validations
 	# validate :validate_port_count
 	validates :venue_id, presence: true
-	validates :port_of_calls, length: { minimum: 2, too_short: "requires %{count} or more to be selected" }
+	validates :port_of_calls, length: { minimum: 2, too_short: "requires %{count} or more to be selected. Go back to edit." }
 
 	# callbacks
-	after_validation :update_times
+	after_save :update_times
 
 
 	# class methods
@@ -49,7 +49,7 @@ class Cruise < ActiveRecord::Base
 
 	# filters
 	def update_times
-		pocs = self.port_of_calls.order(departs_at: :asc)
+		pocs = self.port_of_calls.order(departs_at: :desc)
 		self.update_column(:start_at, pocs.first.departs_at)
 		self.update_column(:end_at, pocs.last.arrives_at)
 	end
