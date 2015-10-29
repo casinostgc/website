@@ -23,12 +23,12 @@
 
 				<p>
 					<strong>Start at:</strong>
-					<%= @cruise.start_at %>
+					<%= @cruise.start_at.to_formatted_s(:custom_long_ordinal) %>
 				</p>
 
 				<p>
 					<strong>End at:</strong>
-					<%= @cruise.end_at %>
+					<%= @cruise.end_at.to_formatted_s(:custom_long_ordinal) %>
 				</p>
 
 				<p>

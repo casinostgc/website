@@ -23,12 +23,12 @@
 
 				<p>
 					<strong>Start at:</strong>
-					<%= @event.start_at %>
+					<%= @event.start_at.to_formatted_s(:custom_long_ordinal) %>
 				</p>
 
 				<p>
 					<strong>End at:</strong>
-					<%= @event.end_at %>
+					<%= @event.end_at.to_formatted_s(:custom_long_ordinal) %>
 				</p>
 			</div>
 		</div>

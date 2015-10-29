@@ -22,8 +22,8 @@
 				<td>
 					<%= link_to poc.port.name, poc.port, data: {toggle: :modal, target: '#defaultModal'} -%>
 				</td>
-				<td><%= poc == @cruise.port_of_calls.first ? '-' : poc.arrives_at -%></td>
-				<td><%= poc == @cruise.port_of_calls.last ? '-' : poc.departs_at -%></td>
+				<td><%= poc == @cruise.port_of_calls.first ? '-' : poc.arrives_at.to_formatted_s(:custom_long_ordinal) -%></td>
+				<td><%= poc == @cruise.port_of_calls.last ? '-' : poc.departs_at.to_formatted_s(:custom_long_ordinal) -%></td>
 				<% end -%>
 
 				<% end -%>
