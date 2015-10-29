@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026195058) do
+ActiveRecord::Schema.define(version: 20151029180256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,7 +215,6 @@ ActiveRecord::Schema.define(version: 20151026195058) do
   add_foreign_key "admin_menu_items", "pages"
   add_foreign_key "casinos", "destinations"
   add_foreign_key "cruises", "venues"
-  add_foreign_key "flights", "destinations", column: "casino_id"
   add_foreign_key "port_of_calls", "ports"
   add_foreign_key "venue_attractions", "attractions"
   add_foreign_key "venue_attractions", "venues"

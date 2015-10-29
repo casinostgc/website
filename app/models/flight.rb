@@ -39,15 +39,6 @@ class Flight < ActiveRecord::Base
 	validates :departing_airport, :departing_at, :arriving_at, :casino_code, presence: true
 
 	# class methods
-	def self.to_csv(options = {})
-		CSV.generate(options) do |csv|
-			csv << column_names
-			all.each do |product|
-				csv << product.attributes.values_at(*column_names)
-			end
-		end
-	end
-
 	def self.import(file, options)
 		options[:erase] ? Flight.destroy_all : nil
 		SmarterCSV.process( file.path, {chunk_size: 1000} ) do |chunk|
@@ -55,12 +46,21 @@ class Flight < ActiveRecord::Base
 
 				flight = Flight.new
 				flight.departing_airport = data_hash[:departing_airport]
-				flight.departing_at = flight_datetime_format( data_hash[:departing_at] )
-				flight.arriving_at = flight_datetime_format( data_hash[:arriving_at] )
+				flight.departing_at = self.flight_datetime_format( data_hash[:departing_at] )
+				flight.arriving_at = self.flight_datetime_format( data_hash[:arriving_at] )
 				flight.casino = assign_casino( data_hash[:casino_code] )
 
 				flight.save!
 
+			end
+		end
+	end
+
+	def self.to_csv(options = {})
+		CSV.generate(options) do |csv|
+			csv << column_names
+			all.each do |product|
+				csv << product.attributes.values_at(*column_names)
 			end
 		end
 	end
@@ -80,13 +80,13 @@ class Flight < ActiveRecord::Base
 
 	private
 
-	def assign_casino(code)
+	def self.assign_casino(code)
 		Casino.find_or_create_by(code: code) do |casino|
 			casino.name = code
 		end
 	end
 
-	def flight_datetime_format(time)
+	def self.flight_datetime_format(time)
 		Time.strptime( time, "%m/%d/%Y" )
 	end
 
