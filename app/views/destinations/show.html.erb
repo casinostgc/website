@@ -43,7 +43,7 @@
 			</header>
 
 			<div class="list-group">
-				<%= render(@destination.flights) || content_tag(:div, 'No Flights at this Time', class: 'panel-body text-center') -%>
+				<%= render(@destination.flights.limit(5)) || content_tag(:div, 'No Flights at this Time', class: 'panel-body text-center') -%>
 			</div>
 
 		</div>
