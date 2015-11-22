@@ -5,7 +5,7 @@ module FlightsHelper
 	end
 
 	def flight_info(flight)
-		raw "From #{airport_popover(flight.departing_location)} - " + flight.departing_at.to_formatted_s(:long)
+		raw "From #{airport_popover(flight.departing_location)} - " + flight.departing_at.strftime("%B %d, %Y")
 	end
 
 	def flight_title(flight)
