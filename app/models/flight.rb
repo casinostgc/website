@@ -18,6 +18,8 @@ class Flight < ActiveRecord::Base
 	# scopes
 	default_scope { where( "departing_at > ?", Time.now ) }
 
+	scope :ordered, -> { order(departing_at: :asc) }
+
 	scope :unique_dates, -> {
 		select("date(departing_at) AS departing_at_date").distinct
 		.map(&:departing_at_date).sort

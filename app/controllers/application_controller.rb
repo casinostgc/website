@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_ransacks
 
 	def set_ransacks
-		@flights_q = Flight.order(departing_at: :asc).ransack(params[:q])
+		@flights_q = Flight.ordered.ransack(params[:q])
 	end
-	
+
 end

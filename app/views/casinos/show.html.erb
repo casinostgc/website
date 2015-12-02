@@ -60,7 +60,7 @@
 				<h3 class="panel-title">Flights</h3>
 			</header>
 			<div class="list-group">
-				<%= render(@casino.flights.limit(5)) || content_tag(:div, 'No Flights at this Time', class: 'panel-body text-center') -%>
+				<%= render(@casino.flights.ordered.limit(5)) || content_tag(:div, 'No Flights at this Time', class: 'panel-body text-center') -%>
 			</div>
 		</div>
 
