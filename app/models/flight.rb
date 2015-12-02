@@ -33,8 +33,8 @@ class Flight < ActiveRecord::Base
 	}
 	scope :available_destination_casinos, -> {
 		joins(:casino)
-		.select("casinos.name AS casino_name").distinct
-		.map(&:casino_name).sort
+		.select("casinos.name AS casinos_name", "casinos.code AS casinos_code").distinct
+		.map{ |f| [f.casinos_name, f.casinos_code] }.sort
 	}
 
 	# callbacks
