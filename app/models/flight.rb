@@ -17,19 +17,24 @@ class Flight < ActiveRecord::Base
 
 	# scopes
 	default_scope { where( "departing_at > ?", Time.now ) }
-	
+
 	scope :unique_dates, -> {
 		select("date(departing_at) AS departing_at_date").distinct
 		.map(&:departing_at_date).sort
 	}
-	scope :available_destinations, -> { 
-		joins(casino: :destination)
-		.select("destinations.name AS destinaition_name").distinct
-		.map(&:destinaition_name).sort
-	}
+	# scope :available_destinations, -> {
+	# 	joins(casino: :destination)
+	# 	.select("destinations.name AS destinaition_name").distinct
+	# 	.map(&:destinaition_name).sort
+	# }
 	scope :departing_airports, -> {
 		select(:departing_airport).distinct
 		.map(&:select_departing_airport).sort
+	}
+	scope :available_destination_casinos, -> {
+		joins(:casino)
+		.select("casinos.name AS casino_name").distinct
+		.map(&:casino_name).sort
 	}
 
 	# callbacks
@@ -80,7 +85,7 @@ class Flight < ActiveRecord::Base
 
 	private
 
-	def self.assign_casino(code)
+	def assign_casino(code)
 		Casino.find_or_create_by(code: code) do |casino|
 			casino.name = code
 		end
