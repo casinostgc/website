@@ -1,5 +1,9 @@
 <h1>Editing Cruise</h1>
 
+<p class="pull-right">
+	<%= link_to fa_icon('clone', text: 'Clone Cruise'), new_admin_cruise_path(clone: @cruise.id), class: 'btn btn-success btn-xs', title: 'Clone' -%>
+</p>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @cruise %> |

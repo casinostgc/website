@@ -18,6 +18,7 @@
 				<td><%= link_to cruise.venue.try(:name), edit_admin_venue_path(cruise.venue) -%></td>
 				<td><%= cruise.date_span -%></td>
 				<td>
+					<%= link_to fa_icon('clone'), new_admin_cruise_path(clone: cruise.id), class: 'btn btn-success btn-xs', title: 'Clone' -%>
 					<%= link_to fa_icon('remove'), [:admin, cruise], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' -%>
 				</td>
 			</tr>

@@ -12,10 +12,14 @@ class Admin::CruisesController < Admin::AdminController
 	end
 
 	def new
-		@cruise = Cruise.new
-
-		3.times do
-			@cruise.port_of_calls.build
+		if parent = Cruise.find_by(id: params[:clone])
+			@cruise = parent.dup
+			@cruise.port_of_calls = parent.port_of_calls.map(&:dup)
+		else
+			@cruise = Cruise.new
+			3.times do
+				@cruise.port_of_calls.build
+			end
 		end
 	end
 
