@@ -16,7 +16,7 @@ class Flight < ActiveRecord::Base
 	belongs_to :casino
 
 	# scopes
-	default_scope { where( "departing_at > ?", Time.now ) }
+	# default_scope { where( "departing_at > ?", Time.now ) }
 
 	scope :ordered, -> { order(departing_at: :asc) }
 
@@ -24,11 +24,11 @@ class Flight < ActiveRecord::Base
 		select("date(departing_at) AS departing_at_date").distinct
 		.map(&:departing_at_date).sort
 	}
-	# scope :available_destinations, -> {
-	# 	joins(casino: :destination)
-	# 	.select("destinations.name AS destinaition_name").distinct
-	# 	.map(&:destinaition_name).sort
-	# }
+	scope :available_destinations, -> {
+		joins(casino: :destination)
+		.select("destinations.name AS destinaition_name").distinct
+		.map(&:destinaition_name).sort
+	}
 	scope :departing_airports, -> {
 		select(:departing_airport).distinct
 		.map(&:select_departing_airport).sort
@@ -47,18 +47,20 @@ class Flight < ActiveRecord::Base
 
 	# class methods
 	def self.import(file, options)
-		options[:erase] ? Flight.destroy_all : nil
+		self.destroy_all if options[:erase]
 		SmarterCSV.process( file.path, {chunk_size: 1000} ) do |chunk|
 			chunk.each do |data_hash|
-
-				flight = Flight.new
-				flight.departing_airport = data_hash[:departing_airport]
-				flight.departing_at = self.flight_datetime_format( data_hash[:departing_at] )
-				flight.arriving_at = self.flight_datetime_format( data_hash[:arriving_at] )
-				flight.casino = assign_casino( data_hash[:casino_code] )
-
-				flight.save!
-
+				flight = Flight.create!(
+					departing_airport: data_hash[:departing_airport],
+					departing_at: self.flight_datetime_format( data_hash[:departing_at] ),
+					arriving_at: self.flight_datetime_format( data_hash[:arriving_at] ),
+					casino: Flight.assign_casino( data_hash[:casino_code] )
+				)
+				# flight.departing_airport = data_hash[:departing_airport]
+				# flight.departing_at = self.flight_datetime_format( data_hash[:departing_at] )
+				# flight.arriving_at = self.flight_datetime_format( data_hash[:arriving_at] )
+				# flight.casino = Flight.assign_casino( data_hash[:casino_code] )
+				# flight.save!
 			end
 		end
 	end
@@ -82,19 +84,20 @@ class Flight < ActiveRecord::Base
 	end
 
 	def casino_code=(code)
-		self.casino = assign_casino( code )
+		self.casino = Flight.assign_casino( code )
+	end
+
+	def self.assign_casino(code)
+		flight_casino = Casino.find_or_create_by(code: code) do |casino|
+			casino.name = code
+		end
+		flight_casino
 	end
 
 	private
 
-	def assign_casino(code)
-		Casino.find_or_create_by(code: code) do |casino|
-			casino.name = code
-		end
-	end
-
 	def self.flight_datetime_format(time)
-		Time.strptime( time, "%m/%d/%Y" )
+		datetime = Time.strptime( time, "%m/%d/%y" )
 	end
 
 	def update_airport_location

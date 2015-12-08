@@ -19,9 +19,9 @@
 			<% @flights.each do |flight| %>
 			<tr>
 				<td><%= flight.departing_airport %></td>
-				<td><%= flight.departing_at %></td>
+				<td><%= flight.departing_at.to_formatted_s(:flight_short) %></td>
 				<td><%= link_to flight.casino.code, flight.casino %></td>
-				<td><%= flight.arriving_at %></td>
+				<td><%= flight.arriving_at.to_formatted_s(:flight_short) %></td>
 				<td><%= link_to 'Show', flight %></td>
 				<td><%= link_to 'Edit', edit_admin_flight_path(flight) %></td>
 				<td><%= link_to 'Destroy', [:admin, flight], method: :delete, data: { confirm: 'Are you sure?' } %></td>
