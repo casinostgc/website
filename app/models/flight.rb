@@ -16,7 +16,7 @@ class Flight < ActiveRecord::Base
 	belongs_to :casino
 
 	# scopes
-	# default_scope { where( "departing_at > ?", Time.now ) }
+	default_scope { where( "departing_at > ?", Time.now ) }
 
 	scope :ordered, -> { order(departing_at: :asc) }
 
@@ -56,11 +56,6 @@ class Flight < ActiveRecord::Base
 					arriving_at: self.flight_datetime_format( data_hash[:arriving_at] ),
 					casino: Flight.assign_casino( data_hash[:casino_code] )
 				)
-				# flight.departing_airport = data_hash[:departing_airport]
-				# flight.departing_at = self.flight_datetime_format( data_hash[:departing_at] )
-				# flight.arriving_at = self.flight_datetime_format( data_hash[:arriving_at] )
-				# flight.casino = Flight.assign_casino( data_hash[:casino_code] )
-				# flight.save!
 			end
 		end
 	end
