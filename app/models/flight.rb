@@ -51,11 +51,10 @@ class Flight < ActiveRecord::Base
 		SmarterCSV.process( file.path, {chunk_size: 1000} ) do |chunk|
 			chunk.each do |data_hash|
 				flight = Flight.create!(
-					departing_airport: data_hash[:departing_airport],
-					departing_at: self.flight_datetime_format( data_hash[:departing_at] ),
-					arriving_at: self.flight_datetime_format( data_hash[:arriving_at] ),
-					casino: Flight.assign_casino( data_hash[:casino_code] )
-				)
+				departing_airport: data_hash[:departing_airport],
+				departing_at: self.flight_datetime_format( data_hash[:departing_at] ),
+				arriving_at: self.flight_datetime_format( data_hash[:arriving_at] ),
+				casino: Flight.assign_casino( data_hash[:casino_code] ) )
 			end
 		end
 	end
@@ -91,12 +90,17 @@ class Flight < ActiveRecord::Base
 
 	private
 
-	def self.flight_datetime_format(time)
-		datetime = Time.strptime( time, "%m/%d/%y" )
+	def self.flight_datetime_format(date_str)
+		# date_str = "3/26/2016"
+		date_test = Date._strptime date_str, "%m/%d/%y"
+		date_format = date_test[:leftover].present? ? "%m/%d/%Y" : "%m/%d/%y"
+		date = Date.strptime date_str, date_format
 	end
 
 	def update_airport_location
 		self.departing_location = WorldAirports.iata(self.departing_airport)
 	end
+
+
 
 end
