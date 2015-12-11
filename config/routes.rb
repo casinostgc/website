@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 	end
 
 	resources :venues, path: :ships, concerns: [:imageable], only: [:index, :show] do
-		resources :attractions, concerns: [:imageable], only: [:index]
+		resources :attractions, concerns: [:imageable], only: [:index, :show]
 	end
 
 	resources :ports, :events, :cruises, concerns: [:imageable], only: [:index, :show]
