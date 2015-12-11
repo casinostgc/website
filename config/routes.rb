@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+	resources :cruise_lists
+
 	concern :imageable do
 		resources :pictures, only: [:index, :show]
 	end
@@ -26,14 +28,14 @@ Rails.application.routes.draw do
 		resources :attractions, concerns: [:imageable], only: [:index]
 	end
 
-	resources :ports, :events, :cruises, concerns: [:imageable], only: [:index, :show]
+	resources :ports, :events, :cruises, :cruise_lists, concerns: [:imageable], only: [:index, :show]
 
 	namespace :admin do
 		get '/' => 'admin#index', as: :admin
 
 		resources :admin, only: [:index]
 
-		resources :pages, :pictures, :testimonials, except: [:show]
+		resources :pages, :pictures, :testimonials, :cruise_lists, except: [:show]
 
 		resources :destinations, :casinos, :events, :cruises, :ports, :attractions, concerns: [:admin_imageable], except: [:show]
 

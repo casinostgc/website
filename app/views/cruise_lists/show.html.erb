@@ -1,0 +1,55 @@
+<% @page_header = @cruise_list.title -%>
+
+<div class="row">
+
+	<aside class="col-sm-4">
+		<% if @cruise_list.pictures.any? -%>
+		<figure class="thumbnail">
+			<%= link_to image_tag(@cruise_list.pictures.first.image_url), cruise_list_pictures_path(@cruise_list), data: {toggle: :modal, target: '#defaultModal'} -%>
+		</figure>
+		<% else -%>
+		<!-- default cruise image -->
+		<% end -%>
+
+		<div class="panel panel-default">
+			<header class="panel-heading">
+				<h4 class="panel-title">Details</h4>
+			</header>
+			<div class="panel-body">
+				<p>
+					<strong>Ship:</strong>
+					<%= link_to @cruise_list.venue.name, venue_path(@cruise_list.venue) %>
+				</p>
+				<p>
+					<%= link_to fa_icon('asterisk', text: 'Attractions'), venue_attractions_path(@cruise_list.venue), class: 'btn btn-default btn-block btn-sm', data: {toggle: :modal, target: '#defaultModal'} %>
+				</p>
+			</div>
+		</div>
+
+	</aside>
+
+	<div class="col-sm-8">
+		<%= @cruise_list.rendered_content %>
+
+		<h3>Available Dates</h3>
+
+		<ul class="list-inline">
+			<% @cruise_list.cruise_list_dates.each do |cld| %>
+			<li>
+				<span class="badge">
+					<%= cld.departs_at.to_formatted_s(:flight_short) %>
+				</span>
+			</li>
+			<% end %>
+		</ul>
+
+		<%= render 'ports' -%>
+	</div>
+
+</div>
+
+<% if is_admin? -%>
+<hr>
+<%= link_to 'Edit', edit_cruise_list_path(@cruise_list) %> |
+<%= link_to 'Back', cruise_lists_path %>
+<% end -%>
