@@ -22,9 +22,9 @@
 				<thead>
 					<tr>
 						<%= content_tag :th, sort_link(@flights_q, :departing_airport, 'Departing') %>
-						<%= content_tag :th, sort_link(@flights_q, :departing_at) %>
+						<%= content_tag :th, sort_link(@flights_q, :departing_at, 'Departure Date') %>
 						<%= content_tag :th, sort_link(@flights_q, :arriving_airport, 'Casino') %>
-						<%= content_tag :th, sort_link(@flights_q, :arriving_at) %>
+						<%= content_tag :th, sort_link(@flights_q, :arriving_at, 'Return Date') %>
 					</tr>
 				</thead>
 

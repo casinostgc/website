@@ -33,7 +33,7 @@ class Cruise < ActiveRecord::Base
 	# class methods
 	def pictures
 		pics = Picture.where(imageable: self.ports)
-		pics = pics.order(reorder_pictures) unless pics.nil?
+		pics.order(reorder_pictures) unless pics.nil?
 	end
 
 	# instance methods
