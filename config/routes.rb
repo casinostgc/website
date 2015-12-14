@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 	resources :testimonials, except: [:edit, :update, :destroy]
 
-	resources :pages, only: [:show]
+	resources :pages, :attractions, only: [:show]
 
 	resources :flights, only: [:index, :show]
 
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 	end
 
 	resources :venues, path: :ships, concerns: [:imageable], only: [:index, :show] do
-		resources :attractions, concerns: [:imageable], only: [:index, :show]
+		resources :attractions, concerns: [:imageable], only: [:index]
 	end
 
 	resources :ports, :events, :cruises, concerns: [:imageable], only: [:index, :show]

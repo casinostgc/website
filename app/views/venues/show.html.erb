@@ -1,7 +1,7 @@
 <% @page_header = @venue.name -%>
 
 <div class="row">
-	
+
 	<aside class="col-sm-4">
 
 		<% if @venue.pictures.any? -%>
@@ -55,11 +55,11 @@
 			<header class="panel-heading">
 				<h4 class="panel-title">Attractions</h4>
 			</header>
-			<ul class="list-group">
+			<div class="list-group">
 				<% @venue.attractions.each do |attraction| -%>
-				<%= render 'attractions/show', attraction: attraction -%>
+				<%= render 'attractions/attraction', attraction: attraction -%>
 				<% end -%>
-			</ul>
+			</div>
 		</section>
 		<% end -%>
 

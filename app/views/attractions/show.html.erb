@@ -1,1 +1,25 @@
-this is an attraction
+<% @page_header = @attraction.name -%>
+
+<div class="row">
+
+	<aside class="col-sm-4">
+		<% if @attraction.pictures.any? -%>
+		<figure class="thumbnail">
+			<%= image_tag(@attraction.pictures.first.image_url) -%>
+		</figure>
+		<% else -%>
+		<!-- default cruise image -->
+		<% end -%>
+	</aside>
+
+	<div class="col-sm-8">
+		<%= @attraction.rendered_content %>
+	</div>
+
+</div>
+
+<% if is_admin? -%>
+<hr>
+<%= link_to 'Edit', edit_admin_attraction_path(@attraction) %>
+<%#= link_to 'Back', cruises_path %>
+<% end -%>

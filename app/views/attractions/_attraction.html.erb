@@ -1,4 +1,4 @@
-<li class="list-group-item">
+<%= link_to attraction, class: 'list-group-item' do %>
 	<div class="list-group-item-text media">
 		<div class="media-left">
 			<% if attraction.pictures.any? -%>
@@ -10,4 +10,4 @@
 			<%= attraction.rendered_content -%>
 		</div>
 	</div>
-</li>
+<% end %>

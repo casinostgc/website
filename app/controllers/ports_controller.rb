@@ -1,5 +1,5 @@
 class PortsController < ApplicationController
-	
+
 	before_action :set_port, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -7,7 +7,7 @@ class PortsController < ApplicationController
 	end
 
 	def show
-		render :show, layout: false
+		render :show, layout: false if params[:modal]
 	end
 
 	private
