@@ -46,6 +46,9 @@
 				<%= render(@destination.flights.ordered.limit(5)) || content_tag(:div, 'No Flights at this Time', class: 'panel-body text-center') -%>
 			</div>
 
+			<footer class="panel-footer small">
+				<%= link_to 'View All Flights', flights_path("q[casino_destination_name_eq]" => @destination.name) %>
+			</footer>
 		</div>
 
 	</div>

@@ -14,6 +14,7 @@ class Flight < ActiveRecord::Base
 
 	# assocations
 	belongs_to :casino
+	delegate :destination, to: :casino, allow_nil: true
 
 	# scopes
 	default_scope { where( "departing_at > ?", Time.now ) }
