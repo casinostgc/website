@@ -1,4 +1,4 @@
-<% @events =  Event.limit(3) | Cruise.limit(3) -%>
+<% @events =  Event.future.limit(3) | Cruise.future.limit(3) -%>
 
 <% if @events.any? -%>
 <div class="panel panel-default">
