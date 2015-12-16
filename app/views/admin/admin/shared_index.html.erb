@@ -19,6 +19,9 @@
 				<td>
 					<%= link_to item.name, send("edit_admin_#{item_type}_path", item) -%>
 				</td>
+				<td>
+					<%= link_to send("#{item_type}_url", item), send("#{item_type}_url", item) %>
+				</td>
 				<td class="text-right">
 					<%= link_to fa_icon('eye'), item_path(item, item_type), class: 'btn btn-info btn-xs' -%>
 					<%= link_to fa_icon('remove'), [:admin, item], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' -%>
