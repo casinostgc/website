@@ -28,6 +28,11 @@ Rails.application.routes.draw do
 
 	resources :ports, :events, :cruises, concerns: [:imageable], only: [:index, :show]
 
+	namespace :maps do
+		resources :casinos, only: [:index, :show]
+		resources :cruises, :destinations, only: [:show]
+	end
+
 	namespace :admin do
 		get '/' => 'admin#index', as: :admin
 
@@ -48,9 +53,8 @@ Rails.application.routes.draw do
 		end
 
 		get '/menus', to: "menu_items#index"
+		get '/:id', to: "pages#show", as: 'short_page'
 	end
-
-	get '/robots.txt' => 'static_pages#robots'
 
 	get '/:id', to: "pages#show", as: 'short_page'
 

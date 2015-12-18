@@ -8,18 +8,35 @@
 
 	<div class="col-md-4 col-md-pull-8 col-sm-6 col-sm-pull-6">
 
-		<% if @casino.pictures.any? -%>
-		<figure class="thumbnail">
-			<%= link_to image_tag(@casino.pictures.first.image_url), casino_pictures_path(@casino), data: {toggle: :modal, target: '#defaultModal'} -%>
-		</figure>
-		<% else -%>
-		<!-- default casino image -->
-		<% end -%>
-
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">Casino Details</h3>
 			</div>
+
+			<div class="embed-responsive embed-responsive-16by9">
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="images">
+						<% if @casino.pictures.any? -%>
+						<%= link_to image_tag(@casino.pictures.first.image_url, class: 'img-responsive'), casino_pictures_path(@casino), data: {toggle: :modal, target: '#defaultModal'} -%>
+						<% else -%>
+						<h4 class="text-muted text-center">No Images</h4>
+						<% end -%>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="map">
+						<%= content_tag :iframe, nil, src: maps_casino_path(@casino), class: 'embed-responsive-item' %>
+					</div>
+				</div>
+			</div>
+
+			<!-- Nav tabs -->
+			<div class="tabs-below">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="active"><a href="#images" aria-controls="images" role="tab" data-toggle="tab">Images</a></li>
+					<li><a href="#map" aria-controls="map" role="tab" data-toggle="tab">Map</a></li>
+				</ul>
+			</div>
+
 			<div class="panel-body">
 				<p>
 					<strong>Address:</strong><br>

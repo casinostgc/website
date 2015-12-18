@@ -26,6 +26,8 @@
 @import "bootstrap-datetimepicker";
 // @import "bootswatch";
 
+@import "theme/nav-tabs";
+
 // @import url('http://fonts.googleapis.com/css?family=Roboto');
 
 body {
@@ -40,7 +42,7 @@ body {
 	height: 260px;
 	background: #58B;
 }
- 
+
 /*@media (max-width: 768px) {
 	body { padding-top: 51px; }
 }*/

@@ -197,7 +197,6 @@ GEM
       mail (>= 2.2.1)
     gmail_xoauth (0.4.1)
       oauth (>= 0.3.6)
-    gmaps4rails (2.1.2)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -333,7 +332,6 @@ DEPENDENCIES
   friendly_id
   geocoder
   gmail
-  gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails

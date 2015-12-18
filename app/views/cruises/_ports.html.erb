@@ -3,7 +3,9 @@
 		<h3 class="panel-title">Ports of Call</h3>
 	</div>
 	<div class="panel-body">
-		<div id="pocMap" class="gmap"></div>
+		<div class="embed-responsive embed-responsive-map">
+			<%= content_tag :iframe, nil, src: maps_cruise_path(@cruise), class: 'embed-responsive-item' %>
+		</div>
 	</div>
 
 	<div class="table-responsive">
@@ -18,7 +20,7 @@
 			<tbody>
 				<% @cruise.port_of_calls.each_with_index do |poc, index| -%>
 
-				<%= content_tag :tr, class: 'port-of-call', data: {port: poc.port.to_json, index: index} do -%>
+				<%= content_tag :tr, class: 'port-of-call', data: {index: index} do -%>
 				<td>
 					<%= link_to poc.port.name, poc.port, data: {toggle: :modal, target: '#defaultModal'} -%>
 				</td>
@@ -29,5 +31,5 @@
 				<% end -%>
 			</tbody>
 		</table>
-	</div>	
-</div>	
+	</div>
+</div>
