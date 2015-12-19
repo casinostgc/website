@@ -11,7 +11,7 @@ if casino.latitude && casino.longitude
 		json.set! 'marker-size', 'medium'
 		json.destination casino.destination.try(:name)
 		json.path casino_path(casino)
-		json.tooltip render('tooltip.html.erb', casino: casino)
+		json.tooltip render('maps/casinos/tooltip.html.erb', casino: casino)
 	end
 
 	json.geometry do
