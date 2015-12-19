@@ -1,2 +1,3 @@
 <%= link_to content_tag(:h5, casino.name), casino, target: '_top' %>
-<%= link_to image_tag(casino.pictures.first.image_url, class: 'img-thumbnail', style: 'min-width: 250px;'), casino, target: '_top' if casino.pictures.any? -%>
+
+<%= content_tag :div, link_to(image_tag(casino.pictures.first.image_url, class: 'img-thumbnail map-thumb'), casino, target: '_top'), class: 'embed-responsive embed-responsive-16by9' if casino.pictures.any? %>

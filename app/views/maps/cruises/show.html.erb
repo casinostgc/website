@@ -7,6 +7,7 @@ L.mapbox.featureLayer()
 
 	e.target.eachLayer(function(layer) {
 		map.addLayer(layer);
+		layer.bindPopup(layer.feature.properties.tooltip);
 	});
 
 	map.fitBounds(e.target.getBounds());
