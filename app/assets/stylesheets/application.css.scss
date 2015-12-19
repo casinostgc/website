@@ -26,8 +26,6 @@
 @import "bootstrap-datetimepicker";
 // @import "bootswatch";
 
-@import "theme/nav-tabs";
-
 // @import url('http://fonts.googleapis.com/css?family=Roboto');
 
 body {
@@ -76,6 +74,10 @@ body {
 
 .jumbotron {
 	background: transparent;
+}
+
+.nav-tabs > li > a {
+	color: $link-color;
 }
 
 #footer {
