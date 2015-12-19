@@ -6,7 +6,7 @@ if casino.latitude && casino.longitude
 		json.title casino.name
 		json.name casino.name
 		json.image_url (casino.pictures.any? ? casino.pictures.first.image_url : nil)
-		json.set! 'marker-color', '#f00'
+		json.set! 'marker-color', '#E74C3C'
 		json.set! 'marker-symbol', 'commercial'
 		json.set! 'marker-size', 'medium'
 		json.destination casino.destination.try(:name)
