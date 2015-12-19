@@ -1,11 +1,10 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">Ports of Call</h3>
+		<h3 class="panel-title text-center">Ports of Call</h3>
 	</div>
-	<div class="panel-body">
-		<div class="embed-responsive embed-responsive-map">
-			<%= content_tag :iframe, nil, src: maps_cruise_path(@cruise), class: 'embed-responsive-item' %>
-		</div>
+
+	<div class="embed-responsive embed-responsive-map">
+		<%= content_tag :iframe, nil, src: maps_cruise_path(@cruise), class: 'embed-responsive-item' %>
 	</div>
 
 	<div class="table-responsive">
