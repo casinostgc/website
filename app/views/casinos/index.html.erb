@@ -9,7 +9,7 @@
 
 <div class="row">
 
-	<div class="col-sm-12">
+	<div class="col-sm-12 col-sm-offset-0">
 
 		<div class="thumbnail">
 
@@ -34,7 +34,6 @@
 						<thead>
 							<tr>
 								<th>Name</th>
-								<th>Address</th>
 								<th>Destination</th>
 							</tr>
 						</thead>
@@ -43,10 +42,6 @@
 							<%= render @casinos %>
 						</tbody>
 					</table>
-
-					<div class="pagination-container text-center">
-						<%= paginate @casinos %>
-					</div>
 
 				</div>
 			</div>

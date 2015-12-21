@@ -17,7 +17,7 @@
 
 			<div class="list-group">
 				<% @destination.casinos.each do |casino| -%>
-				<%= link_to casino.name, [@destination, casino], class: 'casino list-group-item', data: {casino: casino.to_json} -%>
+				<%= link_to casino.name, casino, class: 'casino list-group-item' -%>
 				<% end -%>
 			</div>
 		</div>

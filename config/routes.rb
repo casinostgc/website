@@ -18,9 +18,7 @@ Rails.application.routes.draw do
 
 	resources :casinos, concerns: [:imageable], only: [:index, :show]
 
-	resources :destinations, concerns: [:imageable], only: [:index, :show] do
-		resources :casinos, concerns: [:imageable], only: [:index, :show]
-	end
+	resources :destinations, concerns: [:imageable], only: [:index, :show]
 
 	resources :venues, path: :ships, concerns: [:imageable], only: [:index, :show] do
 		resources :attractions, concerns: [:imageable], only: [:index]

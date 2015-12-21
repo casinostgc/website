@@ -21,7 +21,7 @@
 			<td class="small">
 				<ul class="list-inline">
 					<% destination.casinos.sample(10).each do |casino| -%>
-					<%= content_tag :li, link_to(casino.name, [destination, casino], class: 'label label-info') -%>
+					<%= content_tag :li, link_to(casino.name, casino, class: 'label label-info') -%>
 					<% end -%>
 				</ul>
 			</td>
