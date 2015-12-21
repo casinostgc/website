@@ -5,6 +5,7 @@ L.mapbox.featureLayer()
 
 	e.target.eachLayer(function(layer) {
 		map.addLayer(layer);
+		layer.openPopup();
 	});
 
 	map.fitBounds(e.target.getBounds());
