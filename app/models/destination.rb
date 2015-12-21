@@ -18,9 +18,11 @@ class Destination < ActiveRecord::Base
 	default_scope { includes(:casinos).order(name: :asc) }
 	# scope :featured, -> { joins(:casinos).uniq.shuffle.sample(4) }
 
+	scope :with_casinos, -> { where.not(casinos: { id: nil })  }
+
 	# callbacks
 	after_validation { geocode_conditionals(:name) }
-	
+
 	# class methods
 
 	# instance methods

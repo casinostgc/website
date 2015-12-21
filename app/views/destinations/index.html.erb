@@ -15,18 +15,7 @@
 	</thead>
 
 	<tbody>
-		<% @destinations.each do |destination| %>
-		<tr>
-			<td><%= link_to destination.name, destination -%></td>
-			<td class="small">
-				<ul class="list-inline">
-					<% destination.casinos.sample(10).each do |casino| -%>
-					<%= content_tag :li, link_to(casino.name, casino, class: 'label label-info') -%>
-					<% end -%>
-				</ul>
-			</td>
-		</tr>
-		<% end %>
+		<%= render @destinations.with_casinos %>
 	</tbody>
 </table>
 
