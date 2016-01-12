@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title>Casinos The Grand Collection</title>
+	<%= stylesheet_link_tag "application", media: "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+	<style>
+	body { margin:0; padding:0; }
+	#map { position:absolute; top:0; bottom:0; width:100%; }
+	</style>
+
+	<%= yield :head %>
+</head>
+<body>
+
+	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
+	<div id="map"></div>
+
+	<% @map_styles = %w(streets streets-basic streets-satellite emerald light dark satellite wheatpaste comic outdoors run-bike-hike pencil pirates high-contrast) %>
+
+	<script>
+	L.mapbox.accessToken = 'pk.eyJ1Ijoia2ptYWdpYzEzIiwiYSI6ImNpZzlpMGo1OTBsd2R1OWtrZjVwcHF0YmgifQ.gk94RmwBZrH90QoP2HHQXA';
+
+	var map = L.mapbox.map('map')
+	.setView([0, 0], 5)
+	.addLayer(L.mapbox.tileLayer('mapbox.<%= @map_style ||= @map_styles[0] %>'));
+
+	</script>
+
+	<%= yield %>
+
+</body>
+</html>

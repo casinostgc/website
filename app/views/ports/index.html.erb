@@ -3,10 +3,10 @@
 </header>
 
 <ul class="text-center list-inline">
-	
+
 	<% @ports.each do |port| %>
 
-	<%= content_tag :li, link_to(port.name, port, data: {toggle: :modal, target: '#defaultModal'}, class: 'btn btn-default btn-xs', style: 'margin-bottom: 5px;') -%>
+	<%= content_tag :li, link_to(port.name, [port, modal: true], data: {toggle: :modal, target: '#defaultModal'}, class: 'btn btn-default btn-xs', style: 'margin-bottom: 5px;') -%>
 
 	<% end -%>
 

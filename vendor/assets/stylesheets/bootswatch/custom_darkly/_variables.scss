@@ -431,16 +431,16 @@ $nav-disabled-link-color:                   lighten($gray, 10%) !default;
 $nav-disabled-link-hover-color:             lighten($gray, 10%) !default;
 
 //== Tabs
-$nav-tabs-border-color:                     $gray !default;
+$nav-tabs-border-color:                     $link-color !default;
 
 $nav-tabs-link-hover-border-color:          $gray !default;
 
 $nav-tabs-active-link-hover-bg:             $body-bg !default;
-$nav-tabs-active-link-hover-color:          $brand-success !default;
+$nav-tabs-active-link-hover-color:          $link-color !default;
 $nav-tabs-active-link-hover-border-color:   $nav-tabs-link-hover-border-color !default;
 
-$nav-tabs-justified-link-border-color:            $gray-lighter !default;
-$nav-tabs-justified-active-link-border-color:     $body-bg !default;
+$nav-tabs-justified-link-border-color:            $link-color !default;
+$nav-tabs-justified-active-link-border-color:     darken($link-color, 10%) !default;
 
 //== Pills
 $nav-pills-border-radius:                   $border-radius-base !default;
@@ -681,7 +681,7 @@ $list-group-border:             $gray !default;
 $list-group-border-radius:      $border-radius-base !default;
 
 //** Background color of single list items on hover
-$list-group-hover-bg:          transparent !default;
+$list-group-hover-bg:          $component-active-bg !default;
 //** Text color of active list items
 $list-group-active-color:       $component-active-color !default;
 //** Background color of active list items

@@ -1,0 +1,11 @@
+<%= link_to event, class: 'list-group-item' do -%>
+<div class="list-group-item-text media">
+	<%= content_tag :i, nil, class: "fa fa-fw fa-calendar fa-2x media-object pull-left" -%>
+	<div class="media-body">
+		<h5 class="media-heading">
+			<%= event.title -%><br>
+			<small><%= event.date_span -%></small>
+		</h5>
+	</div>
+</div>
+<% end -%>

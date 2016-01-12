@@ -1,0 +1,5 @@
+<%= link_to content_tag(:h1, casino.name, class: 'text-center'), casino, target: '_top' %>
+
+<%= content_tag :div, link_to(image_tag(casino.pictures.first.image_url, class: 'img-thumbnail map-thumb'), casino, target: '_top'), class: 'embed-responsive embed-responsive-16by9' if casino.pictures.any? %>
+
+<%#= link_to 'More Info', casino, class: 'btn btn-default btn-xs btn-block', target: '_top' %>

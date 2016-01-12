@@ -1,0 +1,34 @@
+<script>
+L.mapbox.featureLayer()
+.loadURL('<%= "#{request.env['PATH_INFO']}.geojson" %>')
+.on('ready', function(e) {
+
+	function makeGroup(title) {
+		return new L.MarkerClusterGroup({
+			iconCreateFunction: function(cluster) {
+				return new L.DivIcon({
+					// className: 'cluster-icon',
+					html: '<span class="label label-danger">' + title + ' (' + cluster.getChildCount() + ')</span>'
+				});
+			}
+		}).addTo(map);
+	}
+
+	var groups = {};
+
+	e.target.eachLayer(function(layer) {
+
+		if ( !(layer.feature.properties.destination in groups) ) {
+			groups[layer.feature.properties.destination] = makeGroup(layer.feature.properties.destination)
+		}
+
+		groups[layer.feature.properties.destination].addLayer(layer);
+
+		layer.bindPopup(layer.feature.properties.tooltip);
+
+	});
+
+	map.fitBounds(e.target.getBounds());
+
+});
+</script>

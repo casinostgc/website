@@ -14,7 +14,7 @@ class Casino < ActiveRecord::Base
 	belongs_to :destination
 	has_many :flights, dependent: :destroy
 	has_many :events, dependent: :destroy
-	
+
 	# scopes
 	default_scope { order(name: :asc) }
 	# scope :featured, -> { uniq.shuffle.sample(4) }

@@ -1,0 +1,8 @@
+<%= content_tag :tr, class: 'casino' do -%>
+<td>
+	<%= link_to_if casino.destination.present?, casino.name, casino do %>
+	<%= link_to casino.name, casino -%>
+	<% end -%>
+</td>
+<td><%= link_to_if casino.destination.present?, casino.destination.try(:name), casino.destination %></td>
+<% end %>

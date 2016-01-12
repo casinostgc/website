@@ -1,17 +1,16 @@
 <form class="flight_search" id="flight_search" action="/flights" accept-charset="UTF-8" method="get">
 
 	<input name="utf8" type="hidden" value="✓">
-
 	<p>
-		<%= select_tag 'q[departing_at_eq]', options_for_select(Flight.unique_dates), {include_blank: 'Departing Date', class: 'form-control'} %>
+		<%= select_tag 'q[casino_code_eq]', options_for_select(Flight.available_destination_casinos), {include_blank: 'Destination Casino', class: 'form-control'} -%>
 	</p>
 	<p>
 		<%= select_tag 'q[departing_airport_eq]', options_for_select(Flight.departing_airports), {include_blank: 'Departing Airport', class: 'form-control'} -%>
 	</p>
 	<p>
-		<%= select_tag 'q[casino_code_eq]', options_for_select(Flight.available_destination_casinos), {include_blank: 'Destination Casino', class: 'form-control'} -%>
+		<%= select_tag 'q[departing_at_eq]', options_for_select(Flight.unique_dates), {include_blank: 'Departing Date', class: 'form-control'} %>
 	</p>
-	<%#= select_tag 'q[destination_name_eq]', options_for_select(Flight.available_destinations), {include_blank: 'Destination', class: 'form-control'} -%>
+	<%#= select_tag 'q[casino_destination_name_eq]', options_for_select(Flight.available_destinations), {include_blank: 'Destination', class: 'form-control'} -%>
 
 	<button type="submit" class="btn btn-info btn-lg btn-block">Find Flights <%= fa_icon('plane') -%></button>
 

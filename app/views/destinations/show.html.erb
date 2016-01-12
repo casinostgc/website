@@ -8,19 +8,17 @@
 		<% if @destination.casinos.any? -%>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Casinos</h3>
+				<h3 class="panel-title text-center">Casinos Located in <%= @destination.name %></h3>
 			</div>
-			<div class="panel-body">
-				<div id="casinosMap" class="gmap"></div>
-			</div>
-			<div class="list-group">
-				<% @destination.casinos.first(10).each do |casino| -%>
-				<%= link_to casino.name, [@destination, casino], class: 'casino list-group-item', data: {casino: casino.to_json} -%>
-				<% end -%>
-			</div>
-			<div class="panel-footer">
-				<%= link_to 'View All', destination_casinos_path(@destination), class: 'small' -%>
 
+			<div class="embed-responsive embed-responsive-map">
+				<%= content_tag :iframe, nil, src: maps_destination_path(@destination), class: 'embed-responsive-item' %>
+			</div>
+
+			<div class="list-group">
+				<% @destination.casinos.each do |casino| -%>
+				<%= link_to casino.name, casino, class: 'casino list-group-item' -%>
+				<% end -%>
 			</div>
 		</div>
 		<% end -%>
@@ -39,13 +37,16 @@
 
 		<div class="panel panel-default">
 			<header class="panel-heading">
-				<h3 class="panel-title">Flights</h3>
+				<h3 class="panel-title text-center">Flights</h3>
 			</header>
 
 			<div class="list-group">
 				<%= render(@destination.flights.ordered.limit(5)) || content_tag(:div, 'No Flights at this Time', class: 'panel-body text-center') -%>
 			</div>
 
+			<footer class="panel-footer text-center small">
+				<%= link_to 'View All Flights', flights_path("q[casino_destination_name_eq]" => @destination.name) %>
+			</footer>
 		</div>
 
 	</div>

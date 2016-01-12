@@ -3,45 +3,53 @@
 <% end -%>
 
 <div class="row">
-	<div class="col-sm-6">
-		<div class="well well-sm">
-			<div id="casinosMap" class="gmap"></div>
+	<%= render 'layouts/featured_images', items: @casinos, sample: 4 -%>
+</div>
+
+
+<div class="row">
+
+	<div class="col-sm-12 col-sm-offset-0">
+
+		<div class="panel panel-default">
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs nav-justified" role="tablist">
+				<li class="active"><a href="#map" aria-controls="map" role="tab" data-toggle="tab">Map</a></li>
+				<li><a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="map">
+
+					<div class="embed-responsive embed-responsive-map">
+						<%= content_tag :iframe, nil, src: maps_casinos_path, class: 'embed-responsive-item' %>
+					</div>
+
+				</div>
+				<div role="tabpanel" class="tab-pane" id="list">
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Destination</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<%= render @casinos %>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
 		</div>
 	</div>
-	<%= render 'layouts/featured_images', items: @casinos, sample: 2 -%>
+
 </div>
 
-<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Address</th>
-				<th>Destination</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<% @casinos.each do |casino| %>
-
-			<%= content_tag :tr, class: 'casino', data: {casino: casino.to_json} do -%>
-			<td>
-				<%= link_to_if casino.destination.present?, casino.name, [casino.destination, casino] do %>
-				<%= link_to casino.name, casino -%>
-				<% end -%>
-			</td>
-			<td><%= casino.address %></td>
-			<td><%= link_to_if casino.destination.present?, casino.destination.try(:name), casino.destination %></td>
-			<% end %>
-
-			<% end %>
-		</tbody>
-	</table>
-</div>
-
-<div class="pagination-container text-center">
-	<%= paginate @casinos %>
-</div>
 
 <% if is_admin? -%>
 <hr>
