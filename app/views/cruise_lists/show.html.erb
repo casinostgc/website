@@ -43,6 +43,8 @@
 			<% end %>
 		</ul>
 
+		<hr>
+
 		<%= render 'ports' -%>
 	</div>
 
@@ -50,6 +52,6 @@
 
 <% if is_admin? -%>
 <hr>
-<%= link_to 'Edit', edit_cruise_list_path(@cruise_list) %> |
+<%= link_to 'Edit', edit_admin_cruise_list_path(@cruise_list) %> |
 <%= link_to 'Back', cruise_lists_path %>
 <% end -%>

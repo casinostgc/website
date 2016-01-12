@@ -31,6 +31,10 @@
 		</div>
 	</div>
 	<div class="col-sm-4">
-		<%= render CruiseList.all %>
+
+		<div class="list-group">
+			<%= render(CruiseList.limit(nil)) || content_tag(:h4, "No Cruise Lists", class: 'text-center') %>
+		</div>
+
 	</div>
 </div>

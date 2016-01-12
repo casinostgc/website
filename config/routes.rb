@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
 	namespace :maps do
 		resources :casinos, only: [:index, :show]
-		resources :cruises, :destinations, only: [:show]
+		resources :cruises, :destinations, :cruise_lists, only: [:show]
 	end
 
 	namespace :admin do

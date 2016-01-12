@@ -1,0 +1,16 @@
+<% @map_style = 'streets' %>
+
+<script>
+L.mapbox.featureLayer()
+.loadURL('<%= "#{request.env['PATH_INFO']}.geojson" %>')
+.on('ready', function(e) {
+
+	e.target.eachLayer(function(layer) {
+		map.addLayer(layer);
+		layer.bindPopup(layer.feature.properties.tooltip);
+	});
+
+	map.fitBounds(e.target.getBounds());
+
+});
+</script>

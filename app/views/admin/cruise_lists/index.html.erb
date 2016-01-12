@@ -1,0 +1,30 @@
+<%= link_to "New Cruise List", new_admin_cruise_list_path, class: 'btn btn-primary' %>
+<hr>
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<thead>
+  	      <tr>
+  	        <th>Title</th>
+  	        <th>Ship</th>
+  	        <th colspan="2"></th>
+  	      </tr>
+  	    </thead>
+
+  	    <tbody>
+  	      <% @cruise_lists.each do |cruise_list| %>
+  	        <tr>
+  	          <td><%= link_to cruise_list.title, edit_admin_cruise_list_path(cruise_list) %></td>
+  	          <td><%= cruise_list.venue.name %></td>
+  	          <td><%= link_to 'Show', cruise_list %></td>
+  	          <td><%= link_to 'Destroy', [:admin, cruise_list], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  	        </tr>
+  	      <% end %>
+  	    </tbody>
+	</table>
+</div>
+
+<div class="pagination-container text-center">
+	<%= paginate @cruise_lists %>
+</div>

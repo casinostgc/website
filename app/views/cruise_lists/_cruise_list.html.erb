@@ -1,1 +1,11 @@
-<%= cruise_list.title %>
+<%= link_to cruise_list, class: 'list-group-item' do -%>
+<div class="list-group-item-text media">
+	<%= content_tag :i, nil, class: "fa fa-fw fa-ship fa-2x media-object pull-left" -%>
+	<div class="media-body">
+		<h5 class="media-heading">
+			<%= cruise_list.title -%><br>
+			<small><%= cruise_list.venue.name -%></small>
+		</h5>
+	</div>
+</div>
+<% end -%>
