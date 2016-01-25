@@ -56,9 +56,10 @@ Rails.application.routes.draw do
 		get '/:id', to: "pages#show", as: 'short_page'
 	end
 
-	get '/:id', to: "pages#show", as: 'short_page'
-
+	get '/email_signature' => 'static_pages#email_signature'
 	get '/robots.txt' => 'static_pages#robots'
+
+	get '/:id', to: "pages#show", as: 'short_page'
 
 	# root 'static_pages#index'
 	root 'pages#root'

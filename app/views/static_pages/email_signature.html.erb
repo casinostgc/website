@@ -1,0 +1,62 @@
+<div class="container" style="background: #fff; padding: 20px 0;">
+
+	<div class="page-header">
+		<h1>Email Signature</h1>
+	</div>
+
+	<div style="background: url(<%#= image_url 'bg-vegas.jpg' %>); background-size: cover; padding: 10px;">
+
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<%= link_to image_tag('new-logo-white.png', class: 'img-responsive'), root_url %>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row text-center">
+			<div class="col-xs-3">
+				<a href="#" class="btn btn-sm btn-block btn-info"><i class="fa fa-calendar"></i> On Land</a>
+			</div>
+			<div class="col-xs-3">
+				<a href="#" class="btn btn-sm btn-block btn-info"><i class="fa fa-ship"></i> At Sea</a>
+			</div>
+			<div class="col-xs-3">
+				<a href="#" class="btn btn-sm btn-block btn-info"><i class="fa fa-plane"></i> Free Airfare</a>
+			</div>
+			<div class="col-xs-3">
+				<a href="#" class="btn btn-sm btn-block btn-info"><i class="fa fa-star"></i> Entertainment</a>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+
+<table width="100%" style="background: url(<%= image_url 'bg-vegas.jpg' %>); background-size: cover; padding: 10px;">
+	<thead>
+		<tr>
+			<th colspan="4" align="center">
+				<%= link_to image_tag('new-logo-white.png', width: '50%'), root_url %>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td width="25%" align="center">
+				<%= link_to image_tag('email_signature/land.png', width: '100%'), events_url %>
+			</td>
+			<td width="25%" align="center">
+				<%= link_to image_tag('email_signature/sea.png', width: '100%'), cruises_url %>
+			</td>
+			<td width="25%" align="center">
+				<%= link_to image_tag('email_signature/air.png', width: '100%'), flights_url %>
+			</td>
+			<td width="25%" align="center">
+				<%= link_to image_tag('email_signature/entertainment-disabled.png', width: '100%'), root_url %>
+			</td>
+		</tr>
+	</tbody>
+</table>
