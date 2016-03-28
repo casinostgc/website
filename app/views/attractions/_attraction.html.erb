@@ -1,4 +1,4 @@
-<%= link_to attraction, class: 'list-group-item' do %>
+<%= content_tag :div, class: 'list-group-item' do %>
 	<div class="list-group-item-text media">
 		<div class="media-left">
 			<% if attraction.pictures.any? -%>
@@ -6,7 +6,7 @@
 			<% end -%>
 		</div>
 		<div class="media-body">
-			<%= content_tag :h4, attraction.name, class: 'media-heading' -%>
+			<%= content_tag :h4, link_to(attraction.name, attraction), class: 'media-heading' -%>
 			<%= attraction.rendered_content -%>
 		</div>
 	</div>
