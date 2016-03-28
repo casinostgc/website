@@ -245,14 +245,4 @@ ActiveRecord::Schema.define(version: 20151210132029) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "admin_menu_items", "pages"
-  add_foreign_key "casinos", "destinations"
-  add_foreign_key "cruise_list_dates", "cruise_lists"
-  add_foreign_key "cruise_list_ports", "cruise_lists"
-  add_foreign_key "cruise_list_ports", "ports"
-  add_foreign_key "cruise_lists", "venues"
-  add_foreign_key "cruises", "venues"
-  add_foreign_key "port_of_calls", "ports"
-  add_foreign_key "venue_attractions", "attractions"
-  add_foreign_key "venue_attractions", "venues"
 end
