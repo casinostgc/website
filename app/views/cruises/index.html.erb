@@ -7,7 +7,12 @@
 </div>
 
 <div class="row">
-	<div class="col-sm-8">
+	<div class="col-sm-7">
+		<div class="list-group">
+			<%= render(CruiseList.limit(nil)) || content_tag(:h4, "No Cruise Lists", class: 'text-center') %>
+		</div>
+	</div>
+	<div class="col-sm-5">
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -29,12 +34,5 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
-	<div class="col-sm-4">
-
-		<div class="list-group">
-			<%= render(CruiseList.limit(nil)) || content_tag(:h4, "No Cruise Lists", class: 'text-center') %>
-		</div>
-
 	</div>
 </div>
