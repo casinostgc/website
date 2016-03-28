@@ -1,0 +1,19 @@
+<li class="nested-fields list-group-item">
+	<div class="list-group-item-text">
+
+		<% usec = Time.now.usec -%>
+
+		<div class="row">
+			<div class="col-xs-11">
+				<%= render 'admin/admin/datepicker', f: f, field: :departure_date, label: 'Departs At', usec: usec -%>
+			</div>
+			<div class="col-xs-1">
+				&nbsp;<br>
+				<span class="input-group-btn">
+					<%= link_to_remove_association fa_icon('remove'), f, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+				</span>
+			</div>
+		</div>
+
+	</div>
+</li>

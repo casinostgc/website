@@ -1,0 +1,39 @@
+<%= form_for [:admin, @cruise_list] do |f| %>
+<% if @cruise_list.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@cruise_list.errors.count, "error") %> prohibited this cruise_list from being saved:</h2>
+
+	<ul>
+		<% @cruise_list.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="form-group">
+	<%= f.label :title %>
+	<%= f.text_field :title, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+	<%= f.label :venue_id, 'Ship' %>
+	<div class="input-group">
+		<%= f.collection_select :venue_id, Venue.all, :id, :name, {include_blank: 'Select Ship'}, class: 'form-control', id: 'select_venue' -%>
+		<span class="input-group-btn">
+			<%= link_to 'Add Venue', new_admin_venue_path, class: 'btn btn-warning', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>
+		</span>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :content %>
+	<%= f.text_area :content, class: 'froala_content form-control' %>
+</div>
+
+<%= render 'admin/admin/nested_accordion', f: f, includes: @nested_includes -%>
+
+<div class="actions">
+	<%= f.submit nil, class: 'btn btn-primary btn-lg' %>
+</div>
+<% end %>

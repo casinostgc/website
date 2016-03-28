@@ -7,6 +7,9 @@ class Port < ActiveRecord::Base
 	has_many :port_of_calls, dependent: :destroy
 	has_many :cruises, through: :port_of_calls
 
+	has_many :cruise_list_ports, dependent: :destroy
+	has_many :cruises, through: :cruise_list_ports
+
 	default_scope { order(name: :asc) }
 
 	extend FriendlyId

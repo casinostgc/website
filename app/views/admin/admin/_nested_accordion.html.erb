@@ -1,4 +1,5 @@
-<% includes ||= []; accepted = [:pictures, :attractions, :port_of_calls] -%>
+<% includes ||= []; accepted = [:pictures, :attractions, :port_of_calls, :cruise_list_dates, :cruise_list_ports] -%>
+
 
 <div class="panel-group" id="nestAccordion" role="tablist" aria-multiselectable="true">
 	<% includes.each do |nest| -%>
@@ -14,14 +15,14 @@
 			</h4>
 		</div>
 		<div id="<%= nest %>Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<%= nest %>Heading">
-			
+
 			<% case nest when :pictures -%>
 			<ul id="nested_pictures" class="list-group">
 				<%= f.fields_for :pictures do |pics| -%>
 				<%= render 'admin/pictures/nested_fields', f: pics -%>
 				<% end -%>
 			</ul>
-			
+
 			<footer class="panel-footer">
 				<%= link_to_add_association 'Add Picture', f, :pictures, data: {association_insertion_node: '#nested_pictures', association_insertion_method: :append}, partial: 'admin/pictures/nested_fields', class: 'btn btn-info btn-xs btn-block' %>
 			</footer>
@@ -55,6 +56,39 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<%= link_to_add_association 'Add Port of Call', f, :port_of_calls, data: {association_insertion_node: '#nested_pocs', association_insertion_method: :append}, partial: 'admin/ports/nested_fields', class: 'btn btn-info btn-xs btn-block', id: 'addPortAssociation' %>
+					</div>
+					<div class="col-sm-6">
+						<%= link_to 'Create Port', new_admin_port_path, class: 'btn btn-warning btn-xs btn-block', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>
+					</div>
+				</div>
+			</footer>
+
+			<% when :cruise_list_dates -%>
+			<ul id="nested_clds" class="list-group">
+				<%= f.fields_for :cruise_list_dates do |cld| -%>
+				<%= render 'admin/cruise_lists/nested_dates', f: cld -%>
+				<% end -%>
+			</ul>
+
+			<footer class="panel-footer">
+				<div class="row">
+					<div class="col-sm-12">
+						<%= link_to_add_association 'Add Date', f, :cruise_list_dates, data: {association_insertion_node: '#nested_clds', association_insertion_method: :append}, partial: 'admin/cruise_lists/nested_dates', class: 'btn btn-info btn-xs btn-block' %>
+					</div>
+				</div>
+			</footer>
+
+			<% when :cruise_list_ports -%>
+			<ul id="nested_clps" class="list-group">
+				<%= f.fields_for :cruise_list_ports do |poc| -%>
+				<%= render 'admin/cruise_lists/nested_ports', f: poc -%>
+				<% end -%>
+			</ul>
+
+			<footer class="panel-footer">
+				<div class="row">
+					<div class="col-sm-6">
+						<%= link_to_add_association 'Add Port of Call', f, :cruise_list_ports, data: {association_insertion_node: '#nested_clps', association_insertion_method: :append}, partial: 'admin/cruise_lists/nested_ports', class: 'btn btn-info btn-xs btn-block' %>
 					</div>
 					<div class="col-sm-6">
 						<%= link_to 'Create Port', new_admin_port_path, class: 'btn btn-warning btn-xs btn-block', data: { confirm: 'You are leaving this page. Unsaved changes will be lost.' } -%>

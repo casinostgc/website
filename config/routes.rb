@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+	resources :cruise_lists
+
 	concern :imageable do
 		resources :pictures, only: [:index, :show]
 	end
@@ -24,11 +26,11 @@ Rails.application.routes.draw do
 		resources :attractions, concerns: [:imageable], only: [:index]
 	end
 
-	resources :ports, :events, :cruises, concerns: [:imageable], only: [:index, :show]
+	resources :ports, :events, :cruises, :cruise_lists, concerns: [:imageable], only: [:index, :show]
 
 	namespace :maps do
 		resources :casinos, only: [:index, :show]
-		resources :cruises, :destinations, only: [:show]
+		resources :cruises, :destinations, :cruise_lists, only: [:show]
 	end
 
 	namespace :admin do
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
 
 		resources :admin, only: [:index]
 
-		resources :pages, :pictures, :testimonials, except: [:show]
+		resources :pages, :pictures, :testimonials, :cruise_lists, except: [:show]
 
 		resources :destinations, :casinos, :events, :cruises, :ports, :attractions, concerns: [:admin_imageable], except: [:show]
 
@@ -54,9 +56,10 @@ Rails.application.routes.draw do
 		get '/:id', to: "pages#show", as: 'short_page'
 	end
 
-	get '/:id', to: "pages#show", as: 'short_page'
-
+	get '/email_signature' => 'static_pages#email_signature'
 	get '/robots.txt' => 'static_pages#robots'
+
+	get '/:id', to: "pages#show", as: 'short_page'
 
 	# root 'static_pages#index'
 	root 'pages#root'

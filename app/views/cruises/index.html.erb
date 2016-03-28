@@ -6,25 +6,35 @@
 	<%= render 'layouts/featured_images', items: @cruises, heading: :title -%>
 </div>
 
-<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Dates</th>
-				<th>Venue</th>
-			</tr>
-		</thead>
+<div class="row">
+	<div class="col-sm-8">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Dates</th>
+						<th>Venue</th>
+					</tr>
+				</thead>
 
-		<tbody>
-			<% @cruises.future.each do |cruise| %>
-			<tr>
-				<td><%= link_to cruise.title, cruise %></td>
-				<td><%= cruise.date_span %></td>
-				<td><%= link_to cruise.venue.name, venue_path(cruise.venue) %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+				<tbody>
+					<% @cruises.future.each do |cruise| %>
+					<tr>
+						<td><%= link_to cruise.title, cruise %></td>
+						<td><%= cruise.date_span %></td>
+						<td><%= link_to cruise.venue.name, venue_path(cruise.venue) %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-sm-4">
 
+		<div class="list-group">
+			<%= render(CruiseList.limit(nil)) || content_tag(:h4, "No Cruise Lists", class: 'text-center') %>
+		</div>
+
+	</div>
 </div>
