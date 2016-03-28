@@ -1,13 +1,19 @@
 <%= content_tag :div, class: 'list-group-item' do %>
-	<div class="list-group-item-text media">
-		<div class="media-left">
-			<% if attraction.pictures.any? -%>
-			<%= image_tag attraction.pictures.first.image_url(:thumb) -%>
-			<% end -%>
+<div class="list-group-item-text">
+	<div class="row">
+		<div class="col-sm-3">
+			<p class="text-center">
+				<%  if attraction.pictures.any? %>
+				<%= image_tag attraction.pictures.first.image_url(:thumb), class: 'img-responsive center-block' -%>
+				<% else %>
+				<i class="fa fa-fw fa-file-image-o fa-2x"></i>
+				<% end %>
+			</p>
 		</div>
-		<div class="media-body">
+		<div class="col-sm-9">
 			<%= content_tag :h4, link_to(attraction.name, attraction), class: 'media-heading' -%>
 			<%= attraction.rendered_content -%>
 		</div>
 	</div>
+</div>
 <% end %>
