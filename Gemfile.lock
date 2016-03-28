@@ -260,7 +260,7 @@ GEM
       activesupport (= 4.2.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.4.2)
+    rake (11.1.2)
     ransack (1.7.0)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
@@ -316,6 +316,9 @@ GEM
       font-awesome-rails (>= 4.3.0.0)
       railties (>= 3.2, < 5.0)
     xml-simple (1.1.5)
+    yaml_db (0.3.0)
+      rails (>= 3.0, < 4.3)
+      rake (>= 0.8.7)
 
 PLATFORMS
   ruby
@@ -355,3 +358,7 @@ DEPENDENCIES
   web-console (~> 2.0)
   world_airports
   wysiwyg-rails
+  yaml_db
+
+BUNDLED WITH
+   1.11.2

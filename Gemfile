@@ -66,6 +66,7 @@ gem 'underscore-rails'
 gem 'world_airports'
 gem 'smarter_csv'
 gem 'font-awesome-rails'
+gem 'yaml_db'
 
 # images
 gem 'carrierwave'
