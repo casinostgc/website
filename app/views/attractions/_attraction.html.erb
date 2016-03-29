@@ -4,7 +4,7 @@
 		<div class="col-sm-3">
 			<p class="text-center">
 				<%  if attraction.pictures.any? %>
-				<%= image_tag attraction.pictures.first.image_url(:thumb), class: 'img-responsive center-block' -%>
+				<%= link_to image_tag(attraction.pictures.first.image_url(:thumb), class: 'img-responsive center-block'), attraction -%>
 				<% else %>
 				<i class="fa fa-fw fa-file-image-o fa-2x"></i>
 				<% end %>
