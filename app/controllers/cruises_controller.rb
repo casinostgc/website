@@ -3,8 +3,8 @@ class CruisesController < ApplicationController
 	before_action :set_cruise, only: [:show]
 
 	def index
-		@cruises = Cruise.all
 		@background_image = 'bg-water.jpg'
+		@cruises = Cruise.future.has_image
 	end
 
 	def show

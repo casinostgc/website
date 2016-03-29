@@ -1,0 +1,15 @@
+<article class="thumbnail">
+	<%= link_to image_tag(cruise.pictures.first.image_url, class: 'img-responsive center-block'), cruise %>
+	<div class="caption">
+		<h4>
+			<%= cruise.title %>
+			<span class="small">
+				<br> - <%= cruise.venue.name %>
+			</span>
+		</h4>
+		<p>
+			<%= content_tag :span, cruise.date_span, class: 'label label-default' %>
+		</p>
+		<%= link_to 'Learn More', cruise, class: 'btn btn-info btn-sm btn-block' %>
+	</div>
+</article>
