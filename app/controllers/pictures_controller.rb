@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
 			@pictures = parent_object.pictures
 			render :index, layout: false
 		else
-			@pictures = Picture.all
+			@pictures = Picture.none
 		end
 	end
 
