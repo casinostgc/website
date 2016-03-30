@@ -28,3 +28,5 @@ class Venue < ActiveRecord::Base
 	# end
 
 end
+
+class Ship < Venue; end
