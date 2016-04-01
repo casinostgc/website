@@ -36,6 +36,15 @@ class Cruise < ActiveRecord::Base
 		pics.order(reorder_pictures) unless pics.nil?
 	end
 
+	def featured_port
+		if self.port_of_calls.any?
+			unless fport = self.port_of_calls.find_by(featured: true)
+				fport = self.port_of_calls.second
+			end
+			fport.port
+		end
+	end
+
 	# instance methods
 	def night_length
 		(end_at.to_date - start_at.to_date).to_i

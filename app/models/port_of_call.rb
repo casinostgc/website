@@ -4,12 +4,13 @@ class PortOfCall < ActiveRecord::Base
 	datetime_vars start_var: :arrives_at, end_var: :departs_at
 
 	default_scope { order(departs_at: :asc) }
-	
+
 	belongs_to :cruise
 	belongs_to :port
 
 	validate :check_dates
 
+	before_save :validate_one_featured_port
 
 	def check_dates
 		if self.departs_at.nil? && self.arrives_at.nil?
@@ -23,6 +24,12 @@ class PortOfCall < ActiveRecord::Base
 				self.update_column(:departs_at, self.arrives_at) if departs_at.nil?
 			end
 		end
+	end
+
+	private
+
+	def validate_one_featured_port
+		PortOfCall.where.not(id: id).where(cruise: cruise).update_all(featured: false) if featured == true && featured_changed?
 	end
 
 end

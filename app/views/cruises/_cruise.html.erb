@@ -1,5 +1,5 @@
 <article class="thumbnail">
-	<%= link_to image_tag(cruise.pictures.first.image_url, class: 'img-responsive center-block'), cruise %>
+	<%= link_to image_tag(cruise.featured_port.pictures.first.image, class: 'img-responsive center-block'), cruise %>
 	<div class="caption">
 		<h4>
 			<%= cruise.title %>
