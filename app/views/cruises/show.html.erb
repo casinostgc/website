@@ -5,7 +5,7 @@
 	<aside class="col-sm-4">
 		<% if @cruise.pictures.any? -%>
 		<figure class="thumbnail">
-			<%= link_to image_tag(@cruise.pictures.first.image_url), cruise_pictures_path(@cruise), data: {toggle: :modal, target: '#defaultModal'} -%>
+			<%= link_to image_tag(@cruise.featured_port.pictures.first.image_url), cruise_pictures_path(@cruise), data: {toggle: :modal, target: '#defaultModal'} -%>
 		</figure>
 		<% else -%>
 		<!-- default cruise image -->
