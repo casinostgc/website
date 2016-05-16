@@ -9,6 +9,11 @@
 <div class="row">
 	<div class="col-sm-7">
 		<%= render @cruises %>
+
+		<div class="pagination-container text-center">
+			<%= paginate @cruises %>
+		</div>
+
 	</div>
 	<div class="col-sm-5">
 		<div class="list-group">

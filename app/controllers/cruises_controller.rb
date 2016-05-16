@@ -4,7 +4,7 @@ class CruisesController < ApplicationController
 
 	def index
 		@background_image = 'bg-water.jpg'
-		@cruises = Cruise.future.has_image
+		@cruises = Cruise.future.has_image.page(params[:page]).per(15)
 	end
 
 	def show
