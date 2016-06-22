@@ -4,7 +4,7 @@ class Port < ActiveRecord::Base
 	include Content
 	include Imageable
 
-	has_many :port_of_calls, dependent: :destroy
+	has_many :port_of_calls, dependent: :destroy, inverse_of: :port
 	has_many :cruises, through: :port_of_calls
 
 	has_many :cruise_list_ports, dependent: :destroy

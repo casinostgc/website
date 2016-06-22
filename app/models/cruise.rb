@@ -8,8 +8,8 @@ class Cruise < ActiveRecord::Base
 	# datetime_vars start_var: :start_at, end_var: :end_at
 
 	# assocations
-	belongs_to :venue
-	has_many :port_of_calls, dependent: :destroy
+	belongs_to :venue, inverse_of: :cruises
+	has_many :port_of_calls, dependent: :destroy, inverse_of: :cruise
 	has_many :ports, through: :port_of_calls
 
 	accepts_nested_attributes_for :port_of_calls, reject_if: proc { |attributes| attributes['port_id'].blank? }, allow_destroy: true

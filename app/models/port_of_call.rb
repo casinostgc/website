@@ -5,8 +5,8 @@ class PortOfCall < ActiveRecord::Base
 
 	default_scope { order(departs_at: :asc) }
 
-	belongs_to :cruise
-	belongs_to :port
+	belongs_to :cruise, inverse_of: :port_of_calls
+	belongs_to :port, inverse_of: :port_of_calls
 
 	validate :check_dates
 
