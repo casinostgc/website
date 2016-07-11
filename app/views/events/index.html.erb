@@ -3,7 +3,7 @@
 <% end -%>
 
 <div class="row">
-	<%= render 'layouts/featured_images', items: @events, heading: :title -%>
+	<%= render 'layouts/featured_images', items: @events.future, heading: :title -%>
 </div>
 
 <div class="table-responsive">
