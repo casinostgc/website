@@ -6,25 +6,4 @@
 	<%= render 'layouts/featured_images', items: @events.future, heading: :title -%>
 </div>
 
-<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Dates</th>
-				<th>Venue</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<% @events.future.each do |event| %>
-			<tr>
-				<td><%= link_to event.title, event %></td>
-				<td><%= event.date_span %></td>
-				<td><%= link_to event.casino.name, casino_path(event.casino) %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-
-</div>
+<%= render(@events.future) || '<div class="h3 text-center"><em>No events at this time.</em></div>'.html_safe %>

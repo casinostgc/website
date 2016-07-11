@@ -2,10 +2,16 @@
 <div class="list-group-item-text media">
 	<%= content_tag :i, nil, class: "fa fa-fw fa-calendar fa-2x media-object pull-left" -%>
 	<div class="media-body">
-		<h5 class="media-heading">
+		<h3 class="media-heading">
 			<%= event.title -%><br>
-			<small><%= event.date_span -%></small>
-		</h5>
+		</h3>
+		<ul class="list-inline text-muted">
+			<%= content_tag :li, event.date_span -%>
+			<%= content_tag :li, event.casino.name if event.casino.present? %>
+		</ul>
+		<div class="">
+			<%= event.excerpt %>
+		</div>
 	</div>
 </div>
 <% end -%>
