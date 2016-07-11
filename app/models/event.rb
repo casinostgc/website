@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
 
 	belongs_to :casino
 
-	validates :casino_id, presence: true
+	validates :casino_id, :start_at, :end_at, presence: true
 
 	def date_span
 		self.start_at.strftime("%b %d, %Y") + ' - ' + self.end_at.strftime("%b %d, %Y")
