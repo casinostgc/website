@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 
 	default_scope { includes(:casino).order(start_at: :asc) }
 
-	scope :future, -> { where("start_at > ?", Time.now ) }
+	scope :future, -> { where("end_at > ?", Time.now ) }
 
 	belongs_to :casino
 
