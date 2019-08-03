@@ -6,7 +6,7 @@ class Admin::AttractionsController < Admin::AdminController
 
 	def index
 		@attractions = Attraction.all.page(params[:page])
-		@items = @attractions
+		@items = @attractions.alphabetical
 		render template: 'admin/admin/shared_index'
 	end
 

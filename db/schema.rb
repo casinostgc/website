@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331223654) do
+ActiveRecord::Schema.define(version: 20190803121401) do
 
   create_table "admin_menu_items", force: :cascade do |t|
     t.string   "href"
@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(version: 20160331223654) do
     t.integer  "attraction_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "position"
   end
 
   add_index "venue_attractions", ["attraction_id"], name: "index_venue_attractions_on_attraction_id"

@@ -65,6 +65,6 @@ class Admin::VenuesController < Admin::AdminController
 	end
 
 	def venue_params
-		params.require(:venue).permit(:name, :slug, :address, :content, pictures_attributes: picture_params, venue_attractions_attributes: [:id, :attraction_id, :_destroy])
+		params.require(:venue).permit(:name, :slug, :address, :content, pictures_attributes: picture_params, venue_attractions_attributes: [:id, :attraction_id, :position, :_destroy])
 	end
 end
