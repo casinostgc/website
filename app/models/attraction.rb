@@ -6,6 +6,8 @@ class Attraction < ActiveRecord::Base
 	has_many :venue_attractions, dependent: :destroy
 	has_many :venues, through: :venue_attractions
 
-	default_scope { order(name: :asc) }
+  def self.alphabetical
+    order(name: :asc)
+  end
 
 end
