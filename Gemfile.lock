@@ -188,7 +188,7 @@ GEM
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    geocoder (1.2.11)
+    geocoder (1.6.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gmail (0.6.0)
