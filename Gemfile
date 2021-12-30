@@ -9,9 +9,9 @@ gem 'pg', '~> 0.20', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 2.7'
+gem 'uglifier', '~> 4'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -55,7 +55,7 @@ gem 'devise'
 gem 'friendly_id'
 gem 'ransack'
 gem 'acts_as_list'
-gem 'wysiwyg-rails'
+gem 'wysiwyg-rails', '~> 4'
 gem 'cocoon'
 gem 'nokogiri'
 gem 'gmail'
