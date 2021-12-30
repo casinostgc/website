@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
+ruby "2.7.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.10'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
-gem 'pg', group: :production
+gem 'pg', '~> 0.20', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 4'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'sqlite3', '~> 1.3.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
 
@@ -54,7 +55,7 @@ gem 'devise'
 gem 'friendly_id'
 gem 'ransack'
 gem 'acts_as_list'
-gem 'wysiwyg-rails'
+gem 'wysiwyg-rails', '~> 4'
 gem 'cocoon'
 gem 'nokogiri'
 gem 'gmail'
@@ -81,3 +82,5 @@ gem 'kaminari-bootstrap'
 # datepicker
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails', '4.7.14'
+
+gem 'bigdecimal','1.3.5'
